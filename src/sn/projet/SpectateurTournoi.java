@@ -11,4 +11,9 @@ package sn.projet;
  */
 public class SpectateurTournoi{
     
+    private String billet;
+    private String tribune;
+    private int numeroPlace;
+        
+    
 }

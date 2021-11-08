@@ -5,6 +5,8 @@
  */
 package sn.projet;
 
+import java.util.Date;
+
 /**
  *
  * @author Ibrahima
@@ -12,11 +14,15 @@ package sn.projet;
 public class Arbitre extends Personne{
     
     
-    
-    public Arbitre(String sponsor, String nomNaissance, String prenom, String surnom, String genre, String dateNaissance, String dateDeces, String lieuNaissance, String nationalite, int poids, int taille, String jour, String mois, String annee){
-        super(nomNaissance, prenom, surnom, genre, dateNaissance, dateDeces, lieuNaissance,nationalite, poids, taille, jour, mois, annee);
-
+    public Arbitre(String nomNaissance, String nomCourant, String prenom,
+                    String surnom, Date dateNaissance, String lieuNaissance,
+                    Date dateDeces, String nationalite, int taille, int poids){
         
+        super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 
+                lieuNaissance, dateDeces, nationalite, taille, poids);
         
     }
+    
+    //public void annoncerScoreMatch()
+    //public void annoncerScoreSet()
 }

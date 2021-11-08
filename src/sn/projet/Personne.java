@@ -4,65 +4,80 @@
  * and open the template in the editor.
  */
 package sn.projet;
-
+import java.time.LocalDate;
+import java.util.Date;
 /**
  *
  * @author Ibrahima
  */
-public class Personne {
-    protected String nomNaissance, genre, dateNaissance, lieuNaissance, dateDeces;
-    String nomCourant, prenom, surnom, nationalite, jour, mois;
-    int taille, poids;
-    protected String annee;
+public abstract class Personne {
+    protected String nomNaissance;
+    protected String nomCourant;
+    protected String prenom;
+    protected String surnom;
+    protected Date dateNaissance;
+    protected String lieuNaissance;
+    protected Date dateDeces;
+    protected String nationalite;
+    protected int taille;
+    protected int poids;
     
     /**
     Création d'un constructeur Personne 
     * ne contenant pas la variable nomCourant
     */
-    public Personne(String nomNaissance, String prenom, String surnom, String genre, String dateNaissance, String dateDeces, String lieuNaissance, String nationalite, int poids, int taille, String jour, String mois, String annee ){
-        this.annee = annee;
+    public Personne(String nomNaissance, String nomCourant, String prenom,
+                    String surnom, Date dateNaissance, String lieuNaissance,
+                    Date dateDeces, String nationalite, int taille, int poids){
         this.nomNaissance = nomNaissance;
-        this.dateDeces = jour + "/" + mois + "/" + annee;
-        this.dateNaissance = jour + "/" + mois + "/" + annee;
-        this.genre = genre;
-        this.nationalite = nationalite;
-        this.poids = poids; //en kg
-        this.surnom = surnom;
-        this.taille = taille; // en cm
-        this.prenom = prenom;
-        this.lieuNaissance = lieuNaissance;
-        
-    }
-    
-    /**
-    Création d'un constructeur Personne 
-    * contenant la variable nomCourant
-    */
-    public Personne(String nomNaissance, String nomCourant, String prenom, String surnom, String genre, String dateNaissance, String dateDeces, String lieuNaissance, String nationalite, int poids, int taille, String jour, String mois, String annee ){
-        this.annee = annee;
-        this.nomNaissance = nomNaissance;
-        this.dateDeces = jour + "/" + mois + "/" + annee;
-        this.dateNaissance = jour + "/" + mois + "/" + annee;
-        this.genre = genre;
-        this.nationalite = nationalite;
-        this.poids = poids;
-        this.surnom = surnom;
-        this.taille = taille;
-        this.prenom = prenom;
-        this.lieuNaissance = lieuNaissance;
         this.nomCourant = nomCourant;
+        this.prenom = prenom;
+        this.surnom = surnom;
+        this.dateNaissance = dateNaissance;
+        this.lieuNaissance = lieuNaissance;
+        this.dateDeces = dateDeces;
+        this.nationalite = nationalite;
+        this.taille = taille;
+        this.poids = poids;
+        
+        
     }
     
     //Creation des getters et setters
     
+    public String getNomNaissance() {return this.nomNaissance;}
+
     
-    //Creation de la fonction pour l'age
-    public void getAge(){
-            int year = Integer.parseInt(annee);
-            int age = 2021 - year;
-            System.out.println(age);
-            
+    public String getNomCourant() {return this.nomCourant;}
+    
+    public String getPrenom() {return this.prenom;}
+    
+    public String getSurnom() {return this.surnom;}
+    
+    public Date getDateNaissance() {return this.dateNaissance;}
+    
+    
+    public String getLieuNaissance() {return this.lieuNaissance;}
+
+    public Date getDateDeces() {return this.dateDeces;}
+    
+    public String getNationalite() {return this.nationalite;}
+    
+    public int getTaille() {return this.taille;}
+    
+    public int getPoids() {return this.poids;}
+    
+    public int getAge(){
+        LocalDate now = LocalDate.now();
+        int age = now.getYear() - this.getDateNaissance().getYear();
+        if(now.getMonthValue() - this.getDateNaissance().getMonth() < 0){age--;}
+        else if(now.getMonthValue() - this.getDateNaissance().getMonth() == 0){
+            if(now.getDayOfMonth() - this.getDateNaissance().getDay()< 0){age--;}
         }
+        return age;
+    }
+    
+    
     
     
    
