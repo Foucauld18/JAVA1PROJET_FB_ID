@@ -55,7 +55,7 @@ public abstract class Personne {
     public String getSurnom() {return this.surnom;}
     
     public Date getDateNaissance() {return this.dateNaissance;}
-    
+    int a = 0;
     
     public String getLieuNaissance() {return this.lieuNaissance;}
 
