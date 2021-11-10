@@ -24,7 +24,18 @@ public abstract class Personne {
     
     /**
     Création d'un constructeur Personne 
-    * ne contenant pas la variable nomCourant
+    *contenant la variable nomCourant qui désigne si un 
+    * personnage féminin est mariée ou non
+     * @param nomNaissance
+     * @param nomCourant
+     * @param prenom
+     * @param surnom
+     * @param dateNaissance
+     * @param lieuNaissance
+     * @param dateDeces
+     * @param nationalite
+     * @param taille
+     * @param poids
     */
     public Personne(String nomNaissance, String nomCourant, String prenom,
                     String surnom, LocalDate dateNaissance, String lieuNaissance,
@@ -38,10 +49,37 @@ public abstract class Personne {
         this.dateDeces = dateDeces;
         this.nationalite = nationalite;
         this.taille = taille;
-        this.poids = poids;
-        
-        
+        this.poids = poids;  
     }
+    
+    /**
+    Création d'un constructeur Personne 
+    *ne contenant pas la variable nomCourant
+     * @param nomNaissance
+     * @param prenom
+     * @param surnom
+     * @param dateNaissance
+     * @param lieuNaissance
+     * @param dateDeces
+     * @param nationalite
+     * @param taille
+     * @param poids
+    */
+    public Personne(String nomNaissance, String prenom,
+                    String surnom, LocalDate dateNaissance, String lieuNaissance,
+                    LocalDate dateDeces, String nationalite, int taille, int poids){
+        this.nomNaissance = nomNaissance;
+        this.prenom = prenom;
+        this.surnom = surnom;
+        this.dateNaissance = dateNaissance;
+        this.lieuNaissance = lieuNaissance;
+        this.dateDeces = dateDeces;
+        this.nationalite = nationalite;
+        this.taille = taille;
+        this.poids = poids;  
+    }
+    
+
     
     //Creation des getters et setters
     
@@ -67,13 +105,17 @@ public abstract class Personne {
     
     public int getPoids() {return this.poids;}
     
-   // Méthode pour avoir l'age
-
-   public int getAge(){
-    LocalDate now = LocalDate.now();
-    int age = now.getYear() - this.getDateNaissance().getYear();
-    return age;
-}
+    
+    
+    
+    
+    
+    // Méthode pour avoir l'age
+    public int getAge(){
+        LocalDate now = LocalDate.now();
+        int age = now.getYear() - this.getDateNaissance().getYear();
+        return age;
+    }
     
     
     

@@ -7,6 +7,8 @@ package sn.projet;
 
 import java.time.LocalDate;
 
+import javax.sound.sampled.SourceDataLine;
+
 
 /**
  *
@@ -17,14 +19,18 @@ public class Tennis {
     
     
     public static void main(String[] args) {
-        Joueur a = new Joueur("Diallo", "Ba", "Ibrahima",
-                            "The goat", LocalDate.of(1999, 9, 4), "Metz",
-                            LocalDate.of(2035, 1, 5), "Senegalaise", 180, 70,
-                            "Gauche", "Tropico", "Poutine", 
-                            "Short", "Bleu");
-                
-                System.out.println(a.getAge());
+        Spectateur b = new Spectateur("DIALLO", "Ba", "Ibahima",
+                "The Goat", LocalDate.of(1999, 9, 4), "Dakar",
+                LocalDate.of(2050, 4, 9), "Senegalaise", 180, 70,
+                "Short", "Rouge");
 
+        Joueur a = new Joueur("Diallo", "Ba", "Ibrahima",
+                "The goat", LocalDate.of(1999, 9, 4), "Metz",
+                LocalDate.of(2035, 1, 5), "Senegalaise", 180, 70,
+                Main.Droite, "Tropico", "Poutine",
+                Vetement.Chemise, Couleur.Bleu);
+
+        
     
         
     }
