@@ -21,7 +21,7 @@ public class Tennis {
         
 
         Match premierMatch = new Match("homme",numero1,numero2,"Final");
-        premierMatch.SetResultat(numero2);
+        premierMatch.jouerMatch();
 
         Echange test = new Echange(numero1,numero2);
         test.jouerEchange();
@@ -35,15 +35,15 @@ public class Tennis {
 
         System.out.println("Le vainqueur est : ");
 
-        System.out.println(premierSet.vainqueurSet);
+        System.out.println(premierMatch.vainqueurMatch);
 
         System.out.println("Le score du gagnant est de  ");
 
-        System.out.println(premierSet.scoreSetJoueur1);
+        System.out.println(premierMatch.scoreJoueur1);
         
         System.out.println("Le score du perdant est de  ");
 
-        System.out.println(premierSet.scoreSetJoueur2);
+        System.out.println(premierMatch.scoreJoueur2);
         
     }
     

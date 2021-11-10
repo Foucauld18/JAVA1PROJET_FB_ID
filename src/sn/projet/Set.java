@@ -1,5 +1,10 @@
 package sn.projet;
 
+/**
+ *
+ * @author Foucauld
+ */
+
 
 public class Set {
     protected Joueur Joueur1;
@@ -43,9 +48,9 @@ public class Set {
 
     }
 
-public void jouerSet(){
+public Joueur jouerSet(){
     boolean estfini=false;
-    Joueur vainqueurDernierJeu;
+    Joueur vainqueurDernierJeu=null;
     int compteur=1;
     while(estfini == false){
         Jeu jeu = new Jeu(this.Joueur1,this.Joueur2);
@@ -54,10 +59,12 @@ public void jouerSet(){
         if(this.vainqueurSet==vainqueurDernierJeu){
             estfini=true;
         }
+        
 
     }
-
+    return(vainqueurDernierJeu);
 }
 
     
 }
+
