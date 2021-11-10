@@ -33,17 +33,28 @@ public class Tennis {
         premierSet.jouerSet();
 
 
-        System.out.println("Le vainqueur est : ");
+        System.out.println("Probas Premier Service ");
 
-        System.out.println(premierMatch.vainqueurMatch);
+        System.out.println(test.aleatoire);
 
-        System.out.println("Le score du gagnant est de  ");
+        System.out.println("Probas Deuxième service ");
+
+        System.out.println(test.aleatoire2);
+        
+        System.out.println("Vainquer echange ");
+
+        System.out.println(test.vainqueurEchange.nomNaissance);
+
+        System.out.println("_______________________________________________________________ ");
+        System.out.println("Score vainqueur ");
 
         System.out.println(premierMatch.scoreJoueur1);
-        
-        System.out.println("Le score du perdant est de  ");
+        System.out.println("Score Perdant ");
 
         System.out.println(premierMatch.scoreJoueur2);
+        System.out.println("Vainqueur");
+
+        System.out.println(premierMatch.vainqueurMatch.nomNaissance);
         
     }
     
