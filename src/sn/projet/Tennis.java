@@ -29,13 +29,21 @@ public class Tennis {
         Jeu premierJeu = new Jeu(numero1,numero2);
         premierJeu.jouerJeu();
 
+        Set premierSet= new Set(numero1,numero2);
+        premierSet.jouerSet();
+
+
         System.out.println("Le vainqueur est : ");
 
-        System.out.println(premierJeu.jouerJeu().nomNaissance);
+        System.out.println(premierSet.vainqueurSet);
+
+        System.out.println("Le score du gagnant est de  ");
+
+        System.out.println(premierSet.scoreSetJoueur1);
         
         System.out.println("Le score du perdant est de  ");
 
-        System.out.println(premierJeu.scoreJoueur2);
+        System.out.println(premierSet.scoreSetJoueur2);
         
     }
     
