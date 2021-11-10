@@ -5,7 +5,7 @@
  */
 package sn.projet;
 import java.time.LocalDate;
-import java.util.Date;
+
 /**
  *
  * @author Ibrahima
@@ -15,9 +15,9 @@ public abstract class Personne {
     protected String nomCourant;
     protected String prenom;
     protected String surnom;
-    protected Date dateNaissance;
+    protected LocalDate dateNaissance;
     protected String lieuNaissance;
-    protected Date dateDeces;
+    protected LocalDate dateDeces;
     protected String nationalite;
     protected int taille;
     protected int poids;
@@ -27,8 +27,8 @@ public abstract class Personne {
     * ne contenant pas la variable nomCourant
     */
     public Personne(String nomNaissance, String nomCourant, String prenom,
-                    String surnom, Date dateNaissance, String lieuNaissance,
-                    Date dateDeces, String nationalite, int taille, int poids){
+                    String surnom, LocalDate dateNaissance, String lieuNaissance,
+                    LocalDate dateDeces, String nationalite, int taille, int poids){
         this.nomNaissance = nomNaissance;
         this.nomCourant = nomCourant;
         this.prenom = prenom;
@@ -54,12 +54,12 @@ public abstract class Personne {
     
     public String getSurnom() {return this.surnom;}
     
-    public Date getDateNaissance() {return this.dateNaissance;}
-    int a = 0;
+    public LocalDate getDateNaissance() {return this.dateNaissance;}
+    
     
     public String getLieuNaissance() {return this.lieuNaissance;}
 
-    public Date getDateDeces() {return this.dateDeces;}
+    public LocalDate getDateDeces() {return this.dateDeces;}
     
     public String getNationalite() {return this.nationalite;}
     
@@ -67,15 +67,13 @@ public abstract class Personne {
     
     public int getPoids() {return this.poids;}
     
-    public int getAge(){
-        LocalDate now = LocalDate.now();
-        int age = now.getYear() - this.getDateNaissance().getYear();
-        if(now.getMonthValue() - this.getDateNaissance().getMonth() < 0){age--;}
-        else if(now.getMonthValue() - this.getDateNaissance().getMonth() == 0){
-            if(now.getDayOfMonth() - this.getDateNaissance().getDay()< 0){age--;}
-        }
-        return age;
-    }
+   // Méthode pour avoir l'age
+
+   public int getAge(){
+    LocalDate now = LocalDate.now();
+    int age = now.getYear() - this.getDateNaissance().getYear();
+    return age;
+}
     
     
     

@@ -5,7 +5,7 @@
  */
 package sn.projet;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -24,8 +24,8 @@ public class Joueur extends Personne{
     public static int nbJoueur = 0; // Compte le nombre de joueur
     
     public Joueur   (String nomNaissance, String nomCourant, String prenom,
-                    String surnom, Date dateNaissance, String lieuNaissance,
-                    Date dateDeces, String nationalite, int taille, int poids,
+                    String surnom, LocalDate dateNaissance, String lieuNaissance,
+                    LocalDate dateDeces, String nationalite, int taille, int poids,
                     String main, String sponsor, String entraineur, 
                     String vetement, String couleur){
         super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 

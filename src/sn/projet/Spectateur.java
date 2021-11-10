@@ -5,7 +5,8 @@
  */
 package sn.projet;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 /**
  *
@@ -17,8 +18,8 @@ public class Spectateur extends Personne {
     protected Billet billet;
     
      public Spectateur(String nomNaissance, String nomCourant, String prenom,
-                    String surnom, Date dateNaissance, String lieuNaissance,
-                    Date dateDeces, String nationalite, int taille, int poids,
+                    String surnom, LocalDate dateNaissance, String lieuNaissance,
+                    LocalDate dateDeces, String nationalite, int taille, int poids,
                     String vetement, String couleur){
         
         super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 
