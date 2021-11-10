@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package sn.projet;
+import java.time.LocalDate;
 
-import java.util.Date;
 
 /**
  *
@@ -15,8 +15,8 @@ public class Arbitre extends Personne{
     
     
     public Arbitre(String nomNaissance, String nomCourant, String prenom,
-                    String surnom, Date dateNaissance, String lieuNaissance,
-                    Date dateDeces, String nationalite, int taille, int poids){
+                    String surnom, LocalDate dateNaissance, String lieuNaissance,
+                    LocalDate dateDeces, String nationalite, int taille, int poids){
         
         super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 
                 lieuNaissance, dateDeces, nationalite, taille, poids);

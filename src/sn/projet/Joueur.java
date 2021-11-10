@@ -5,7 +5,7 @@
  */
 package sn.projet;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -13,22 +13,25 @@ import java.util.Date;
  */
 public class Joueur extends Personne{
     
-    protected String main;
+    protected Main main;
     protected String sponsor;
     protected int classement;
     protected String entraineur;
     
-    protected String vetement;
-    protected String couleur;
+    protected Vetement vetement;
+    protected Couleur couleur;
     
     public static int nbJoueur = 0; // Compte le nombre de joueur
     
-    public Joueur   (String nomNaissance, String nomCourant, String prenom,
-                    String surnom, Date dateNaissance, String lieuNaissance,
-                    Date dateDeces, String nationalite, int taille, int poids,
-                    String main, String sponsor, String entraineur, 
-                    String vetement, String couleur){
-        super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 
+    /*
+    Constructeur Joueur qui désigne un JOUEUR
+    */
+    public Joueur   (String nomNaissance, String prenom,
+                    String surnom, LocalDate dateNaissance, String lieuNaissance,
+                    LocalDate dateDeces, String nationalite, int taille, int poids,
+                    Main main, String sponsor, String entraineur, 
+                    Vetement vetement, Couleur couleur){
+        super(nomNaissance, prenom, surnom, dateNaissance, 
                 lieuNaissance, dateDeces, nationalite, taille, poids);
         this.main = main;
         this.sponsor = sponsor;
@@ -39,6 +42,44 @@ public class Joueur extends Personne{
         this.couleur = couleur;
         
         nbJoueur ++;
+    }
+    
+    /*
+    Constructeur joueur qui désigne une JOUEUSE 
+    */
+    public Joueur(String nomNaissance, String nomCourant, String prenom,
+                    String surnom, LocalDate dateNaissance, String lieuNaissance,
+                    LocalDate dateDeces, String nationalite, int taille, int poids,
+                    Main main, String sponsor, String entraineur, 
+                    Vetement vetement, Couleur couleur){
+        super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 
+                lieuNaissance, dateDeces, nationalite, taille, poids);
+        
+        this.main = main;
+        this.sponsor = sponsor;
+        this.classement = nbJoueur + 1;
+        this.entraineur = entraineur;
+        
+        this.vetement = vetement;
+        this.couleur = couleur;
+        
+        nbJoueur ++;
+        
+    }
+    
+    /*
+    Creation des getters et des setters
+    */
+    
+    public Vetement getVetement(){return this.vetement;}
+    
+    public Couleur getCouleur(){return this.couleur;}
+    
+    public Main getMain(){return this.main;}
+    
+    public void setCouleur(Couleur couleur){
+        this.couleur = couleur;
+        System.out.println("J'ai change ma couleur. je prends la couleur " + couleur);
     }
     
     

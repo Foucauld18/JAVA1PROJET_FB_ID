@@ -5,7 +5,8 @@
  */
 package sn.projet;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 /**
  *
@@ -16,52 +17,74 @@ public class Spectateur extends Personne {
     protected String couleur;
     protected Billet billet;
     
-     public Spectateur(String nomNaissance, String nomCourant, String prenom,
-                    String surnom, Date dateNaissance, String lieuNaissance,
-                    Date dateDeces, String nationalite, int taille, int poids,
-                    String vetement, String couleur){
-        
-        super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 
+    /*
+    Constructeur Spectateur qui désigne UN SPECTATEUR
+    */
+
+    public Spectateur(String nomNaissance, String nomCourant, String prenom,
+            String surnom, LocalDate dateNaissance, String lieuNaissance,
+            LocalDate dateDeces, String nationalite, int taille, int poids,
+            String vetement, String couleur) {
+
+        super(nomNaissance, nomCourant, prenom, surnom, dateNaissance,
                 lieuNaissance, dateDeces, nationalite, taille, poids);
         this.vetement = vetement;
         this.couleur = couleur;
-    
+
     }
-     
-     public String getVetement() {
+
+    /*
+    Constructeur Spectateur qui désigne UNE SPECTATRICE
+    */
+    public Spectateur(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
+            LocalDate dateDeces, String nationalite, int taille, int poids,
+            String vetement, String couleur) {
+
+        super(nomNaissance, prenom, surnom, dateNaissance,
+                lieuNaissance, dateDeces, nationalite, taille, poids);
+        this.vetement = vetement;
+        this.couleur = couleur;
+
+    }
+
+    public String getVetement() {
         return this.vetement;
     }
-     
-     public String getCouleur() {
+
+    public String getCouleur() {
         return this.couleur;
     }
-     
-    public Billet getBillet(){
+
+    public Billet getBillet() {
         return this.billet;
     }
-    
+
     public void setVetement(String vetement) {
         this.vetement = vetement;
     }
-     
-   public void setCouleur(String couleur) {
-        this.couleur = couleur; 
+
+    public void setCouleur(String couleur) {
+        this.couleur = couleur;
     }
-   
-   public void acheterBillet(int prix, String tribune, int place){
+
+    public void acheterBillet(int prix, String tribune, int place) {
         this.billet = new Billet(prix, tribune, place);
     }
-   
-   public void applaudir(){
-        System.out.println("CLAP CLAP CLAP");
+
+    public void applaudir() {
+        System.out.println("CLAP CLAP CLAP !!!!!!!!");
     }
-   
-    public void crier(){
+
+    public void crier() {
         System.out.println("ALLEZ !!!");
     }
-    
-    public void huer(){
-        System.out.println("BOOOOOOOOOOO !!!! NUL !");
+
+    public void huer() {
+        System.out.println("ouuuuuuuuuuuuuuuuuuuuhhhhhhhhhhhh !!!!! ");
+    }
+
+    public void dormir() {
+        System.out.println("Bonne nuit ............");
     }
     
     

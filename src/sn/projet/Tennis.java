@@ -5,41 +5,32 @@
  */
 package sn.projet;
 
-import java.util.Date;
-import java.util.Calendar;
+import java.time.LocalDate;
+
+import javax.sound.sampled.SourceDataLine;
+
 
 /**
  *
  * @author Ibrahima
  */
 public class Tennis {
-    public static int getYears(Date d) {
-        Calendar curr = Calendar.getInstance();
-        Calendar birth = Calendar.getInstance();
-        birth.setTime(d);
-        int yeardiff = curr.get(Calendar.YEAR) - birth.get(Calendar.YEAR);
-        curr.add(Calendar.YEAR, - yeardiff);
-        if (birth.after(curr)) {
-            yeardiff = yeardiff - 1;
-        }
-        return yeardiff;
-    }
+    
+    
     
     public static void main(String[] args) {
-        //        Joueur a = new Joueur("Diallo", "Ba", "Ibrahima",
-        //                    "The goat", new Date(23,2,1998), "Metz",
-        //                    new Date(19,11,2019), "Senegalaise", 180, 70,
-        //                    "Gauche", "Tropico", "Poutine", 
-        //                    "Short", "Bleu");
-        //        
-        //        System.out.println(a.getDateNaissance());
-        
-        
-        Calendar curr = Calendar.getInstance();
-        Calendar birth = Calendar.getInstance();
-        birth.set(1999, 9, 4);
-        System.out.println(birth.getTime());
+        Spectateur b = new Spectateur("DIALLO", "Ba", "Ibahima",
+                "The Goat", LocalDate.of(1999, 9, 4), "Dakar",
+                LocalDate.of(2050, 4, 9), "Senegalaise", 180, 70,
+                "Short", "Rouge");
 
+        Joueur a = new Joueur("Diallo", "Ba", "Ibrahima",
+                "The goat", LocalDate.of(1999, 9, 4), "Metz",
+                LocalDate.of(2035, 1, 5), "Senegalaise", 180, 70,
+                Main.Droite, "Tropico", "Poutine",
+                Vetement.Chemise, Couleur.Bleu);
+
+        
     
         
     }
