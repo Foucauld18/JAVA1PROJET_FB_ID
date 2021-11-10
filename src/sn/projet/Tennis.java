@@ -5,42 +5,37 @@
  */
 package sn.projet;
 
-import java.util.Date;
-import java.util.Calendar;
+
+
 
 /**
  *
  * @author Ibrahima
  */
 public class Tennis {
-    public static int getYears(Date d) {
-        Calendar curr = Calendar.getInstance();
-        Calendar birth = Calendar.getInstance();
-        birth.setTime(d);
-        int yeardiff = curr.get(Calendar.YEAR) - birth.get(Calendar.YEAR);
-        curr.add(Calendar.YEAR, - yeardiff);
-        if (birth.after(curr)) {
-            yeardiff = yeardiff - 1;
-        }
-        return yeardiff;
-    }
-    
+ 
     public static void main(String[] args) {
-        //        Joueur a = new Joueur("Diallo", "Ba", "Ibrahima",
-        //                    "The goat", new Date(23,2,1998), "Metz",
-        //                    new Date(19,11,2019), "Senegalaise", 180, 70,
-        //                    "Gauche", "Tropico", "Poutine", 
-        //                    "Short", "Bleu");
-        //        
-        //        System.out.println(a.getDateNaissance());
         
+        Joueur numero1 = new Joueur(1,"Bergerault");
+        Joueur numero2 = new Joueur(2,"LJ");
         
-        Calendar curr = Calendar.getInstance();
-        Calendar birth = Calendar.getInstance();
-        birth.set(1999, 9, 4);
-        System.out.println(birth.getTime());
 
-    
+        Match premierMatch = new Match("homme",numero1,numero2,"Final");
+        premierMatch.SetResultat(numero2);
+
+        Echange test = new Echange(numero1,numero2);
+        test.jouerEchange();
+
+        Jeu premierJeu = new Jeu(numero1,numero2);
+        premierJeu.jouerJeu();
+
+        System.out.println("Le vainqueur est : ");
+
+        System.out.println(premierJeu.jouerJeu().nomNaissance);
+        
+        System.out.println("Le score du perdant est de  ");
+
+        System.out.println(premierJeu.scoreJoueur2);
         
     }
     

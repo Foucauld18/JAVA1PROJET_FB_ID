@@ -5,41 +5,14 @@
  */
 package sn.projet;
 
-import java.util.Date;
 
-/**
- *
- * @author Ibrahima
- */
 public class Joueur extends Personne{
-    
-    protected String main;
-    protected String sponsor;
-    protected int classement;
-    protected String entraineur;
-    
-    protected String vetement;
-    protected String couleur;
-    
-    public static int nbJoueur = 0; // Compte le nombre de joueur
-    
-    public Joueur   (String nomNaissance, String nomCourant, String prenom,
-                    String surnom, Date dateNaissance, String lieuNaissance,
-                    Date dateDeces, String nationalite, int taille, int poids,
-                    String main, String sponsor, String entraineur, 
-                    String vetement, String couleur){
-        super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 
-                lieuNaissance, dateDeces, nationalite, taille, poids);
-        this.main = main;
-        this.sponsor = sponsor;
-        this.classement = nbJoueur + 1;
-        this.entraineur = entraineur;
-        
-        this.vetement = vetement;
-        this.couleur = couleur;
-        
-        nbJoueur ++;
+    int classement;
+    public static int nbjoueur=0;
+    public Joueur(int classement,String nomNaissance){
+        super( nomNaissance);
+        nbjoueur++;
+        this.classement = classement;
     }
-    
-    
 }
+
