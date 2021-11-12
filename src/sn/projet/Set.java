@@ -65,15 +65,23 @@ public class Set {
         this.jeux=newListeJeux;
     }
 
-public Joueur jouerSet(){
+public Joueur jouerSet(int numeroSet){
     boolean estfini=false;
     Joueur vainqueurDernierJeu=null;
-    int compteur=1;
+    int compteurJeu=0;
     while(estfini == false){
-        Jeu jeu = new Jeu(joueurs[0],joueurs[1]);
-        ajouterUnJeu(jeu);
-        vainqueurDernierJeu=jeu.jouerJeu();
-        SetScore(vainqueurDernierJeu,compteur);
+        if(compteurJeu%2==0){//Permet d'alterner le service. Le premier serveur du match est tjs le joueur 0
+            Jeu jeu = new Jeu(joueurs[0],joueurs[1]);
+            ajouterUnJeu(jeu);
+            vainqueurDernierJeu=jeu.jouerJeu();
+        } else {
+            Jeu jeu = new Jeu(joueurs[1],joueurs[0]);
+            ajouterUnJeu(jeu);
+            vainqueurDernierJeu=jeu.jouerJeu();
+        }
+        compteurJeu++;
+        
+        SetScore(vainqueurDernierJeu,numeroSet);
         if(this.vainqueurSet==vainqueurDernierJeu){
             estfini=true;
         }

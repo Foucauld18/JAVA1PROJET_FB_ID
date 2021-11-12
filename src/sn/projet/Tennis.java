@@ -20,22 +20,24 @@ public class Tennis {
                 LocalDate.of(2050, 4, 9), "Senegalaise", 180, 70, "Short", "Rouge");
 
         Joueur a = new Joueur("Diallo", "Ba", "Ibrahima", "The goat", LocalDate.of(1999, 9, 4), "Metz",
-                LocalDate.of(2035, 1, 5), "Senegalaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Chemise,
+                LocalDate.of(2035, 1, 5), "Senegalaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
                 Couleur.Bleu);
 
         Joueur c = new Joueur("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
-                LocalDate.of(2035, 1, 5), "Francaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Chemise,
+                LocalDate.of(2035, 1, 5), "Francaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
                 Couleur.Bleu);
+        Arbitre arbitre = new Arbitre("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
+        LocalDate.of(2035, 1, 5), "Francaise", 180, 70);
 
-        Match premierMatch = new Match("homme", a, c, "Final");
+        Match premierMatch = new Match(a, c, "Final",arbitre);
         premierMatch.jouerMatch();
 
         System.out.println("Score vainqueur ");
 
-        System.out.println(premierMatch.scoreJoueur1);
+        System.out.println(premierMatch.scoreJoueur0);
         System.out.println("Score Perdant ");
 
-        System.out.println(premierMatch.scoreJoueur2);
+        System.out.println(premierMatch.scoreJoueur1);
         System.out.println("Vainqueur");
 
         System.out.println(premierMatch.vainqueurMatch.nomNaissance);
