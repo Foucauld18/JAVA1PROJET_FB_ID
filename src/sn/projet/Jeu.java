@@ -2,6 +2,7 @@ package sn.projet;
 
 public class Jeu {
     protected Joueur [] joueurs;
+    protected Echange [] echanges;
     protected String scoreServeur;
     protected String scoreJoueur1;
     protected Joueur vainqueurJeu;
@@ -68,12 +69,31 @@ public class Jeu {
 
     }
 
+    public void ajouterUnEchange(Echange newEchange){
+        Echange [] listeEchanges = this.echanges;
+        int SizeArray=0,i;
+        try{
+           SizeArray = listeEchanges.length;
+        }
+        catch(Exception e){
+            SizeArray=0;
+        }
+         
+        Echange[] newListeEchange = new Echange[SizeArray+1];
+        for(i=0;i<SizeArray;i++){
+            newListeEchange[i]=listeEchanges[i];
+        }
+        newListeEchange[SizeArray]=newEchange;
+        this.echanges=newListeEchange;
+    }
+
     public Joueur jouerJeu(){
         boolean hasVainqueurJeu = false;
         Joueur vainqueurDernierEchange=null;
         while(hasVainqueurJeu != true)
         {
            Echange echange = new Echange(joueurs[0],joueurs[1]);
+           ajouterUnEchange(echange);
            vainqueurDernierEchange=echange.jouerEchange();
            SetScore(vainqueurDernierEchange);
            if(this.vainqueurJeu==vainqueurDernierEchange){
