@@ -83,6 +83,7 @@ public Joueur jouerMatch(){
     Joueur vainqueurDernierSet=null;
     while(matchIsFinished==false){
         Set set = new Set(joueurs[0], joueurs[1]);
+        ajouterUnSet(set);
         vainqueurDernierSet = set.jouerSet();
         SetMatchResultat(vainqueurDernierSet);
         if(this.vainqueurMatch==vainqueurDernierSet){
