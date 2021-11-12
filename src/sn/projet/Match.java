@@ -11,8 +11,7 @@ package sn.projet;
  */
 public class Match {
     protected String categorie;
-    protected Joueur joueur1;
-    protected Joueur joueur2;
+    protected Joueur [] joueurs;
     protected int scoreJoueur1;
     protected int scoreJoueur2;
    
@@ -21,10 +20,9 @@ public class Match {
     protected String niveauMatch;
 
  
-    public Match(String categorie,Joueur joueur1,Joueur joueur2,String niveauMatch ){
+    public Match(String categorie,Joueur joueur0,Joueur joueur1,String niveauMatch){
         this.categorie = categorie;
-        this.joueur1 = joueur1;
-        this.joueur2 = joueur2;
+        this.joueurs = new Joueur[] {joueur0,joueur1};
         this.niveauMatch = niveauMatch;
         this.scoreJoueur1=0;
         this.scoreJoueur2=0;
@@ -34,26 +32,26 @@ public class Match {
     }
     public void SetMatchResultat(Joueur vainqueurDernierSet){
 
-        if(joueur1==vainqueurDernierSet){
+        if(joueurs[0]==vainqueurDernierSet){
             this.scoreJoueur1+=1;
             if(this.scoreJoueur1>2 && this.categorie=="homme"){
-                this.vainqueurMatch=joueur1;
-                this.perdantMatch = joueur2;
+                this.vainqueurMatch=joueurs[0];
+                this.perdantMatch = joueurs[1];
             } 
             if(this.scoreJoueur1>1 && this.categorie=="femme"){
-                this.vainqueurMatch=joueur1;
-                this.perdantMatch = joueur2;
+                this.vainqueurMatch=joueurs[0];
+                this.perdantMatch = joueurs[1];
             } 
             
         } else {
             this.scoreJoueur2+=1;
             if(this.scoreJoueur2>2 && this.categorie=="homme"){
-                this.vainqueurMatch=joueur2;
-                this.perdantMatch = joueur1;
+                this.vainqueurMatch=joueurs[1];
+                this.perdantMatch = joueurs[0];
             } 
             if(this.scoreJoueur2>1 && this.categorie=="femme"){
-                this.vainqueurMatch=joueur2;
-                this.perdantMatch = joueur1;
+                this.vainqueurMatch=joueurs[1];
+                this.perdantMatch = joueurs[0];
             } 
 
         }      
@@ -63,7 +61,7 @@ public Joueur jouerMatch(){
     boolean matchIsFinished=false;
     Joueur vainqueurDernierSet=null;
     while(matchIsFinished==false){
-        Set set = new Set(joueur1, joueur2);
+        Set set = new Set(joueurs[0], joueurs[1]);
         vainqueurDernierSet = set.jouerSet();
         SetMatchResultat(vainqueurDernierSet);
         if(this.vainqueurMatch==vainqueurDernierSet){

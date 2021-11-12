@@ -14,17 +14,15 @@ import static java.lang.Math.sqrt;
 
 
 public class Echange {
-    protected Joueur serveur;
-    protected Joueur joueur2;
+    protected Joueur [] joueurs;
     protected Joueur vainqueurEchange;
     protected Double aleatoire;
     protected Double aleatoire2;
     
     /* builder */
     
-    public Echange(Joueur serveur, Joueur joueur2){
-        this.serveur=serveur;
-        this.joueur2=joueur2;
+    public Echange(Joueur serveur, Joueur joueur1){
+        this.joueurs = new Joueur [] {serveur,joueur1};
         
     }
     
@@ -40,10 +38,10 @@ public class Echange {
         this.aleatoire=probaReussirPremierService; 
         if (probaReussirPremierService <=0.6){//60% de chance de valider son premier service
             if(probaGagnerEchange<0.6){// Si le premier service passe le serveur à 60% de chance de gagner l'echange 
-                this.vainqueurEchange=this.serveur;
-                return(this.serveur);
-            } else this.vainqueurEchange=this.joueur2;
-            return(this.joueur2);
+                this.vainqueurEchange=joueurs[0];
+                return(joueurs[0]);
+            } else this.vainqueurEchange=joueurs[1];
+            return(joueurs[1]);
            
 
         }
@@ -53,13 +51,13 @@ public class Echange {
             
             if(probaReussirDeuxiemeService <0.8){//80% de chance de reussir sont deuxième service car le joueur prendra moins de risque
                 if(probaGagnerEchange<0.5){// le service sera moins puissant que le premier donc 50/50 le vainquer de l'échange
-                    this.vainqueurEchange=this.serveur;
-                    return(this.serveur);
-                } else this.vainqueurEchange=this.joueur2;
-                return(this.joueur2);
+                    this.vainqueurEchange=joueurs[0];
+                    return(joueurs[0]);
+                } else this.vainqueurEchange=joueurs[1];
+                return(joueurs[1]);
                 
-            } else this.vainqueurEchange=joueur2;
-             return(this.joueur2);//Deuxième Service Non Réussi
+            } else this.vainqueurEchange=joueurs[1];
+             return(joueurs[1]);//Deuxième Service Non Réussi
         } else return(this.jouerEchange());// Late on recommence
 
 

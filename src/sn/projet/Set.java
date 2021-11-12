@@ -7,19 +7,17 @@ package sn.projet;
 
 
 public class Set {
-    protected Joueur Joueur1;
-    protected Joueur Joueur2;
+    protected Joueur [] joueurs;
+    protected int scoreSetJoueur0;
     protected int scoreSetJoueur1;
-    protected int scoreSetJoueur2;
     protected Joueur vainqueurSet;
         
     
 
     /*Builder */
 
-    public Set(Joueur joueur1, Joueur joueur2){
-        this.Joueur1=joueur1;
-        this.Joueur2=joueur2;
+    public Set(Joueur joueur0, Joueur joueur1){
+        this.joueurs = new Joueur[] {joueur0,joueur1};
         this.vainqueurSet=null;
     }
 
@@ -27,23 +25,23 @@ public class Set {
 
         
         
-        if(VainqueurDernierJeu==this.Joueur1){
-            this.scoreSetJoueur1+=1;
+        if(VainqueurDernierJeu==joueurs[0]){
+            this.scoreSetJoueur0+=1;
 
-        } else this.scoreSetJoueur2+=1;
+        } else this.scoreSetJoueur1+=1;
 
-        if(this.scoreSetJoueur1 - this.scoreSetJoueur2 >1 || this.scoreSetJoueur1 - this.scoreSetJoueur2 <-1){
-            if (this.scoreSetJoueur1>5){
-                this.vainqueurSet=this.Joueur1;
+        if(this.scoreSetJoueur0 - this.scoreSetJoueur1 >1 || this.scoreSetJoueur0 - this.scoreSetJoueur1 <-1){
+            if (this.scoreSetJoueur0>5){
+                this.vainqueurSet=joueurs[0];
             }
-            if (this.scoreSetJoueur2>5){
-                this.vainqueurSet=this.Joueur2;
+            if (this.scoreSetJoueur1>5){
+                this.vainqueurSet=joueurs[1];
             }
             
-        }if(this.scoreSetJoueur1==7 && this.scoreSetJoueur2 ==6 && numeroSet<5){
-            this.vainqueurSet=this.Joueur1;
-        }if(this.scoreSetJoueur2==7 && this.scoreSetJoueur1 ==6 && numeroSet<5){
-            this.vainqueurSet=this.Joueur2;
+        }if(this.scoreSetJoueur0==7 && this.scoreSetJoueur1 ==6 && numeroSet<5){
+            this.vainqueurSet=joueurs[0];
+        }if(this.scoreSetJoueur1==7 && this.scoreSetJoueur0 ==6 && numeroSet<5){
+            this.vainqueurSet=joueurs[1];
         }
 
     }
@@ -53,7 +51,7 @@ public Joueur jouerSet(){
     Joueur vainqueurDernierJeu=null;
     int compteur=1;
     while(estfini == false){
-        Jeu jeu = new Jeu(this.Joueur1,this.Joueur2);
+        Jeu jeu = new Jeu(joueurs[0],joueurs[1]);
         vainqueurDernierJeu=jeu.jouerJeu();
         SetScore(vainqueurDernierJeu,compteur);
         if(this.vainqueurSet==vainqueurDernierJeu){
