@@ -24,7 +24,7 @@ public class Match {
  
     public Match(Joueur joueura,Joueur joueurb,String niveauMatch,Arbitre arbitre){
         try{
-            if(joueura.vetement!=joueurb.vetement){
+            if(joueura.vetement!=joueurb.vetement||joueura.vetement==Vetement.Chemise||joueura.vetement==Vetement.Lunette){
                 
                 int i =2/0;
             }
@@ -111,7 +111,7 @@ public Joueur jouerMatch(){
     int compteurSet=0;
     while(matchIsFinished==false){
         compteurSet++;
-        Set set = new Set(joueurs[0], joueurs[1]);
+        Set set = new Set(joueurs[0], joueurs[1],this.arbitre);
         ajouterUnSet(set);
         vainqueurDernierSet = set.jouerSet(compteurSet);
         SetMatchResultat(vainqueurDernierSet);
@@ -122,6 +122,7 @@ public Joueur jouerMatch(){
     }
     return(vainqueurDernierSet);
 }
+
     
 
 }

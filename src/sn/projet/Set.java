@@ -12,14 +12,16 @@ public class Set {
     protected int scoreSetJoueur1;
     protected Joueur vainqueurSet;
     protected Jeu jeux [];
+    protected Arbitre arbitre;
         
     
 
     /*Builder */
 
-    public Set(Joueur joueur0, Joueur joueur1){
+    public Set(Joueur joueur0, Joueur joueur1,Arbitre arbitre){
         this.joueurs = new Joueur[] {joueur0,joueur1};
         this.vainqueurSet=null;
+        this.arbitre=arbitre;
     }
 
     public void SetScore(Joueur VainqueurDernierJeu,int numeroSet){
@@ -71,11 +73,11 @@ public Joueur jouerSet(int numeroSet){
     int compteurJeu=0;
     while(estfini == false){
         if(compteurJeu%2==0){//Permet d'alterner le service. Le premier serveur du match est tjs le joueur 0
-            Jeu jeu = new Jeu(joueurs[0],joueurs[1]);
+            Jeu jeu = new Jeu(joueurs[0],joueurs[1],this.arbitre);
             ajouterUnJeu(jeu);
             vainqueurDernierJeu=jeu.jouerJeu();
         } else {
-            Jeu jeu = new Jeu(joueurs[1],joueurs[0]);
+            Jeu jeu = new Jeu(joueurs[1],joueurs[0],this.arbitre);
             ajouterUnJeu(jeu);
             vainqueurDernierJeu=jeu.jouerJeu();
         }

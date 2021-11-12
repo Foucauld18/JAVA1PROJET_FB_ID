@@ -6,13 +6,15 @@ public class Jeu {
     protected String scoreServeur;
     protected String scoreJoueur1;
     protected Joueur vainqueurJeu;
+    protected Arbitre arbitre;
 
     /*Builder */
 
-    public Jeu(Joueur serveur, Joueur joueur1){
+    public Jeu(Joueur serveur, Joueur joueur1,Arbitre arbitre){
         this.joueurs = new Joueur[]{serveur,joueur1};
         this.scoreServeur="0";
         this.scoreJoueur1="0";
+        this.arbitre=arbitre;
     }
 
     public void SetScore(Joueur joueur){
@@ -53,7 +55,7 @@ public class Jeu {
         } else 
         if(modificationScore==true){//Le score a déjà été modifié et il n'implique pas une fin de jeu
             this.scoreJoueur1=newScore;
-        } else {// le score actuelle(avant modification du setter) du joueur2 est de 40
+        } else {// le score actuelle(avant modification du setter) du joueur1 est de 40
             if(this.scoreServeur == "40"){// AV-40
                 this.scoreJoueur1="AV";
             }
@@ -61,7 +63,7 @@ public class Jeu {
                 this.scoreServeur="40";
                 this.scoreJoueur1="40";
             }
-            else this.vainqueurJeu=joueurs[1]; // Cas ou le joeur 2 à l'avantage (AV-40) ou que le serveur a O,15 ou 30 points.
+            else this.vainqueurJeu=joueurs[1]; // Cas ou le joueur 1 à l'avantage (AV-40) ou que le serveur a O,15 ou 30 points.
     
         }
         
@@ -92,10 +94,11 @@ public class Jeu {
         Joueur vainqueurDernierEchange=null;
         while(hasVainqueurJeu != true)
         {
-           Echange echange = new Echange(joueurs[0],joueurs[1]);
+           Echange echange = new Echange(joueurs[0],joueurs[1],this.arbitre);
            ajouterUnEchange(echange);
            vainqueurDernierEchange=echange.jouerEchange();
            SetScore(vainqueurDernierEchange);
+           
            if(this.vainqueurJeu==vainqueurDernierEchange){
                hasVainqueurJeu=true;
            }
