@@ -7,4 +7,5 @@ public enum Vetement {
     les hommes et les femmes
     */
     Short, Chemise, Jupe, Lunette; 
+    
 }

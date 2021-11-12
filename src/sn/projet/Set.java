@@ -7,55 +7,83 @@ package sn.projet;
 
 
 public class Set {
-    protected Joueur Joueur1;
-    protected Joueur Joueur2;
+    protected Joueur [] joueurs;
+    protected int scoreSetJoueur0;
     protected int scoreSetJoueur1;
-    protected int scoreSetJoueur2;
     protected Joueur vainqueurSet;
+    protected Jeu jeux [];
+    protected Arbitre arbitre;
         
     
 
     /*Builder */
 
-    public Set(Joueur joueur1, Joueur joueur2){
-        this.Joueur1=joueur1;
-        this.Joueur2=joueur2;
+    public Set(Joueur joueur0, Joueur joueur1,Arbitre arbitre){
+        this.joueurs = new Joueur[] {joueur0,joueur1};
         this.vainqueurSet=null;
+        this.arbitre=arbitre;
     }
 
     public void SetScore(Joueur VainqueurDernierJeu,int numeroSet){
 
         
         
-        if(VainqueurDernierJeu==this.Joueur1){
-            this.scoreSetJoueur1+=1;
+        if(VainqueurDernierJeu==joueurs[0]){
+            this.scoreSetJoueur0+=1;
 
-        } else this.scoreSetJoueur2+=1;
+        } else this.scoreSetJoueur1+=1;
 
-        if(this.scoreSetJoueur1 - this.scoreSetJoueur2 >1 || this.scoreSetJoueur1 - this.scoreSetJoueur2 <-1){
-            if (this.scoreSetJoueur1>5){
-                this.vainqueurSet=this.Joueur1;
+        if(this.scoreSetJoueur0 - this.scoreSetJoueur1 >1 || this.scoreSetJoueur0 - this.scoreSetJoueur1 <-1){
+            if (this.scoreSetJoueur0>5){
+                this.vainqueurSet=joueurs[0];
             }
-            if (this.scoreSetJoueur2>5){
-                this.vainqueurSet=this.Joueur2;
+            if (this.scoreSetJoueur1>5){
+                this.vainqueurSet=joueurs[1];
             }
             
-        }if(this.scoreSetJoueur1==7 && this.scoreSetJoueur2 ==6 && numeroSet<5){
-            this.vainqueurSet=this.Joueur1;
-        }if(this.scoreSetJoueur2==7 && this.scoreSetJoueur1 ==6 && numeroSet<5){
-            this.vainqueurSet=this.Joueur2;
+        }if(this.scoreSetJoueur0==7 && this.scoreSetJoueur1 ==6 && numeroSet<5){
+            this.vainqueurSet=joueurs[0];
+        }if(this.scoreSetJoueur1==7 && this.scoreSetJoueur0 ==6 && numeroSet<5){
+            this.vainqueurSet=joueurs[1];
         }
 
     }
 
-public Joueur jouerSet(){
+    public void ajouterUnJeu(Jeu newJeu){
+        Jeu[] listeJeux = this.jeux;
+        int SizeArray=0,i;
+        try{
+           SizeArray = listeJeux.length;
+        }
+        catch(Exception e){
+            SizeArray=0;
+        }
+         
+        Jeu [] newListeJeux= new Jeu[SizeArray+1];
+        for(i=0;i<SizeArray;i++){
+            newListeJeux[i]=listeJeux[i];
+        }
+        newListeJeux[SizeArray]=newJeu;
+        this.jeux=newListeJeux;
+    }
+
+public Joueur jouerSet(int numeroSet){
     boolean estfini=false;
     Joueur vainqueurDernierJeu=null;
-    int compteur=1;
+    int compteurJeu=0;
     while(estfini == false){
-        Jeu jeu = new Jeu(this.Joueur1,this.Joueur2);
-        vainqueurDernierJeu=jeu.jouerJeu();
-        SetScore(vainqueurDernierJeu,compteur);
+        if(compteurJeu%2==0){//Permet d'alterner le service. Le premier serveur du match est tjs le joueur 0
+            Jeu jeu = new Jeu(joueurs[0],joueurs[1],this.arbitre);
+            ajouterUnJeu(jeu);
+            vainqueurDernierJeu=jeu.jouerJeu();
+        } else {
+            Jeu jeu = new Jeu(joueurs[1],joueurs[0],this.arbitre);
+            ajouterUnJeu(jeu);
+            vainqueurDernierJeu=jeu.jouerJeu();
+        }
+        compteurJeu++;
+        
+        SetScore(vainqueurDernierJeu,numeroSet);
         if(this.vainqueurSet==vainqueurDernierJeu){
             estfini=true;
         }
