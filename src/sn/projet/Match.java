@@ -14,6 +14,7 @@ public class Match {
     protected Joueur [] joueurs;
     protected int scoreJoueur1;
     protected int scoreJoueur2;
+    protected Set sets[];
    
     protected Joueur vainqueurMatch;
     protected Joueur perdantMatch;
@@ -57,6 +58,26 @@ public class Match {
         }      
 
 }
+
+public void ajouterUnSet(Set newSet){
+    Set [] listeSets = this.sets;
+    int SizeArray=0,i;
+    try{
+       SizeArray = listeSets.length;
+    }
+    catch(Exception e){
+        SizeArray=0;
+    }
+     
+    Set[] newListeSets = new Set[SizeArray+1];
+    for(i=0;i<SizeArray;i++){
+        newListeSets[i]=listeSets[i];
+    }
+    newListeSets[SizeArray]=newSet;
+    this.sets=newListeSets;
+}
+
+
 public Joueur jouerMatch(){
     boolean matchIsFinished=false;
     Joueur vainqueurDernierSet=null;

@@ -11,6 +11,7 @@ public class Set {
     protected int scoreSetJoueur0;
     protected int scoreSetJoueur1;
     protected Joueur vainqueurSet;
+    protected Jeu jeux [];
         
     
 
@@ -46,12 +47,31 @@ public class Set {
 
     }
 
+    public void ajouterUnJeu(Jeu newJeu){
+        Jeu[] listeJeux = this.jeux;
+        int SizeArray=0,i;
+        try{
+           SizeArray = listeJeux.length;
+        }
+        catch(Exception e){
+            SizeArray=0;
+        }
+         
+        Jeu [] newListeJeux= new Jeu[SizeArray+1];
+        for(i=0;i<SizeArray;i++){
+            newListeJeux[i]=listeJeux[i];
+        }
+        newListeJeux[SizeArray]=newJeu;
+        this.jeux=newListeJeux;
+    }
+
 public Joueur jouerSet(){
     boolean estfini=false;
     Joueur vainqueurDernierJeu=null;
     int compteur=1;
     while(estfini == false){
         Jeu jeu = new Jeu(joueurs[0],joueurs[1]);
+        ajouterUnJeu(jeu);
         vainqueurDernierJeu=jeu.jouerJeu();
         SetScore(vainqueurDernierJeu,compteur);
         if(this.vainqueurSet==vainqueurDernierJeu){
