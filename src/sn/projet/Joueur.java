@@ -19,8 +19,7 @@ public class Joueur extends Personne{
     protected int nbPointsClassement;
     protected String entraineur;
     
-    protected Vetement vetement;
-    protected Couleur couleur;
+    
     
     public static int nbJoueur = 0; // Compte le nombre de joueur
     
@@ -30,8 +29,7 @@ public class Joueur extends Personne{
     public Joueur   (String nomNaissance, String prenom,
                     String surnom, LocalDate dateNaissance, String lieuNaissance,
                     LocalDate dateDeces, String nationalite, int taille, int poids,
-                    Main main, String sponsor, String entraineur, 
-                    Vetement vetement, Couleur couleur,int nbPointsClassement){
+                    Main main, String sponsor, String entraineur, int nbPointsClassement){
         super(nomNaissance, prenom, surnom, dateNaissance, 
                 lieuNaissance, dateDeces, nationalite, taille, poids);
         this.main = main;
@@ -40,8 +38,7 @@ public class Joueur extends Personne{
         this.entraineur = entraineur;
         this.nbPointsClassement=nbPointsClassement;
         
-        this.vetement = vetement;
-        this.couleur = couleur;
+        
         
         nbJoueur ++;
     }
@@ -63,8 +60,7 @@ public class Joueur extends Personne{
         this.entraineur = entraineur;
         this.nbPointsClassement=nbPointsClassement;
         
-        this.vetement = vetement;
-        this.couleur = couleur;
+        
         
         nbJoueur ++;
         
@@ -74,16 +70,8 @@ public class Joueur extends Personne{
     Creation des getters et des setters
     */
     
-    public Vetement getVetement(){return this.vetement;}
-    
-    public Couleur getCouleur(){return this.couleur;}
     
     public Main getMain(){return this.main;}
-    
-    public void setCouleur(Couleur couleur){
-        this.couleur = couleur;
-        System.out.println("J'ai change ma couleur. je prends la couleur " + couleur);
-    }
 
     public int getNbPoints(){return this.nbPointsClassement;};
 
