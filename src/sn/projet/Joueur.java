@@ -16,6 +16,7 @@ public class Joueur extends Personne{
     protected Main main;
     protected String sponsor;
     protected int classement;
+    protected int nbPointsClassement;
     protected String entraineur;
     
     protected Vetement vetement;
@@ -30,13 +31,14 @@ public class Joueur extends Personne{
                     String surnom, LocalDate dateNaissance, String lieuNaissance,
                     LocalDate dateDeces, String nationalite, int taille, int poids,
                     Main main, String sponsor, String entraineur, 
-                    Vetement vetement, Couleur couleur){
+                    Vetement vetement, Couleur couleur,int nbPointsClassement){
         super(nomNaissance, prenom, surnom, dateNaissance, 
                 lieuNaissance, dateDeces, nationalite, taille, poids);
         this.main = main;
         this.sponsor = sponsor;
         this.classement = nbJoueur + 1;
         this.entraineur = entraineur;
+        this.nbPointsClassement=nbPointsClassement;
         
         this.vetement = vetement;
         this.couleur = couleur;
@@ -51,7 +53,7 @@ public class Joueur extends Personne{
                     String surnom, LocalDate dateNaissance, String lieuNaissance,
                     LocalDate dateDeces, String nationalite, int taille, int poids,
                     Main main, String sponsor, String entraineur, 
-                    Vetement vetement, Couleur couleur){
+                    Vetement vetement, Couleur couleur, int nbPointsClassement){
         super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 
                 lieuNaissance, dateDeces, nationalite, taille, poids);
         
@@ -59,6 +61,7 @@ public class Joueur extends Personne{
         this.sponsor = sponsor;
         this.classement = nbJoueur + 1;
         this.entraineur = entraineur;
+        this.nbPointsClassement=nbPointsClassement;
         
         this.vetement = vetement;
         this.couleur = couleur;
@@ -80,6 +83,12 @@ public class Joueur extends Personne{
     public void setCouleur(Couleur couleur){
         this.couleur = couleur;
         System.out.println("J'ai change ma couleur. je prends la couleur " + couleur);
+    }
+
+    public int getNbPoints(){return this.nbPointsClassement;};
+
+    public void setNbPoints(int nbPoints){
+        this.nbPointsClassement=nbPoints;
     }
     
     

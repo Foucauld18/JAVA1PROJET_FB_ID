@@ -15,6 +15,7 @@ public class Jeu {
         this.scoreServeur="0";
         this.scoreJoueur1="0";
         this.arbitre=arbitre;
+        this.vainqueurJeu=null;
     }
 
     public void SetScore(Joueur joueur){
@@ -41,13 +42,20 @@ public class Jeu {
         if(joueur == joueurs[0]){
             if(modificationScore==true){//Le score a déjà été modifié et il n'implique pas une fin de jeu
                 this.scoreServeur=newScore;
-            } else{// le score actuelle(avant modification du setter) du joueur est de 40
+                return;
+            } else{// le score actuelle(avant modification du setter) du joueur est de 40 ou de AV
                 if(this.scoreJoueur1 == "40"){// AV-40
-                    this.scoreServeur="AV";
+                    if(this.scoreServeur=="40"){
+                        this.scoreServeur="AV";
+                    } else {
+                        this.vainqueurJeu=joueurs[0];
+                    }
+                    return;
                 }
                 if(this.scoreJoueur1 == "AV"){ // Cas ou l'avantage est pour le joueur 2 et on revient à 40a
                     this.scoreServeur="40";
                     this.scoreJoueur1="40";
+                    return;
                 }
                 else this.vainqueurJeu=joueurs[0]; // Cas ou le seveur à l'avantage (AV-40) ou que le joueur 2 a O,15 ou 30 points.
             }
@@ -55,9 +63,14 @@ public class Jeu {
         } else 
         if(modificationScore==true){//Le score a déjà été modifié et il n'implique pas une fin de jeu
             this.scoreJoueur1=newScore;
-        } else {// le score actuelle(avant modification du setter) du joueur1 est de 40
+        } else {// le score actuelle(avant modification du setter) du joueur1 est de 40 ou de AV
             if(this.scoreServeur == "40"){// AV-40
-                this.scoreJoueur1="AV";
+                if(this.scoreJoueur1=="40"){
+                    this.scoreJoueur1="AV";
+                } else{
+                    this.vainqueurJeu=joueurs[1];
+                }
+                return;
             }
             if(this.scoreServeur == "AV"){ // Cas ou l'avantage est pour le serveur et on revient à 40a
                 this.scoreServeur="40";
@@ -101,6 +114,9 @@ public class Jeu {
            
            if(this.vainqueurJeu==vainqueurDernierEchange){
                hasVainqueurJeu=true;
+               this.arbitre.annoncerScoreJeu(this.scoreServeur, this.scoreJoueur1, joueurs[0].nomCourant, joueurs[1].nomCourant, vainqueurDernierEchange.nomCourant);
+           } else{
+            this.arbitre.annoncerScoreJeu(this.scoreServeur, this.scoreJoueur1, joueurs[0].nomCourant, joueurs[1].nomCourant, null);
            }
         }
         return (vainqueurDernierEchange);

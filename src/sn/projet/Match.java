@@ -10,7 +10,7 @@ package sn.projet;
  * @author Foucauld
  */
 public class Match {
-    protected String categorie;
+    protected CategorieMatch categorie;
     protected Joueur [] joueurs;
     protected Arbitre arbitre;
     protected int scoreJoueur0;
@@ -19,10 +19,10 @@ public class Match {
    
     protected Joueur vainqueurMatch;
     protected Joueur perdantMatch;
-    protected String niveauMatch;
+    protected NiveauMatch niveauMatch;
 
  
-    public Match(Joueur joueura,Joueur joueurb,String niveauMatch,Arbitre arbitre){
+    public Match(Joueur joueura,Joueur joueurb,NiveauMatch niveauMatch,Arbitre arbitre){
         try{
             if(joueura.vetement!=joueurb.vetement||joueura.vetement==Vetement.Chemise||joueura.vetement==Vetement.Lunette){
                 
@@ -34,9 +34,9 @@ public class Match {
         }
 
         if(joueura.vetement==Vetement.Short){
-            this.categorie = "Homme Simple";
+            this.categorie = CategorieMatch.simple_Homme;
         } else {
-            this.categorie="Femme Simple";
+            this.categorie=CategorieMatch.simple_Femme;
         }
         Double aleatoire =Math.random();
         Joueur joueur0,joueur1;
@@ -62,22 +62,22 @@ public class Match {
 
         if(joueurs[0]==vainqueurDernierSet){
             this.scoreJoueur0=1;
-            if(this.scoreJoueur0>2 && this.categorie=="Homme Simple"){
+            if(this.scoreJoueur0>2 && this.categorie==CategorieMatch.simple_Homme){
                 this.vainqueurMatch=joueurs[0];
                 this.perdantMatch = joueurs[1];
             } 
-            if(this.scoreJoueur0>1 && this.categorie=="Femme Simple"){
+            if(this.scoreJoueur0>1 && this.categorie==CategorieMatch.simple_Femme){
                 this.vainqueurMatch=joueurs[0];
                 this.perdantMatch = joueurs[1];
             } 
             
         } else {
             this.scoreJoueur1+=1;
-            if(this.scoreJoueur1>2 && this.categorie=="Homme Simple"){
+            if(this.scoreJoueur1>2 && this.categorie==CategorieMatch.simple_Homme){
                 this.vainqueurMatch=joueurs[1];
                 this.perdantMatch = joueurs[0];
             } 
-            if(this.scoreJoueur1>1 && this.categorie=="Femme Simple"){
+            if(this.scoreJoueur1>1 && this.categorie==CategorieMatch.simple_Femme){
                 this.vainqueurMatch=joueurs[1];
                 this.perdantMatch = joueurs[0];
             } 
@@ -104,6 +104,31 @@ public void ajouterUnSet(Set newSet){
     this.sets=newListeSets;
 }
 
+public void modifierClassementVainqueurMatch(){
+    int valeurMatch=0;
+    switch(this.niveauMatch){
+        case premierTour : valeurMatch=5;
+        break;
+        case deuxiemeTour:valeurMatch=10;
+        break;
+        case troisiemeTour:valeurMatch=15;
+        break;
+        case huitiemeFinal:valeurMatch=20;
+        break;
+        case quartFinal:valeurMatch=30;
+        break;
+        case demiFinal:valeurMatch=40;
+        break;
+        case Final :valeurMatch=50;
+        break;
+        default:valeurMatch=0;// Match amicale
+
+    }
+    this.vainqueurMatch.setNbPoints(this.vainqueurMatch.getNbPoints()+valeurMatch);
+    
+    
+}
+
 
 public Joueur jouerMatch(){
     boolean matchIsFinished=false;
@@ -115,8 +140,10 @@ public Joueur jouerMatch(){
         ajouterUnSet(set);
         vainqueurDernierSet = set.jouerSet(compteurSet);
         SetMatchResultat(vainqueurDernierSet);
+        arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1, null);
         if(this.vainqueurMatch==vainqueurDernierSet){
             matchIsFinished=true;
+            arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1, vainqueurDernierSet);
         }
         
     }
