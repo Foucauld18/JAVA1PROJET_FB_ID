@@ -18,9 +18,10 @@ public class Joueur extends Personne{
     protected int classement;
     protected int nbPointsClassement;
     protected String entraineur;
-    
+    protected int nbLitigesTotal;
     protected Vetement vetement;
     protected Couleur couleur;
+    protected StatistiquesPersonnellesJoueur statJoueur;
     
     public static int nbJoueur = 0; // Compte le nombre de joueur
     
@@ -39,6 +40,9 @@ public class Joueur extends Personne{
         this.classement = nbJoueur + 1;
         this.entraineur = entraineur;
         this.nbPointsClassement=nbPointsClassement;
+        this.nbLitigesTotal=0;
+        StatistiquesPersonnellesJoueur statJoueur = new StatistiquesPersonnellesJoueur();
+        this.statJoueur=statJoueur;
         
         this.vetement = vetement;
         this.couleur = couleur;
@@ -90,6 +94,9 @@ public class Joueur extends Personne{
     public void setNbPoints(int nbPoints){
         this.nbPointsClassement=nbPoints;
     }
-    
+    public boolean demanderUneFaute(){//litige
+        
+        return(true);
+    }
     
 }

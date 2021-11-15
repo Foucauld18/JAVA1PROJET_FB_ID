@@ -37,11 +37,11 @@ public class Tennis {
         Arbitre arbitre = new Arbitre("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
         LocalDate.of(2035, 1, 5), "Francaise", 180, 70);
 
-        Classement atp = new Classement("atp");
-        atp.ajouterJoueurClassement(a);
-        atp.ajouterJoueurClassement(c);
-        atp.ajouterJoueurClassement(d);
-        atp.ajouterJoueurClassement(e);
+        
+        Classement.ATP.ajouterJoueurClassement(a);
+        Classement.ATP.ajouterJoueurClassement(c);
+        Classement.ATP.ajouterJoueurClassement(d);
+        Classement.ATP.ajouterJoueurClassement(e);
         
 
 
@@ -58,10 +58,10 @@ public class Tennis {
         // System.out.println(premierMatch.vainqueurMatch.nomNaissance);
         // Jeu jeu = new Jeu(a,c,arbitre);
         // jeu.jouerJeu();
-        atp.afficherClassement();
-        atp.updateClassement();
+        Classement.ATP.afficherClassement();
+        Classement.ATP.updateClassement();
         System.out.println("------------------");
-        atp.afficherClassement();
+        Classement.ATP.afficherClassement();
 
 
 

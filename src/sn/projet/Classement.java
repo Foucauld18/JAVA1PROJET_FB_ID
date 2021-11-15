@@ -3,11 +3,13 @@ package sn.projet;
 public class Classement {
     protected String nom;
     protected Joueur[] joueurs;
+    public static Classement ATP = new Classement();
+    protected static Classement WTA = new Classement();
+
 
     /* Builder */
 
-    public Classement(String nom) {
-        this.nom = nom;
+    private Classement() {
         this.joueurs = null;
     }
 

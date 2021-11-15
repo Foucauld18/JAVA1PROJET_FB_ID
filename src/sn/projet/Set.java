@@ -72,6 +72,10 @@ public Joueur jouerSet(int numeroSet){
     Joueur vainqueurDernierJeu=null;
     int compteurJeu=0;
     while(estfini == false){
+          // Stat nb jeux joue par les deux joueurs
+          joueurs[0].statJoueur.setNbJeuJoue(joueurs[0].statJoueur.getNbJeuJoue()+1);
+          joueurs[1].statJoueur.setNbJeuJoue(joueurs[1].statJoueur.getNbJeuJoue()+1);
+           //---  
         if(compteurJeu%2==0){//Permet d'alterner le service. Le premier serveur du match est tjs le joueur 0
             Jeu jeu = new Jeu(joueurs[0],joueurs[1],this.arbitre);
             ajouterUnJeu(jeu);
@@ -88,6 +92,11 @@ public Joueur jouerSet(int numeroSet){
         if(this.vainqueurSet==vainqueurDernierJeu){
             estfini=true;
             arbitre.annoncerScoreSet(joueurs[0], joueurs[1], this.scoreSetJoueur0, this.scoreSetJoueur1,vainqueurDernierJeu);
+            if(this.vainqueurSet==joueurs[0]){//statistique
+                joueurs[0].statJoueur.setNbSetGagne(joueurs[0].statJoueur.getNbSetGagne()+1);
+            }else{
+                joueurs[1].statJoueur.setNbSetGagne(joueurs[1].statJoueur.getNbSetGagne()+1);
+            }
         }
         
 
