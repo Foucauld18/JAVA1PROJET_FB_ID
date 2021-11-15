@@ -115,8 +115,10 @@ public Joueur jouerMatch(){
         ajouterUnSet(set);
         vainqueurDernierSet = set.jouerSet(compteurSet);
         SetMatchResultat(vainqueurDernierSet);
+        arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1, null);
         if(this.vainqueurMatch==vainqueurDernierSet){
             matchIsFinished=true;
+            arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1, vainqueurDernierSet);
         }
         
     }

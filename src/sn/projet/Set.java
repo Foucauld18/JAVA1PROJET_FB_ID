@@ -84,8 +84,10 @@ public Joueur jouerSet(int numeroSet){
         compteurJeu++;
         
         SetScore(vainqueurDernierJeu,numeroSet);
+        arbitre.annoncerScoreSet(joueurs[0], joueurs[1], this.scoreSetJoueur0, this.scoreSetJoueur1,null);
         if(this.vainqueurSet==vainqueurDernierJeu){
             estfini=true;
+            arbitre.annoncerScoreSet(joueurs[0], joueurs[1], this.scoreSetJoueur0, this.scoreSetJoueur1,vainqueurDernierJeu);
         }
         
 

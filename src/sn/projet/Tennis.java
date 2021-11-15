@@ -21,26 +21,54 @@ public class Tennis {
 
         Joueur a = new Joueur("Diallo", "Ba", "Ibrahima", "The goat", LocalDate.of(1999, 9, 4), "Metz",
                 LocalDate.of(2035, 1, 5), "Senegalaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
-                Couleur.Bleu);
+                Couleur.Bleu,100);
 
         Joueur c = new Joueur("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
                 LocalDate.of(2035, 1, 5), "Francaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
-                Couleur.Bleu);
+                Couleur.Bleu,200);
+
+        Joueur d = new Joueur("FANCHON", "TF", "THIBAULT", "The goat", LocalDate.of(1999, 9, 4), "Metz",
+                LocalDate.of(2035, 1, 5), "Francaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
+                Couleur.Bleu,3000);
+                Joueur e = new Joueur("FANCHON", "TF", "THIBAULT", "The goat", LocalDate.of(1999, 9, 4), "Metz",
+                LocalDate.of(2035, 1, 5), "Francaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
+                Couleur.Bleu,30);
+
         Arbitre arbitre = new Arbitre("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
         LocalDate.of(2035, 1, 5), "Francaise", 180, 70);
 
-        Match premierMatch = new Match(a, c, "Final",arbitre);
-        premierMatch.jouerMatch();
+        Classement atp = new Classement("atp");
+        atp.ajouterJoueurClassement(a);
+        atp.ajouterJoueurClassement(c);
+        atp.ajouterJoueurClassement(d);
+        atp.ajouterJoueurClassement(e);
+        
 
-        System.out.println("Score vainqueur ");
 
-        System.out.println(premierMatch.scoreJoueur0);
-        System.out.println("Score Perdant ");
+        // Match premierMatch = new Match(a, c, "Final",arbitre);
+        // premierMatch.jouerMatch();
 
-        System.out.println(premierMatch.scoreJoueur1);
-        System.out.println("Vainqueur");
+        // System.out.println("Score vainqueur ");
 
-        System.out.println(premierMatch.vainqueurMatch.nomNaissance);
+        // System.out.println(premierMatch.scoreJoueur0);
+        // System.out.println("Score Perdant ");
+
+        // System.out.println(premierMatch.scoreJoueur1);
+        // System.out.println("Vainqueur");
+        // System.out.println(premierMatch.vainqueurMatch.nomNaissance);
+        // Jeu jeu = new Jeu(a,c,arbitre);
+        // jeu.jouerJeu();
+        atp.afficherClassement();
+        atp.updateClassement();
+        System.out.println("------------------");
+        atp.afficherClassement();
+
+
+
+        
+
+        
+
 
     }
 
