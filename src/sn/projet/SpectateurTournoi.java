@@ -11,7 +11,7 @@ import java.time.LocalDate;
  *
  * @author Ibrahima
  */
-public class SpectateurTournoi extends Personne {
+public class SpectateurTournoi extends Personne implements SpectatorInterface{
     
     protected Billet [] billet;
     protected Vetement vetement;
@@ -34,6 +34,7 @@ public class SpectateurTournoi extends Personne {
     /*
     Constructeur Spectateur qui désigne UN SPECTATEUR
     */
+
     public SpectateurTournoi(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
             LocalDate dateDeces, String nationalite, int taille, int poids) {
 
@@ -42,8 +43,13 @@ public class SpectateurTournoi extends Personne {
         
 
     }
-
-    public Vetement getVetement() { return this.vetement;}
+    
+        
+    
+    public Vetement getVetement() 
+    { 
+        return this.vetement;
+    }
 
     public Couleur getCouleur() {
         return this.couleur;
@@ -65,21 +71,24 @@ public class SpectateurTournoi extends Personne {
         this.billet = new Billet(prix, tribune, place);
     }*/
 
-    public void applaudir() {
+    public void applaudir() 
+    {
         System.out.println("CLAP CLAP CLAP !!!!!!!!");
     }
 
-    public void crier() {
+    public void crier() 
+    {
         System.out.println("ALLEZ !!!");
     }
 
-    public void huer() {
+    public void huer() 
+    {
         System.out.println("ouuuuuuuuuuuuuuuuuuuuhhhhhhhhhhhh !!!!! ");
     }
 
-    public void dormir() {
+    public void dormir() 
+    {
         System.out.println("Bonne nuit ............");
     }
-        
     
 }
