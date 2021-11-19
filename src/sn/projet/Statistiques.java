@@ -1,7 +1,8 @@
 package sn.projet;
 
 public class Statistiques {
-   
+
+    
     protected int nbSetGagne;
     protected int nbSetJoue;
     protected int nbJeuJoue;
@@ -16,6 +17,7 @@ public class Statistiques {
 
     /*constructor*/
     public  Statistiques(){
+        
         this.nbSetGagne=0;
         this.nbSetJoue=0;
         this.nbJeuJoue=0;
@@ -31,6 +33,22 @@ public class Statistiques {
     ;
 
     /*Methods*/
+
+    public void afficherStat(){
+        
+        System.out.println("Set gagné : " + this.nbSetGagne);
+        System.out.println("Set Joué : " + this.nbSetJoue);
+        System.out.println("Jeu Joué : " + this.nbJeuJoue);
+        System.out.println("Jeu gagné : " + this.nbJeuGagne);
+        System.out.println("Total de points remporté : " +this.nbTotalPointRemporte );
+        System.out.println("Ace : " +this.nbAce );
+        System.out.println("Premier service gagnant : " + this.nbPremierService);
+        System.out.println("Second service: " +this.nbSecondService );
+        System.out.println("doubles fautes: " + this.nbDoubleFautes);
+        System.out.println("Balle de break gagné : " + this.nbBalleDeBreakRemporte);
+        System.out.println("Balle de Break : " + this.nbBalleDeBreak);
+        System.out.println("----------------------------");
+    }
  
     public int getNbSetGagne() {
         return this.nbSetGagne;

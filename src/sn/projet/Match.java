@@ -163,6 +163,7 @@ public void modifierClassementVainqueurMatch(){
  * @return Vainqueur du match
  */
 public Joueur jouerMatch(){
+    getInitStatJoueur();
     boolean matchIsFinished=false;
     Joueur vainqueurDernierSet=null;
     int compteurSet=0;
@@ -189,6 +190,7 @@ public Joueur jouerMatch(){
         }
         
     }
+    updateStatMatch();
     return(vainqueurDernierSet);
 }
 
@@ -198,11 +200,12 @@ public void getInitStatJoueur(){
 
 }
 public void updateStatMatch(){
-    Statistiques tampon1 = new Statistiques();
-    Statistiques tampon2 = new Statistiques();
-    tampon1=this.statistiques[0];
-    tampon2=this.statistiques[1];
-    Statistiques [] tampons = new Statistiques []{tampon1,tampon2};
+    System.out.println("-----------------------------------------------------passage fonction");
+    System.out.println("This.stat[0]: "+ this.statistiques[0].nbJeuGagne);
+    System.out.println("Nb jeugagneJ0: "+joueurs[0].statJoueur.nbJeuGagne);
+    
+    Statistiques [] tampons = new Statistiques []{this.statistiques[0],this.statistiques[1]};
+    System.out.println("Nbjeugagne: tompons[0] "+tampons[0].nbJeuGagne);
     for(int i=0;i<2;i++){// Determine les stats de chaque joeurs pendant le match. Pour les trouvers on soustrait les stats du joueurs à ces stats d'avant match
         this.statistiques[i].setNbDoubleFautes(this.joueurs[i].statJoueur.getNbDoubleFautes()-tampons[i].getNbDoubleFautes());
         this.statistiques[i].setNbJeuGagne(this.joueurs[i].statJoueur.getNbJeuGagne()-tampons[i].getNbJeuGagne());

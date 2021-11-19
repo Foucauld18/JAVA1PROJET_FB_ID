@@ -42,26 +42,39 @@ public class Tennis {
         Classement.ATP.ajouterJoueurClassement(c);
         Classement.ATP.ajouterJoueurClassement(d);
         Classement.ATP.ajouterJoueurClassement(e);
+        a.ajouterStatJoueur();
+        c.ajouterStatJoueur();
+
+        StatistiquesPersonnellesJoueur test = new StatistiquesPersonnellesJoueur();
+        System.out.println(a.statJoueur.nbDoubleFautes);
+
+
+        Match premierMatch = new Match(a, c,NiveauMatch.Final,arbitre);
+        premierMatch.jouerMatch();
+
+        System.out.println("Score vainqueur ");
+
+        System.out.println(premierMatch.scoreJoueur0);
+        System.out.println("Score Perdant ");
+
+        System.out.println(premierMatch.scoreJoueur1);
+        System.out.println("Vainqueur");
+        System.out.println(premierMatch.vainqueurMatch.nomNaissance);
         
-
-
-        // Match premierMatch = new Match(a, c, "Final",arbitre);
-        // premierMatch.jouerMatch();
-
-        // System.out.println("Score vainqueur ");
-
-        // System.out.println(premierMatch.scoreJoueur0);
-        // System.out.println("Score Perdant ");
-
-        // System.out.println(premierMatch.scoreJoueur1);
-        // System.out.println("Vainqueur");
-        // System.out.println(premierMatch.vainqueurMatch.nomNaissance);
-        // Jeu jeu = new Jeu(a,c,arbitre);
-        // jeu.jouerJeu();
         Classement.ATP.afficherClassement();
         Classement.ATP.updateClassement();
         System.out.println("------------------");
         Classement.ATP.afficherClassement();
+        System.out.println("Stat a");
+        a.statJoueur.afficherStat();
+        System.out.println("Stat c");
+        c.statJoueur.afficherStat();
+        System.out.println("Stat Match");
+        premierMatch.statistiques[2].afficherStat();
+        System.out.println("Stat Match a");
+        premierMatch.statistiques[0].afficherStat();
+        System.out.println("Stat Match c");
+        premierMatch.statistiques[1].afficherStat();
 
 
 

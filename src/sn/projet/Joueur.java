@@ -23,6 +23,7 @@ public class Joueur extends Personne{
     protected Couleur couleur;
     protected StatistiquesPersonnellesJoueur statJoueur;
     
+    
     public static int nbJoueur = 0; // Compte le nombre de joueur
     
     /*
@@ -41,13 +42,18 @@ public class Joueur extends Personne{
         this.entraineur = entraineur;
         this.nbPointsClassement=nbPointsClassement;
         this.nbLitigesTotal=0;
-        StatistiquesPersonnellesJoueur statJoueur = new StatistiquesPersonnellesJoueur();
-        this.statJoueur=statJoueur;
+      
         
-        this.vetement = vetement;
+        this.vetement = vetement;             
         this.couleur = couleur;
         
         nbJoueur ++;
+    }
+
+    public void ajouterStatJoueur(){
+        StatistiquesPersonnellesJoueur statJoueur = new StatistiquesPersonnellesJoueur();
+          
+        this.statJoueur=statJoueur;
     }
     
     /*
