@@ -29,6 +29,8 @@ public class Echange {
         double probaGagnerEchange=Math.random();
         double probaReussirPremierService=Math.random();// chiffre aléatoire entre 0.0 et 1.0
         
+        
+        
         if (probaReussirPremierService <=0.6){//60% de chance de valider son premier service
             joueurs[0].statJoueur.setNbPremierService(joueurs[0].statJoueur.getNbPremierService()+1);
             if(probaGagnerEchange<0.6){// Si le premier service passe le serveur à 60% de chance de gagner l'echange 
@@ -43,7 +45,7 @@ public class Echange {
         }
          else if ( probaReussirPremierService >0.6 && probaReussirPremierService <0.95){//Deuxième service
             Double probaReussirDeuxiemeService = Math.random();
-            joueurs[0].statJoueur.setNbSecondService(joueurs[0].statJoueur.getNbSecondService()+1);
+            
             if(probaReussirDeuxiemeService <0.8){//80% de chance de reussir sont deuxième service car le joueur prendra moins de risque
                 joueurs[0].statJoueur.setNbSecondService(joueurs[0].statJoueur.getNbSecondService()+1);
                 if(probaGagnerEchange<0.5){// le service sera moins puissant que le premier donc 50/50 le vainquer de l'échange

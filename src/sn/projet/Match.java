@@ -84,7 +84,7 @@ public class Match {
     */ public void SetMatchResultat(Joueur vainqueurDernierSet){
 
         if(joueurs[0]==vainqueurDernierSet){
-            this.scoreJoueur0=1;
+            this.scoreJoueur0+=1;
             if(this.scoreJoueur0>2 && this.categorie==CategorieMatch.simple_Homme){
                 this.vainqueurMatch=joueurs[0];
                 this.perdantMatch = joueurs[1];
@@ -197,10 +197,10 @@ public Joueur jouerMatch(){
 }
 
 public void getInitStatJoueur(){
- this.statistiques[0]= this.joueurs[0].statJoueur; 
- this.statistiques[1]=this.joueurs[1].statJoueur;
-
+ this.statistiques[0]= (Statistiques) this.joueurs[0].statJoueur.clone(); 
+ this.statistiques[1]= (Statistiques) this.joueurs[1].statJoueur.clone();
 }
+
 public void updateStatMatch(){
     System.out.println("-----------------------------------------------------passage fonction");
     System.out.println("This.stat[0]: "+ this.statistiques[0].nbJeuGagne);
@@ -221,11 +221,11 @@ public void updateStatMatch(){
     //Determine les stats du match. C'est la somme des stats de chaque joueur
         this.statistiques[2].setNbDoubleFautes(this.statistiques[1].getNbDoubleFautes()+this.statistiques[0].getNbDoubleFautes());
         this.statistiques[2].setNbJeuGagne(this.statistiques[1].getNbJeuGagne()+this.statistiques[0].getNbJeuGagne());
-        this.statistiques[2].setNbJeuJoue(this.statistiques[1].getNbJeuJoue()+this.statistiques[0].getNbJeuJoue());
+        this.statistiques[2].setNbJeuJoue(this.statistiques[1].getNbJeuJoue());
         this.statistiques[2].setNbPremierService(this.statistiques[1].getNbPremierService()+this.statistiques[0].getNbPremierService());
         this.statistiques[2].setNbSecondService(this.statistiques[1].getNbSecondService()+this.statistiques[0].getNbSecondService());
         this.statistiques[2].setNbSetGagne(this.statistiques[1].getNbSetGagne()+this.statistiques[0].getNbSetGagne());
-        this.statistiques[2].setNbSetJoue(this.statistiques[1].getNbSetJoue()+this.statistiques[0].getNbSetJoue());
+        this.statistiques[2].setNbSetJoue(this.statistiques[1].getNbSetJoue());
         this.statistiques[2].setNbTotalPointRemporte(this.statistiques[1].getNbTotalPointRemporte()+this.statistiques[0].getNbTotalPointRemporte());
 
 

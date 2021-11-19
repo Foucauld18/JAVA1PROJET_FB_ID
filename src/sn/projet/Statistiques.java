@@ -1,6 +1,6 @@
 package sn.projet;
 
-public class Statistiques {
+public class Statistiques implements Cloneable {
 
     
     protected int nbSetGagne;
@@ -14,6 +14,7 @@ public class Statistiques {
     protected int nbDoubleFautes;
     protected int nbBalleDeBreakRemporte;
     protected int nbBalleDeBreak;
+    protected int []tableau={};
 
     /*constructor*/
     public  Statistiques(){
@@ -30,7 +31,13 @@ public class Statistiques {
         this.nbBalleDeBreakRemporte=0;
         this.nbBalleDeBreak=0;
     }
-    ;
+
+    public int[] getTableau() {
+        return this.tableau;
+    }
+
+    
+    
 
     /*Methods*/
 
@@ -137,6 +144,19 @@ public class Statistiques {
     public void setNbBalleDeBreak(int nbBalleDeBreak) {
         this.nbBalleDeBreak = nbBalleDeBreak;
     }
-
+    public Object clone() {
+        Statistiques stat = null;
+        try {
+            // On récupère l'instance à renvoyer par l'appel de la 
+            // méthode super.clone()
+            stat =(Statistiques) super.clone();
+        } catch(CloneNotSupportedException cnse) {
+            // Ne devrait jamais arriver, car nous implémentons 
+            // l'interface Cloneable
+            cnse.printStackTrace(System.err);
+        }
+        // on renvoie le clone
+        return stat;
+    }
 
 }
