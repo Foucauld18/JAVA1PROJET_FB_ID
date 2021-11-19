@@ -15,9 +15,10 @@ import javax.sound.sampled.SourceDataLine;
  */
 public class Tennis {
 
+        
     public static void main(String[] args) {
-        Spectateur b = new Spectateur("DIALLO", "Ba", "Ibahima", "The Goat", LocalDate.of(1999, 9, 4), "Dakar",
-                LocalDate.of(2050, 4, 9), "Senegalaise", 180, 70, "Short", "Rouge");
+        Spectatrice b = new Spectatrice("DIALLO", "Ba", "Ibahima", "The Goat", LocalDate.of(1999, 9, 4), "Dakar",
+                LocalDate.of(2050, 4, 9), "Senegalaise", 180, 70, Couleur.Jaune);
 
         Joueur a = new Joueur("Diallo", "Ba", "Ibrahima", "The goat", LocalDate.of(1999, 9, 4), "Metz",
                 LocalDate.of(2035, 1, 5), "Senegalaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
@@ -34,8 +35,10 @@ public class Tennis {
                 LocalDate.of(2035, 1, 5), "Francaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
                 Couleur.Bleu,30);
 
-        Arbitre arbitre = new Arbitre("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
-        LocalDate.of(2035, 1, 5), "Francaise", 180, 70);
+        //Arbitre arbitre = new Arbitre("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
+        //LocalDate.of(2035, 1, 5), "Francaise", 180, 70);
+
+
 
         
         Classement.ATP.ajouterJoueurClassement(a);
@@ -45,14 +48,17 @@ public class Tennis {
         a.ajouterStatJoueur();
         c.ajouterStatJoueur();
 
+
         StatistiquesPersonnellesJoueur test = new StatistiquesPersonnellesJoueur();
         System.out.println(a.statJoueur.nbDoubleFautes);
+
 
 
         Match premierMatch = new Match(a, c,NiveauMatch.Final,arbitre);
         premierMatch.jouerMatch();
 
         System.out.println("Score vainqueur ");
+
 
         System.out.println(premierMatch.scoreJoueur0);
         System.out.println("Score Perdant ");
@@ -75,6 +81,7 @@ public class Tennis {
         premierMatch.statistiques[0].afficherStat();
         System.out.println("Stat Match c");
         premierMatch.statistiques[1].afficherStat();
+
 
 
 

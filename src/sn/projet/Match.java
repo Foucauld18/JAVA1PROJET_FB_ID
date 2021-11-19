@@ -79,7 +79,10 @@ public class Match {
      * Permet de mettre à jour le score du match
      */
    
-    public void SetMatchResultat(Joueur vainqueurDernierSet){
+   /**
+    * tgtgbtbt
+    * @param vainqueurDernierSet frfr
+    */ public void SetMatchResultat(Joueur vainqueurDernierSet){
 
         if(joueurs[0]==vainqueurDernierSet){
             this.scoreJoueur0=1;

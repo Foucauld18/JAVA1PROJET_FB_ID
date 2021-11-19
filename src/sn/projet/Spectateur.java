@@ -12,83 +12,25 @@ import java.time.LocalDate;
  *
  * @author Ibrahima
  */
-public class Spectateur extends Personne {
-    protected String vetement;
-    protected String couleur;
-    protected Billet billet;
+public class Spectateur extends SpectateurTournoi {
     
-    /*
-    Constructeur Spectateur qui désigne UN SPECTATEUR
-    */
+    protected Vetement vetement;
+    protected Couleur couleur;
 
-    public Spectateur(String nomNaissance, String nomCourant, String prenom,
-            String surnom, LocalDate dateNaissance, String lieuNaissance,
-            LocalDate dateDeces, String nationalite, int taille, int poids,
-            String vetement, String couleur) {
-
-        super(nomNaissance, nomCourant, prenom, surnom, dateNaissance,
-                lieuNaissance, dateDeces, nationalite, taille, poids);
-        this.vetement = vetement;
-        this.couleur = couleur;
-
-    }
-
-    /*
-    Constructeur Spectateur qui désigne UNE SPECTATRICE
-    */
     public Spectateur(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
-            LocalDate dateDeces, String nationalite, int taille, int poids,
-            String vetement, String couleur) {
-
-        super(nomNaissance, prenom, surnom, dateNaissance,
-                lieuNaissance, dateDeces, nationalite, taille, poids);
-        this.vetement = vetement;
-        this.couleur = couleur;
-
+    LocalDate dateDeces, String nationalite, int taille, int poids, Couleur couleur){
+        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, dateDeces, nationalite, taille, poids);
+        
+        this.vetement = vetement.Chemise;
     }
 
-    public String getVetement() {
-        return this.vetement;
-    }
+    public Vetement getVetement() { return this.vetement;}
 
-    public String getCouleur() {
+    public Couleur getCouleur() {
         return this.couleur;
     }
 
-    public Billet getBillet() {
-        return this.billet;
-    }
-
-    public void setVetement(String vetement) {
-        this.vetement = vetement;
-    }
-
-    public void setCouleur(String couleur) {
-        this.couleur = couleur;
-    }
-
-    public void acheterBillet(int prix, String tribune, int place) {
-        this.billet = new Billet(prix, tribune, place);
-    }
-
-    public void applaudir() {
-        System.out.println("CLAP CLAP CLAP !!!!!!!!");
-    }
-
-    public void crier() {
-        System.out.println("ALLEZ !!!");
-    }
-
-    public void huer() {
-        System.out.println("ouuuuuuuuuuuuuuuuuuuuhhhhhhhhhhhh !!!!! ");
-    }
-
-    public void dormir() {
-        System.out.println("Bonne nuit ............");
-    }
     
-    
-   
 }
 
 
