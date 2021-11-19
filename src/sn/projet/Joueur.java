@@ -18,19 +18,11 @@ public class Joueur extends Personne implements SpectatorInterface{
     protected int classement;
     protected int nbPointsClassement;
     protected String entraineur;
-
     public Object vetement;
-    
-
     protected int nbLitigesTotal;
-    protected Vetement vetement;
     protected Couleur couleur;
     protected StatistiquesPersonnellesJoueur statJoueur;
-
-    
-    
     public static int nbJoueur = 0; // Compte le nombre de joueur
-    
     /*
     Constructeur Joueur qui désigne un JOUEUR
     */
@@ -99,7 +91,7 @@ public class Joueur extends Personne implements SpectatorInterface{
     
     public Vetement getVetement() 
     { 
-        return this.vetement;
+        return (Vetement) this.vetement;
     }
 
     public Couleur getCouleur() {

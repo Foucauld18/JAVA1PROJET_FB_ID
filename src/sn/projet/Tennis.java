@@ -35,8 +35,8 @@ public class Tennis {
                 LocalDate.of(2035, 1, 5), "Francaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
                 Couleur.Bleu,30);
 
-        //Arbitre arbitre = new Arbitre("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
-        //LocalDate.of(2035, 1, 5), "Francaise", 180, 70);
+        Arbitre arbitre = new Arbitre("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
+        LocalDate.of(2035, 1, 5), "Francaise", 180, 70);
 
 
 
