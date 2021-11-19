@@ -11,46 +11,30 @@ import java.time.LocalDate;
  *
  * @author Ibrahima
  */
-public class Joueur extends Personne implements SpectatorInterface{
+public class Joueur extends Personne {
     
     protected Main main;
     protected String sponsor;
     protected int classement;
     protected int nbPointsClassement;
     protected String entraineur;
-
-    public Object vetement;
-    
-
     protected int nbLitigesTotal;
-    protected Vetement vetement;
-    protected Couleur couleur;
     protected StatistiquesPersonnellesJoueur statJoueur;
-
-    
-    
     public static int nbJoueur = 0; // Compte le nombre de joueur
-    
     /*
     Constructeur Joueur qui désigne un JOUEUR
     */
     public Joueur   (String nomNaissance, String prenom,
                     String surnom, LocalDate dateNaissance, String lieuNaissance,
-                    LocalDate dateDeces, String nationalite, int taille, int poids,
-                    Main main, String sponsor, String entraineur, int nbPointsClassement){
-        super(nomNaissance, prenom, surnom, dateNaissance, 
-                lieuNaissance, dateDeces, nationalite, taille, poids);
+                    String nationalite, int taille, int poids,
+                    Main main, String sponsor, String entraineur){
+        
+        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance,nationalite, taille, poids);
         this.main = main;
         this.sponsor = sponsor;
         this.classement = nbJoueur + 1;
         this.entraineur = entraineur;
-        this.nbPointsClassement=nbPointsClassement;
-        this.nbLitigesTotal=0;
-      
-        
-
-        
-        nbJoueur ++;
+        this.statJoueur=null;
     }
 
     public void ajouterStatJoueur(){
@@ -61,25 +45,7 @@ public class Joueur extends Personne implements SpectatorInterface{
     
     /*
     Constructeur joueur qui désigne une JOUEUSE 
-    */
-    public Joueur(String nomNaissance, String nomCourant, String prenom,
-                    String surnom, LocalDate dateNaissance, String lieuNaissance,
-                    LocalDate dateDeces, String nationalite, int taille, int poids,
-                    Main main, String sponsor, String entraineur, 
-                    Vetement vetement, Couleur couleur, int nbPointsClassement){
-        super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 
-                lieuNaissance, dateDeces, nationalite, taille, poids);
-        
-        this.main = main;
-        this.sponsor = sponsor;
-        this.classement = nbJoueur + 1;
-        this.entraineur = entraineur;
-        this.nbPointsClassement=nbPointsClassement;
-        
-        
-        
-        nbJoueur ++;
-        
+
     }
     
     /*
@@ -94,34 +60,6 @@ public class Joueur extends Personne implements SpectatorInterface{
     public void setNbPoints(int nbPoints){
         this.nbPointsClassement=nbPoints;
     }
-
-
-    
-    public Vetement getVetement() 
-    { 
-        return this.vetement;
-    }
-
-    public Couleur getCouleur() {
-        return this.couleur;
-    }
-    /*
-    public Billet getBillet() {
-        return this.billet;
-    }*/
-
-    public void setVetement(Vetement vetement) {
-        this.vetement = vetement;
-    }
-
-    public void setCouleur(Couleur couleur) {
-        this.couleur = couleur;
-    }
-    /*
-    public void acheterBillet(int prix, String tribune, int place) {
-        this.billet = new Billet(prix, tribune, place);
-    }*/
-
     public void applaudir() {
         System.out.println("CLAP CLAP CLAP !!!!!!!!");
     }

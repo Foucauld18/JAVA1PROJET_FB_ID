@@ -17,44 +17,31 @@ public class Tennis {
 
         
     public static void main(String[] args) {
-        Spectatrice b = new Spectatrice("DIALLO", "Ba", "Ibahima", "The Goat", LocalDate.of(1999, 9, 4), "Dakar",
-                LocalDate.of(2050, 4, 9), "Senegalaise", 180, 70, Couleur.Jaune);
-
-        Joueur a = new Joueur("Diallo", "Ba", "Ibrahima", "The goat", LocalDate.of(1999, 9, 4), "Metz",
-                LocalDate.of(2035, 1, 5), "Senegalaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
-                Couleur.Bleu,100);
-
-        Joueur c = new Joueur("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
-                LocalDate.of(2035, 1, 5), "Francaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
-                Couleur.Bleu,200);
-
-        Joueur d = new Joueur("FANCHON", "TF", "THIBAULT", "The goat", LocalDate.of(1999, 9, 4), "Metz",
-                LocalDate.of(2035, 1, 5), "Francaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
-                Couleur.Bleu,3000);
-                Joueur e = new Joueur("FANCHON", "TF", "THIBAULT", "The goat", LocalDate.of(1999, 9, 4), "Metz",
-                LocalDate.of(2035, 1, 5), "Francaise", 180, 70, Main.Droite, "Tropico", "Poutine", Vetement.Short,
-                Couleur.Bleu,30);
-
-        //Arbitre arbitre = new Arbitre("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
-        //LocalDate.of(2035, 1, 5), "Francaise", 180, 70);
+       
+        
+        JoueurHomme monfils = new JoueurHomme("Monfils", "Gael", "gab", LocalDate.of(1995, 1, 5),"Paris", "Français", 180, 70, Main.Droite, "Nike", "Amelie", Couleur.Bleu);
+        JoueurHomme tsonga = new JoueurHomme("Tsonga", "Joe Wilfrid", "Joe", LocalDate.of(1994, 1, 5),"Paris",  "Français", 180, 70, Main.Droite, "Nike", "Amelie", Couleur.Vert);
+        Joueuse serena = new Joueuse("anjndsi", "Williams","Serena", "sw", LocalDate.of(1994, 1, 5), "New-york","Américaine", 170, 69, Main.Gauche, "Adidas", "dad", Couleur.Marron);
+        Joueuse venus = new Joueuse("anjndsi", "Williams","Venus", "sw", LocalDate.of(1994, 1, 5), "New-york","Américaine", 170, 69, Main.Gauche, "Adidas", "dad", Couleur.Rose);
+        Arbitre arbitre = new Arbitre("Bergerault", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz", "Francaise", 180, 70);
 
 
 
         
-        Classement.ATP.ajouterJoueurClassement(a);
-        Classement.ATP.ajouterJoueurClassement(c);
-        Classement.ATP.ajouterJoueurClassement(d);
-        Classement.ATP.ajouterJoueurClassement(e);
-        a.ajouterStatJoueur();
-        c.ajouterStatJoueur();
+        Classement.ATP.ajouterJoueurClassement(monfils);
+        Classement.ATP.ajouterJoueurClassement(tsonga);
+        Classement.WTA.ajouterJoueurClassement(serena);
+        Classement.WTA.ajouterJoueurClassement(venus);
+        monfils.ajouterStatJoueur();
+        tsonga.ajouterStatJoueur();
 
 
         StatistiquesPersonnellesJoueur test = new StatistiquesPersonnellesJoueur();
-        System.out.println(a.statJoueur.nbDoubleFautes);
+        System.out.println(monfils.statJoueur.nbDoubleFautes);
 
 
 
-        Match premierMatch = new Match(a, c,NiveauMatch.Final,arbitre);
+        Match premierMatch = new Match(monfils, tsonga,NiveauMatch.Final,arbitre);
         premierMatch.jouerMatch();
 
         System.out.println("Score vainqueur ");
@@ -71,16 +58,17 @@ public class Tennis {
         Classement.ATP.updateClassement();
         System.out.println("------------------");
         Classement.ATP.afficherClassement();
-        System.out.println("Stat a");
-        a.statJoueur.afficherStat();
-        System.out.println("Stat c");
-        c.statJoueur.afficherStat();
+        System.out.println("Stat Monfils");
+        monfils.statJoueur.afficherStat();
+        System.out.println("Stat tsonga");
+        tsonga.statJoueur.afficherStat();
         System.out.println("Stat Match");
         premierMatch.statistiques[2].afficherStat();
         System.out.println("Stat Match a");
         premierMatch.statistiques[0].afficherStat();
         System.out.println("Stat Match c");
         premierMatch.statistiques[1].afficherStat();
+        System.out.println(premierMatch.categorie);
 
 
 

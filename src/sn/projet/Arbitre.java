@@ -14,12 +14,10 @@ import java.time.LocalDate;
 public class Arbitre extends Personne{
     
     
-    public Arbitre(String nomNaissance, String nomCourant, String prenom,
+    public Arbitre(String nomNaissance, String prenom,
                     String surnom, LocalDate dateNaissance, String lieuNaissance,
-                    LocalDate dateDeces, String nationalite, int taille, int poids){
-        
-        super(nomNaissance, nomCourant, prenom, surnom, dateNaissance, 
-                lieuNaissance, dateDeces, nationalite, taille, poids);
+                     String nationalite, int taille, int poids){
+        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids);
         
     }
 

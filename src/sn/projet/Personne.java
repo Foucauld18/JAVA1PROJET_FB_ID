@@ -32,21 +32,20 @@ public abstract class Personne {
      * @param surnom
      * @param dateNaissance
      * @param lieuNaissance
-     * @param dateDeces
+     * 
      * @param nationalite
      * @param taille
      * @param poids
     */
-    public Personne(String nomNaissance, String nomCourant, String prenom,
+    public Personne(String nomNaissance, String prenom,
                     String surnom, LocalDate dateNaissance, String lieuNaissance,
-                    LocalDate dateDeces, String nationalite, int taille, int poids){
+                    String nationalite, int taille, int poids){
         this.nomNaissance = nomNaissance;
-        this.nomCourant = nomCourant;
         this.prenom = prenom;
         this.surnom = surnom;
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
-        this.dateDeces = dateDeces;
+        this.dateDeces = null;
         this.nationalite = nationalite;
         this.taille = taille;
         this.poids = poids;  
