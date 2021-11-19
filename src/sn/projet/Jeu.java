@@ -108,14 +108,20 @@ public class Jeu {
         while(hasVainqueurJeu != true)
         {
            Echange echange = new Echange(joueurs[0],joueurs[1],this.arbitre);
+          
            ajouterUnEchange(echange);
            vainqueurDernierEchange=echange.jouerEchange();
            SetScore(vainqueurDernierEchange);
            
-           if(this.vainqueurJeu==vainqueurDernierEchange){
+           if(this.vainqueurJeu==vainqueurDernierEchange){//Le jeu est fini
                hasVainqueurJeu=true;
                this.arbitre.annoncerScoreJeu(this.scoreServeur, this.scoreJoueur1, joueurs[0].nomCourant, joueurs[1].nomCourant, vainqueurDernierEchange.nomCourant);
-           } else{
+               if(this.vainqueurJeu==joueurs[0]){// Stat jeux gagnés
+                joueurs[0].statJoueur.setNbJeuGagne(joueurs[0].statJoueur.getNbJeuGagne()+1);
+               }else{
+                joueurs[1].statJoueur.setNbJeuGagne(joueurs[1].statJoueur.getNbJeuGagne()+1);
+               }
+           } else{//le Jeu n'est pas fini on continue
             this.arbitre.annoncerScoreJeu(this.scoreServeur, this.scoreJoueur1, joueurs[0].nomCourant, joueurs[1].nomCourant, null);
            }
         }

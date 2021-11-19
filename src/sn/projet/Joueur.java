@@ -18,8 +18,15 @@ public class Joueur extends Personne implements SpectatorInterface{
     protected int classement;
     protected int nbPointsClassement;
     protected String entraineur;
+
     public Object vetement;
     
+
+    protected int nbLitigesTotal;
+    protected Vetement vetement;
+    protected Couleur couleur;
+    protected StatistiquesPersonnellesJoueur statJoueur;
+
     
     
     public static int nbJoueur = 0; // Compte le nombre de joueur
@@ -38,10 +45,18 @@ public class Joueur extends Personne implements SpectatorInterface{
         this.classement = nbJoueur + 1;
         this.entraineur = entraineur;
         this.nbPointsClassement=nbPointsClassement;
+        this.nbLitigesTotal=0;
+      
         
-        
+
         
         nbJoueur ++;
+    }
+
+    public void ajouterStatJoueur(){
+        StatistiquesPersonnellesJoueur statJoueur = new StatistiquesPersonnellesJoueur();
+          
+        this.statJoueur=statJoueur;
     }
     
     /*
@@ -79,6 +94,7 @@ public class Joueur extends Personne implements SpectatorInterface{
     public void setNbPoints(int nbPoints){
         this.nbPointsClassement=nbPoints;
     }
+
 
     
     public Vetement getVetement() 
@@ -122,5 +138,11 @@ public class Joueur extends Personne implements SpectatorInterface{
         System.out.println("Bonne nuit ............");
     }
     
+
+    public boolean demanderUneFaute(){//litige
+        
+        return(true);
+    }
+
     
 }

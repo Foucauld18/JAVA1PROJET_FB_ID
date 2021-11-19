@@ -38,32 +38,50 @@ public class Tennis {
         //Arbitre arbitre = new Arbitre("Bergerault", "FB", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz",
         //LocalDate.of(2035, 1, 5), "Francaise", 180, 70);
 
-        //Classement atp = new Classement("atp");
-        //atp.ajouterJoueurClassement(a);
-        //atp.ajouterJoueurClassement(c);
-        //atp.ajouterJoueurClassement(d);
-        //atp.ajouterJoueurClassement(e);
-        
+
 
         
+        Classement.ATP.ajouterJoueurClassement(a);
+        Classement.ATP.ajouterJoueurClassement(c);
+        Classement.ATP.ajouterJoueurClassement(d);
+        Classement.ATP.ajouterJoueurClassement(e);
+        a.ajouterStatJoueur();
+        c.ajouterStatJoueur();
 
-        // Match premierMatch = new Match(a, c, "Final",arbitre);
-        // premierMatch.jouerMatch();
 
-        // System.out.println("Score vainqueur ");
+        StatistiquesPersonnellesJoueur test = new StatistiquesPersonnellesJoueur();
+        System.out.println(a.statJoueur.nbDoubleFautes);
 
-        // System.out.println(premierMatch.scoreJoueur0);
-        // System.out.println("Score Perdant ");
 
-        // System.out.println(premierMatch.scoreJoueur1);
-        // System.out.println("Vainqueur");
-        // System.out.println(premierMatch.vainqueurMatch.nomNaissance);
-        // Jeu jeu = new Jeu(a,c,arbitre);
-        // jeu.jouerJeu();
-        //atp.afficherClassement();
-        //atp.updateClassement();
-        //System.out.println("------------------");
-        //atp.afficherClassement();
+
+        Match premierMatch = new Match(a, c,NiveauMatch.Final,arbitre);
+        premierMatch.jouerMatch();
+
+        System.out.println("Score vainqueur ");
+
+
+        System.out.println(premierMatch.scoreJoueur0);
+        System.out.println("Score Perdant ");
+
+        System.out.println(premierMatch.scoreJoueur1);
+        System.out.println("Vainqueur");
+        System.out.println(premierMatch.vainqueurMatch.nomNaissance);
+        
+        Classement.ATP.afficherClassement();
+        Classement.ATP.updateClassement();
+        System.out.println("------------------");
+        Classement.ATP.afficherClassement();
+        System.out.println("Stat a");
+        a.statJoueur.afficherStat();
+        System.out.println("Stat c");
+        c.statJoueur.afficherStat();
+        System.out.println("Stat Match");
+        premierMatch.statistiques[2].afficherStat();
+        System.out.println("Stat Match a");
+        premierMatch.statistiques[0].afficherStat();
+        System.out.println("Stat Match c");
+        premierMatch.statistiques[1].afficherStat();
+
 
 
 
