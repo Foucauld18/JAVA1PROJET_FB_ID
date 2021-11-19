@@ -34,21 +34,20 @@ public class Match {
      * @param arbitre
      */
     public Match(Joueur joueura,Joueur joueurb,NiveauMatch niveauMatch,Arbitre arbitre){
-        try{
-            if(joueura.vetement!=joueurb.vetement||joueura.vetement==Vetement.Chemise||joueura.vetement==Vetement.Lunette){
-                
-                int i =2/0;
-            }
-        }catch(Exception e){
-            System.out.println("ERREUR : Deux adversaires doivent être du même genre pour disputer un match");
-            System.exit(0);
+     
+        if(joueura instanceof JoueurHomme){
+            if(joueurb instanceof JoueurHomme){
+                this.categorie = CategorieMatch.simple_Homme;
+            } else System.exit(1);
+            
+        } else if(joueura instanceof Joueuse) {
+            if(joueurb instanceof Joueuse){
+                this.categorie=CategorieMatch.simple_Femme;
+            }else System.exit(1);   
+        }else{
+            System.exit(1);
         }
 
-        if(joueura.vetement==Vetement.Short){
-            this.categorie = CategorieMatch.simple_Homme;
-        } else {
-            this.categorie=CategorieMatch.simple_Femme;
-        }
         Double aleatoire =Math.random();
         Joueur joueur0,joueur1;
         if(aleatoire<0.500001){// Designe le premier serveur. Le premier Serveur du match est par la suite le joueur0

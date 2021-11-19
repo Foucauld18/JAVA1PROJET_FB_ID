@@ -2,25 +2,37 @@ package sn.projet;
 
 import java.time.LocalDate;
 
-public class JoueurHomme extends Joueur{
+public class JoueurHomme extends Joueur implements SpectatorInterface{
 
     protected Vetement vetement;
     protected Couleur couleur;
+    /**
+     * 
+     * @param nomNaissance
+     * @param prenom
+     * @param surnom
+     * @param dateNaissance
+     * @param lieuNaissance
+     * @param dateDeces
+     * @param nationalite
+     * @param taille
+     * @param poids
+     * @param main
+     * @param sponsor
+     * @param entraineur
+     * @param nbPointsClassement
+     * @param couleur
+     */
 
     public JoueurHomme(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
-            LocalDate dateDeces, String nationalite, int taille, int poids, Main main, String sponsor,
-            String entraineur, int nbPointsClassement) {
-        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, dateDeces, nationalite, taille, poids, main, sponsor,
-                entraineur, nbPointsClassement);
+             String nationalite, int taille, int poids, Main main, String sponsor,
+            String entraineur,Couleur couleur) {
+        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids, main, sponsor,
+                entraineur);
 
-                this.vetement = vetement.Chemise;
-                this.couleur = couleur.Vert;
-                this.main = main;
-                this.sponsor = sponsor;
-                this.classement = nbJoueur + 1;
-                this.entraineur = entraineur;
-                this.nbPointsClassement=nbPointsClassement;
-                nbJoueur ++;
+                this.vetement = Vetement.Short;
+                this.couleur = couleur;
+                this.nomCourant=nomNaissance;    
         
     }
 
@@ -28,6 +40,18 @@ public class JoueurHomme extends Joueur{
 
     public Couleur getCouleur() {
         return this.couleur;
+    }
+
+    @Override
+    public void setVetement(Vetement vetement) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setCouleur(Couleur couleur) {
+        // TODO Auto-generated method stub
+        
     }
 
    

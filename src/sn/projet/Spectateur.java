@@ -18,10 +18,11 @@ public class Spectateur extends SpectateurTournoi {
     protected Couleur couleur;
 
     public Spectateur(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
-    LocalDate dateDeces, String nationalite, int taille, int poids, Couleur couleur){
-        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, dateDeces, nationalite, taille, poids);
-        
+    String nationalite, int taille, int poids, Couleur couleur){
+        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, dateNaissance, nationalite, taille, poids);
+        this.couleur=couleur;
         this.vetement = vetement.Chemise;
+        this.nomCourant=nomNaissance;
     }
 
     public Vetement getVetement() { return this.vetement;}

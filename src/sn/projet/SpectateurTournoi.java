@@ -21,12 +21,12 @@ public class SpectateurTournoi extends Personne implements SpectatorInterface{
     Constructeur Spectateur qui désigne UNE SPECTATRICE
     */
 
-    public SpectateurTournoi(String nomNaissance, String nomCourant, String prenom,
+    public SpectateurTournoi(String nomNaissance, String prenom,
             String surnom, LocalDate dateNaissance, String lieuNaissance,
-            LocalDate dateDeces, String nationalite, int taille, int poids) {
+            String nationalite, int taille, int poids) {
 
-        super(nomNaissance, nomCourant, prenom, surnom, dateNaissance,
-                lieuNaissance, dateDeces, nationalite, taille, poids);
+        super(nomNaissance,  prenom, surnom, dateNaissance,
+                lieuNaissance,  nationalite, taille, poids);
         
 
     }

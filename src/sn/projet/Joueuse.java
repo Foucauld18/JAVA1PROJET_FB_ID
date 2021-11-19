@@ -2,26 +2,21 @@ package sn.projet;
 
 import java.time.LocalDate;
 
-public class Joueuse extends Joueur{
+public class Joueuse extends Joueur implements SpectatorInterface{
 
     protected Vetement vetement;
     protected Couleur couleur;
 
-    public Joueuse(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
-            LocalDate dateDeces, String nationalite, int taille, int poids, Main main, String sponsor,
-            String entraineur, int nbPointsClassement) {
-        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, dateDeces, nationalite, taille, poids, main, sponsor,
-                entraineur, nbPointsClassement);
+    public Joueuse(String nomNaissance, String nomCourrant, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance, String nationalite, int taille, int poids, Main main, String sponsor,
+            String entraineur,Couleur couleur) {
+        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids, main, sponsor,
+                entraineur);
         
 
-                this.vetement = vetement.Chemise;
-                this.couleur = couleur.Vert;
-                this.main = main;
-                this.sponsor = sponsor;
-                this.classement = nbJoueur + 1;
-                this.entraineur = entraineur;
-                this.nbPointsClassement=nbPointsClassement;
-                nbJoueur ++;
+                this.vetement = Vetement.Jupe;
+                this.couleur = couleur;
+                this.nomCourant=nomCourrant;
+             
     }
 
     
@@ -29,6 +24,20 @@ public class Joueuse extends Joueur{
 
     public Couleur getCouleur() {
         return this.couleur;
+    }
+
+
+    @Override
+    public void setVetement(Vetement vetement) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public void setCouleur(Couleur couleur) {
+        // TODO Auto-generated method stub
+        
     }
     
 }
