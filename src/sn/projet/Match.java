@@ -372,6 +372,6 @@ public class Match {
                 System.out.print(sets[i].scoreSetJoueur1+"|");
             }
         }
-        System.out.println(""); 
+         
     }
 }
