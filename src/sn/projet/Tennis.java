@@ -44,14 +44,14 @@ public class Tennis {
         Match premierMatch = new Match(monfils, tsonga,NiveauMatch.Final,arbitre);
         premierMatch.jouerMatch();
 
-        System.out.println("Score "+premierMatch.joueurs[0].nomCourant+" "+premierMatch.scoreJoueur0);
+        System.out.println("Score "+premierMatch.joueurs[0].nomCourant+" "+premierMatch.scoreJoueur0+ " nb jeux service Gagnant "+premierMatch.joueurs[0].statJoueur.getJeuServiceGagne());
 
 
         System.out.println("    -");
-        System.out.println("Score "+premierMatch.joueurs[1].nomCourant+" "+premierMatch.scoreJoueur1);
+        System.out.println("Score "+premierMatch.joueurs[1].nomCourant+" "+premierMatch.scoreJoueur1+ " nb jeux service Gagnant "+premierMatch.joueurs[1].statJoueur.getJeuServiceGagne());
 
         System.out.println();
-        System.out.println("Le Vainqueur est "+premierMatch.vainqueurMatch.nomCourant);
+        System.out.println("Le Vainqueur est "+premierMatch.vainqueurMatch.nomCourant );
         
         
         Classement.ATP.afficherClassement();

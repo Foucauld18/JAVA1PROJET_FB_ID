@@ -14,7 +14,7 @@ public class Statistiques implements Cloneable {
     protected int nbDoubleFautes;
     protected int nbBalleDeBreakRemporte;
     protected int nbBalleDeBreak;
-    protected int []tableau={};
+    
 
     /*constructor*/
     public  Statistiques(){
@@ -30,11 +30,12 @@ public class Statistiques implements Cloneable {
         this.nbDoubleFautes=0;
         this.nbBalleDeBreakRemporte=0;
         this.nbBalleDeBreak=0;
+        
+
+
     }
 
-    public int[] getTableau() {
-        return this.tableau;
-    }
+   
 
     
     
@@ -144,6 +145,7 @@ public class Statistiques implements Cloneable {
     public void setNbBalleDeBreak(int nbBalleDeBreak) {
         this.nbBalleDeBreak = nbBalleDeBreak;
     }
+
     public Object clone() {
         Statistiques stat = null;
         try {

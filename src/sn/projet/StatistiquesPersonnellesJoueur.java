@@ -6,8 +6,11 @@ public class StatistiquesPersonnellesJoueur extends Statistiques{
     int nbMatchGagne;
     int nbTournoisJoue;
     int totalGain;
+    protected int jeuServiceGagne;
+    
 
     public StatistiquesPersonnellesJoueur(){
+        this.jeuServiceGagne=0;
     };
 
     /*Methods*/
@@ -48,6 +51,13 @@ public class StatistiquesPersonnellesJoueur extends Statistiques{
         }
         return (SizeArray);
 
+    }
+    public int getJeuServiceGagne() {
+        return this.jeuServiceGagne;
+    }
+
+    public void setJeuServiceGagne(int jeuServiceGagne) {
+        this.jeuServiceGagne = jeuServiceGagne;
     }
 
 

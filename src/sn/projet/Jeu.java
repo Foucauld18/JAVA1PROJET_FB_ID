@@ -119,6 +119,7 @@ public class Jeu {
                this.arbitre.annoncerScoreJeu(this.scoreServeur, this.scoreJoueur1, joueurs[0].nomCourant, joueurs[1].nomCourant, vainqueurDernierEchange.nomCourant);
                if(this.vainqueurJeu==joueurs[0]){// Stat jeux gagnés
                 joueurs[0].statJoueur.setNbJeuGagne(joueurs[0].statJoueur.getNbJeuGagne()+1);
+                joueurs[0].statJoueur.setJeuServiceGagne(joueurs[0].statJoueur.getJeuServiceGagne()+1);
                }else{
                 joueurs[1].statJoueur.setNbJeuGagne(joueurs[1].statJoueur.getNbJeuGagne()+1);
                }

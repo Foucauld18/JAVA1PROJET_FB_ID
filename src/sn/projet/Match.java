@@ -173,11 +173,10 @@ public Joueur jouerMatch(){
         //STAT NOMBRE DE SET JOUE
         joueurs[0].statJoueur.setNbSetJoue(joueurs[0].statJoueur.getNbSetJoue()+1);
         joueurs[1].statJoueur.setNbSetJoue(joueurs[1].statJoueur.getNbSetJoue()+1);
-
         compteurSet++;
         Set set = new Set(joueurs[0], joueurs[1],this.arbitre);
         ajouterUnSet(set);
-        vainqueurDernierSet = set.jouerSet(compteurSet);
+        vainqueurDernierSet = set.jouerSet(compteurSet,this.categorie);
         SetMatchResultat(vainqueurDernierSet);
         arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1, null);
         if(this.vainqueurMatch==vainqueurDernierSet){

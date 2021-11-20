@@ -24,7 +24,7 @@ public class Set {
         this.arbitre=arbitre;
     }
 
-    public void SetScore(Joueur VainqueurDernierJeu,int numeroSet){
+    public void SetScore(Joueur VainqueurDernierJeu,int numeroSet,CategorieMatch categorie){
 
         
         
@@ -33,19 +33,33 @@ public class Set {
 
         } else this.scoreSetJoueur1+=1;
 
-        if(this.scoreSetJoueur0 - this.scoreSetJoueur1 >1 || this.scoreSetJoueur0 - this.scoreSetJoueur1 <-1){
-            if (this.scoreSetJoueur0>5){
+        if(this.scoreSetJoueur0 - this.scoreSetJoueur1 >1 || this.scoreSetJoueur0 - this.scoreSetJoueur1 <-1){//if 2 jeux d'ecart
+            System.out.println("2jeux ecart");
+            if (this.scoreSetJoueur0>5){//a gagner au moins 6jeux
                 this.vainqueurSet=joueurs[0];
             }
             if (this.scoreSetJoueur1>5){
-                this.vainqueurSet=joueurs[1];
+                this.vainqueurSet=joueurs[1];//a gagner au moins 6jeux
             }
             
-        }if(this.scoreSetJoueur0==7 && this.scoreSetJoueur1 ==6 && numeroSet<5){
-            this.vainqueurSet=joueurs[0];
-        }if(this.scoreSetJoueur1==7 && this.scoreSetJoueur0 ==6 && numeroSet<5){
-            this.vainqueurSet=joueurs[1];
         }
+        if(categorie==CategorieMatch.simple_Homme){//match Homme en 5set
+            if(this.scoreSetJoueur0==7 && this.scoreSetJoueur1 ==6 && numeroSet<5){//avant le 5eme set un socre de 7-6 permet de remporter le set
+                this.vainqueurSet=joueurs[0];
+            }
+            if(this.scoreSetJoueur1==7 && this.scoreSetJoueur0 ==6 && numeroSet<5){
+                this.vainqueurSet=joueurs[1];
+            }
+        }else{//match femme en 3 set
+            if(this.scoreSetJoueur0==7 && this.scoreSetJoueur1 ==6 && numeroSet<3){//avant le 3eme set un socre de 7-6 permet de remporter le set
+                this.vainqueurSet=joueurs[0];
+            }
+            if(this.scoreSetJoueur1==7 && this.scoreSetJoueur0 ==6 && numeroSet<3){
+                this.vainqueurSet=joueurs[1];
+            }
+        }
+       
+        
 
     }
 
@@ -67,7 +81,7 @@ public class Set {
         this.jeux=newListeJeux;
     }
 
-public Joueur jouerSet(int numeroSet){
+public Joueur jouerSet(int numeroSet,CategorieMatch categorie){
     boolean estfini=false;
     Joueur vainqueurDernierJeu=null;
     int compteurJeu=0;
@@ -87,7 +101,7 @@ public Joueur jouerSet(int numeroSet){
         }
         compteurJeu++;
         
-        SetScore(vainqueurDernierJeu,numeroSet);
+        SetScore(vainqueurDernierJeu,numeroSet,categorie);
         arbitre.annoncerScoreSet(joueurs[0], joueurs[1], this.scoreSetJoueur0, this.scoreSetJoueur1,null);
         if(this.vainqueurSet==vainqueurDernierJeu){
             estfini=true;
