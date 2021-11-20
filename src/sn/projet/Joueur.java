@@ -38,9 +38,12 @@ public class Joueur extends Personne {
     }
 
     public void ajouterStatJoueur(){
-        StatistiquesPersonnellesJoueur statJoueur = new StatistiquesPersonnellesJoueur();
+        if(this.statJoueur==null){
+            StatistiquesPersonnellesJoueur statJoueur = new StatistiquesPersonnellesJoueur();
           
-        this.statJoueur=statJoueur;
+            this.statJoueur=statJoueur;
+        }//sinon les stats existe déjà.
+       
     }
     
     /*

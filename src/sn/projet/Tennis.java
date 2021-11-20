@@ -6,8 +6,7 @@
 package sn.projet;
 
 import java.time.LocalDate;
-
-import javax.sound.sampled.SourceDataLine;
+import java.util.Scanner;
 
 /**
  *
@@ -25,52 +24,26 @@ public class Tennis {
         Joueuse venus = new Joueuse("anjndsi", "Williams","Venus", "sw", LocalDate.of(1994, 1, 5), "New-york","Américaine", 170, 69, Main.Gauche, "Adidas", "dad", Couleur.Rose);
         Arbitre arbitre = new Arbitre("Bergerault", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz", "Francaise", 180, 70);
 
-
+        InputCommande testCommande = new InputCommande();
 
         
-        Classement.ATP.ajouterJoueurClassement(monfils);
-        Classement.ATP.ajouterJoueurClassement(tsonga);
-        Classement.WTA.ajouterJoueurClassement(serena);
-        Classement.WTA.ajouterJoueurClassement(venus);
         monfils.ajouterStatJoueur();
         tsonga.ajouterStatJoueur();
 
+        boolean recommencer=true;
+        while(recommencer==true){
+            Match premierMatch = new Match(monfils, tsonga,NiveauMatch.Final,arbitre);
+            premierMatch.jouerMatch(false);
+            System.out.println("Recommencer un match? ou taper fin");
+            String commande = "";
+            Scanner keyboard = new Scanner(System.in);
+                commande = keyboard.nextLine();
+                if (commande.equals("fin")) {
+                    recommencer=false;
+                } 
+        }
 
-        StatistiquesPersonnellesJoueur test = new StatistiquesPersonnellesJoueur();
-        System.out.println(monfils.statJoueur.nbDoubleFautes);
-
-
-
-        Match premierMatch = new Match(monfils, tsonga,NiveauMatch.Final,arbitre);
-        premierMatch.jouerMatch();
-
-        System.out.println("Score "+premierMatch.joueurs[0].nomCourant+" "+premierMatch.scoreJoueur0+ " nb jeux service Gagnant "+premierMatch.joueurs[0].statJoueur.getJeuServiceGagne());
-
-
-        System.out.println("    -");
-        System.out.println("Score "+premierMatch.joueurs[1].nomCourant+" "+premierMatch.scoreJoueur1+ " nb jeux service Gagnant "+premierMatch.joueurs[1].statJoueur.getJeuServiceGagne());
-
-        System.out.println();
-        System.out.println("Le Vainqueur est "+premierMatch.vainqueurMatch.nomCourant );
-        
-        
-        Classement.ATP.afficherClassement();
-        Classement.ATP.updateClassement();
-        System.out.println("------------------");
-        Classement.ATP.afficherClassement();
-        System.out.println("Stat monfils");
-        monfils.statJoueur.afficherStat();
-        System.out.println("Stat tsonga");
-        tsonga.statJoueur.afficherStat();
-        System.out.println("Stat Match");
-        premierMatch.statistiques[2].afficherStat();
-        System.out.println("Stat Match a");
-        premierMatch.statistiques[0].afficherStat();
-        System.out.println("Stat Match c");
-        premierMatch.statistiques[1].afficherStat();
-        System.out.println(premierMatch.categorie);
-
-
+       
 
 
         
