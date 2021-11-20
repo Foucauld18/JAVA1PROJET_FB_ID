@@ -101,7 +101,7 @@ public class Jeu {
         this.echanges = newListeEchange;
     }
 
-    public Joueur jouerJeu(boolean jeuAutomatique, boolean afficherscore) {
+    public Joueur jouerJeu(boolean jeuAutomatique,boolean afficherDetailJeu) {
         boolean hasVainqueurJeu = false;
         Joueur vainqueurDernierEchange = null;
         while (hasVainqueurJeu != true) {
@@ -118,7 +118,7 @@ public class Jeu {
             if (this.vainqueurJeu == vainqueurDernierEchange) {// Le jeu est fini
                 hasVainqueurJeu = true;
                 this.arbitre.annoncerScoreJeu(this.scoreServeur, this.scoreJoueur1, joueurs[0].nomCourant,
-                        joueurs[1].nomCourant, vainqueurDernierEchange.nomCourant, afficherscore);
+                        joueurs[1].nomCourant, vainqueurDernierEchange.nomCourant, afficherDetailJeu);
                 if (this.vainqueurJeu == joueurs[0]) {// Stat jeux gagnés
                     joueurs[0].statJoueur.setNbJeuGagne(joueurs[0].statJoueur.getNbJeuGagne() + 1);
                     joueurs[0].statJoueur.setJeuServiceGagne(joueurs[0].statJoueur.getJeuServiceGagne() + 1);
@@ -127,7 +127,7 @@ public class Jeu {
                 }
             } else {// le Jeu n'est pas fini on continue
                 this.arbitre.annoncerScoreJeu(this.scoreServeur, this.scoreJoueur1, joueurs[0].nomCourant,
-                        joueurs[1].nomCourant, null, afficherscore);
+                        joueurs[1].nomCourant, null, afficherDetailJeu);
             }
         }
         return (vainqueurDernierEchange);

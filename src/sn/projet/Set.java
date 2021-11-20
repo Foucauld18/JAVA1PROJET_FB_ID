@@ -82,7 +82,7 @@ public class Set {
         this.jeux = newListeJeux;
     }
 
-    public Joueur jouerSet(int numeroSet, CategorieMatch categorie, boolean matchAutomatique) {
+    public Joueur jouerSet(int numeroSet, CategorieMatch categorie, boolean matchAutomatique,boolean afficherDetailSet) {
         boolean setAutomatique = true;
         if (matchAutomatique == false) {
             setAutomatique = false;
@@ -97,23 +97,23 @@ public class Set {
             joueurs[1].statJoueur.setNbJeuJoue(joueurs[1].statJoueur.getNbJeuJoue() + 1);
             // ---
 
-            if (setAutomatique == true) {
+            if (setAutomatique == true) {//matchautomatique
                 if (compteurJeu % 2 == 0) {// Permet d'alterner le service. Le premier serveur du match est tjs le
                                            // joueur 0
                     Jeu jeu = new Jeu(joueurs[0], joueurs[1], this.arbitre);
                     ajouterUnJeu(jeu);
-                    vainqueurDernierJeu = jeu.jouerJeu(true, false);
+                    vainqueurDernierJeu = jeu.jouerJeu(true, afficherDetailSet);
 
                 } else {
                     Jeu jeu = new Jeu(joueurs[1], joueurs[0], this.arbitre);
                     ajouterUnJeu(jeu);
-                    vainqueurDernierJeu = jeu.jouerJeu(true, false);
+                    vainqueurDernierJeu = jeu.jouerJeu(true, afficherDetailSet);
                 }
                 compteurJeu++;
                 SetScore(vainqueurDernierJeu, numeroSet, categorie);
                 arbitre.annoncerScoreSet(joueurs[0], joueurs[1], this.scoreSetJoueur0, this.scoreSetJoueur1, null,
-                        false);
-            } else {
+                        afficherDetailSet);
+            } else {//match manuel
                 if (compteurJeu % 2 == 0) {// Permet d'alterner le service. Le premier serveur du match est tjs le
                                            // joueur 0
                     Jeu jeu = new Jeu(joueurs[0], joueurs[1], this.arbitre);
@@ -133,7 +133,7 @@ public class Set {
 
             if (this.vainqueurSet == vainqueurDernierJeu) {
                 estfini = true;
-                if (afficherScorefinDuSet == true) {
+                if (afficherScorefinDuSet == true || afficherDetailSet==true) {
                     arbitre.annoncerScoreSet(joueurs[0], joueurs[1], this.scoreSetJoueur0, this.scoreSetJoueur1, null,
                             true);
                     arbitre.annoncerScoreSet(joueurs[0], joueurs[1], this.scoreSetJoueur0, this.scoreSetJoueur1,

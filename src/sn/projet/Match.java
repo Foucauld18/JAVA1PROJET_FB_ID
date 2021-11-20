@@ -181,58 +181,81 @@ public class Match {
      */
     public Joueur jouerMatch(boolean tournoisAutomatique) {
         boolean matchAutomatique = true;
-        if (tournoisAutomatique == false) {
-
+        boolean afficherDetailMatch =false;
+        if (tournoisAutomatique == false) {//si on n'est pas dans un tournois simulé automatiquement
+            //procédure pour savoir si on simule le match ou si on y joue en manuel
             boolean goodCommande = false;
-            while (goodCommande == false) {
+            while (goodCommande == false) {//repose la question si le input ne correspond pas à l'une des deux possibilité
                 System.out.println(
                         "Pour jouer automatiquement ce match taper 'auto'. Pour jouer manuellement ce match taper 'manuel' ");
 
                 String commande = "";
                 Scanner keyboard = new Scanner(System.in);
                 commande = keyboard.nextLine();
-                if (commande.equals("auto")) {
+                if (commande.equals("auto")) {//Simulation du match
                     goodCommande = true;
-                } else if (commande.equals("manuel")) {
+                } else if (commande.equals("manuel")) {//match manuel
+                    System.out.println("passage");
                     goodCommande = true;
                     matchAutomatique = false;
                 }
 
             }
+            if(matchAutomatique==true){//si le match est simulation est-ce que l'on affiche le détait
+                String commandeDeux = "";
+                System.out.println("Pour afficher le detail du match taper afficher");
+                Scanner keyboardDeux = new Scanner(System.in);
+                commandeDeux = keyboardDeux.nextLine();
+                if (commandeDeux.equals("afficher")){
+                    System.out.println("passage if");
+                    afficherDetailMatch=true;//oui on affiche les details
+                }else{
+                    afficherDetailMatch=false;//non on n'affiche pas les détails
+                }
+            }
+           
 
         }
 
-        getInitStatJoueur();
-        boolean afficherScorefinDuMatch = false;
+        getInitStatJoueur();//On memorise les stats du joueur avant le match pour ensuite determiner ces stats après le match
         boolean matchIsFinished = false;
-        Joueur vainqueurDernierSet = null;
+        Joueur vainqueurDernierSet = null;//au debut du match il n'y a pas encore de vainqueur
         int compteurSet = 0;
         while (matchIsFinished == false) {
             // STAT NOMBRE DE SET JOUE
             joueurs[0].statJoueur.setNbSetJoue(joueurs[0].statJoueur.getNbSetJoue() + 1);
             joueurs[1].statJoueur.setNbSetJoue(joueurs[1].statJoueur.getNbSetJoue() + 1);
             compteurSet++;
+            //Creation d'un set
             Set set = new Set(joueurs[0], joueurs[1], this.arbitre);
             ajouterUnSet(set);
 
-            if (matchAutomatique == true) {
-                vainqueurDernierSet = set.jouerSet(compteurSet, this.categorie, true);
+            if (matchAutomatique == true) {//si le match est automatique on joue le set en automatique
+                vainqueurDernierSet = set.jouerSet(compteurSet, this.categorie, true,afficherDetailMatch);
                 SetMatchResultat(vainqueurDernierSet);
-                arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1, null, false);
-            } else {
-                vainqueurDernierSet = set.jouerSet(compteurSet, this.categorie, false);
+                arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1, null, afficherDetailMatch);
+              
+                
+                
+            } else {//si le match est manuel on joue le set en manuel
+                vainqueurDernierSet = set.jouerSet(compteurSet, this.categorie, false,afficherDetailMatch);
                 SetMatchResultat(vainqueurDernierSet);
                 arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1, null, true);
             }
 
-            if (this.vainqueurMatch == vainqueurDernierSet) {
-                matchIsFinished = true;
-                if (afficherScorefinDuMatch == true) {
-                    arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1, null,
-                            true);
+            if (this.vainqueurMatch == vainqueurDernierSet) {//Si le match a un vainquer
+                matchIsFinished = true;//alors le match est termine
+                
+                if(tournoisAutomatique==true){//si nous sommes un tournois automatique on afffiche pas le score du match
+                    arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1,
+                    vainqueurDernierSet, false);
                 }
-                arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1,
+                else{//si ce n'est pas un tournois automatique on annonce le score et le vainqueur
+                    afficherScoreMatch();
+                    arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1,
                         vainqueurDernierSet, true);
+                }
+                
                 if (this.vainqueurMatch == joueurs[0])// Stat vainqueur match
                 {
                     joueurs[0].statJoueur.SetNbMatchGagne(joueurs[0].statJoueur.getNbMatchGagne() + 1);
@@ -241,18 +264,17 @@ public class Match {
                 }
             }
 
-            if (matchAutomatique == false && matchIsFinished == false) {
+            if (matchAutomatique == false && matchIsFinished == false) {//Procédure pour demander si on simule la fin du match
                 boolean goodCommande = false;
                 while (goodCommande == false) {
                     System.out.println("Pour simuler la fin du match taper 'fin' sinon continuer!");
                     String commande = "";
                     Scanner keyboard = new Scanner(System.in);
                     commande = keyboard.nextLine();
-                    if (commande.equals("fin")) {
+                    if (commande.equals("fin")) {//oui on simule la fin du match
                         goodCommande = true;
                         matchAutomatique = true;
-                        afficherScorefinDuMatch = true;
-                    } else {
+                    } else {//non on ne simule pas la fin du match
                         goodCommande = true;
                     }
                 }
@@ -269,6 +291,7 @@ public class Match {
     }
 
     public void updateStatMatch() {
+
 
         Statistiques[] tampons = new Statistiques[] { this.statistiques[0], this.statistiques[1] };
 
@@ -303,4 +326,52 @@ public class Match {
 
     }
 
+    public void afficherScoreMatch(){
+        int nbSet;
+        try {
+            nbSet = this.sets.length;
+        } catch (Exception e) {
+            nbSet = 0;
+        }
+        int longeurNom0 = this.joueurs[0].nomCourant.length();
+        int longeurNom1 = this.joueurs[1].nomCourant.length();
+        
+        if(longeurNom0>longeurNom1){//aligner les scores en fonctions de la longeurs des noms
+            System.out.println("");
+            System.out.print(this.joueurs[0].nomCourant+" |");
+            
+            for(int i=0;i<nbSet;i++){
+                System.out.print(sets[i].scoreSetJoueur0+"|");
+                
+            }
+            System.out.println("");
+            System.out.print(this.joueurs[1].nomCourant);
+            for(int i=0;i<longeurNom0-longeurNom1;i++){//permet d'aligner les scores
+                System.out.print(" ");
+            }
+            System.out.print(" |");
+            for(int i=0;i<nbSet;i++){
+                System.out.print(sets[i].scoreSetJoueur1+"|");
+            }
+        } else{
+            System.out.println("");
+            System.out.print(this.joueurs[0].nomCourant);
+            for(int i=0;i<longeurNom1-longeurNom0;i++){//permet d'aligner les scores
+                System.out.print(" ");
+            }
+            System.out.print(" |");
+            
+            for(int i=0;i<nbSet;i++){
+                System.out.print(sets[i].scoreSetJoueur0+"|");
+                
+            }
+            System.out.println("");
+            System.out.print(this.joueurs[1].nomCourant+" |");
+            
+            for(int i=0;i<nbSet;i++){
+                System.out.print(sets[i].scoreSetJoueur1+"|");
+            }
+        }
+        System.out.println(""); 
+    }
 }

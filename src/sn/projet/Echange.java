@@ -69,6 +69,10 @@ public class Echange {
                 return (this.jouerEchange(true));// Late on recommence
 
         } else {
+            System.out.println("");
+            System.out.println("------- Serveur -------");
+            System.out.println("       "+joueurs[0].nomCourant);
+            System.out.println("-----------------------");
             boolean goodCommande = false;
             while (goodCommande == false) {
                 System.out
@@ -101,6 +105,8 @@ public class Echange {
                     return (joueurs[0]);
                 }
                 System.out.println(affichage);
+                System.out.println("");
+                System.out.println("------- Nouveau echange -------");
                 System.out.println("1-Gagner Echange | 2-Perdre Echange | Autre : Aleatoire");
                 commande = keyboard.nextLine();
                 switch (commande) {
