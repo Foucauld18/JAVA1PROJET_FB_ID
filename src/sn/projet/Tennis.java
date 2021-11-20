@@ -24,24 +24,22 @@ public class Tennis {
         Joueuse venus = new Joueuse("anjndsi", "Williams","Venus", "sw", LocalDate.of(1994, 1, 5), "New-york","Américaine", 170, 69, Main.Gauche, "Adidas", "dad", Couleur.Rose);
         Arbitre arbitre = new Arbitre("Bergerault", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz", "Francaise", 180, 70);
 
-        InputCommande testCommande = new InputCommande();
+       
 
         
         monfils.ajouterStatJoueur();
         tsonga.ajouterStatJoueur();
 
-        boolean recommencer=true;
-        while(recommencer==true){
-            Match premierMatch = new Match(monfils, tsonga,NiveauMatch.Final,arbitre);
-            premierMatch.jouerMatch(false);
-            System.out.println("Recommencer un match? ou taper fin");
-            String commande = "";
-            Scanner keyboard = new Scanner(System.in);
-                commande = keyboard.nextLine();
-                if (commande.equals("fin")) {
-                    recommencer=false;
-                } 
-        }
+    
+        Tournoi rolandgarros = new Tournoi("Paris","Terre Battue","2021");
+        rolandgarros.ajouterJoueurHomme(monfils);
+        System.out.println(rolandgarros.getJoueurHommes());
+        // for(int i=0;i<12;i++){
+        //     System.out.println(rolandgarros.getJoueurHommes()[i].nomCourant);
+        // }
+        rolandgarros.afficherJoueurs();
+        //System.out.println(rolandgarros.getJoueurHommes());
+
 
        
 

@@ -195,7 +195,6 @@ public class Match {
                 if (commande.equals("auto")) {//Simulation du match
                     goodCommande = true;
                 } else if (commande.equals("manuel")) {//match manuel
-                    System.out.println("passage");
                     goodCommande = true;
                     matchAutomatique = false;
                 }
