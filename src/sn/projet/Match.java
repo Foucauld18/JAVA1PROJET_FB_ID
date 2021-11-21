@@ -24,6 +24,8 @@ public class Match {
     protected int scoreJoueur1;
     protected Set sets[];
     protected Statistiques[] statistiques;
+    protected SpectateurTournoi[] spectateurs;
+    protected Billet [] billets;
 
     protected Joueur vainqueurMatch;
     protected Joueur perdantMatch;
@@ -249,14 +251,15 @@ public class Match {
                     vainqueurDernierSet, false);
                 }
                 else{//si ce n'est pas un tournois automatique on annonce le score et le vainqueur
-                    afficherScoreMatch();
+                    afficherScoreMatch(0);
                     arbitre.annoncerScoreMatch(joueurs[0], joueurs[1], this.scoreJoueur0, this.scoreJoueur1,
                         vainqueurDernierSet, true);
                 }
                 
-                if (this.vainqueurMatch == joueurs[0])// Stat vainqueur match
+                if (this.vainqueurMatch == joueurs[0])// Stat & classement vainqueur match
                 {
                     joueurs[0].statJoueur.SetNbMatchGagne(joueurs[0].statJoueur.getNbMatchGagne() + 1);
+                    
                 } else {
                     joueurs[1].statJoueur.SetNbMatchGagne(joueurs[1].statJoueur.getNbMatchGagne() + 1);
                 }
@@ -280,6 +283,12 @@ public class Match {
 
         }
         updateStatMatch();
+        modifierClassementVainqueurMatch();
+        if(vainqueurMatch instanceof JoueurHomme){
+            Classement.ATP.updateClassement();
+        }else if (vainqueurMatch instanceof Joueuse){
+            Classement.WTA.updateClassement();
+        }
         return (vainqueurDernierSet);
     }
 
@@ -324,7 +333,15 @@ public class Match {
 
     }
 
-    public void afficherScoreMatch(){
+    private void afficherEspace(int nbEspace){
+        for(int i=0;i<nbEspace;i++){
+            System.out.print(" ");
+        }
+    }
+   
+
+    public void afficherScoreMatch(int espace){
+
         int nbSet;
         try {
             nbSet = this.sets.length;
@@ -333,9 +350,10 @@ public class Match {
         }
         int longeurNom0 = this.joueurs[0].nomCourant.length();
         int longeurNom1 = this.joueurs[1].nomCourant.length();
+        System.out.println("");
         
         if(longeurNom0>longeurNom1){//aligner les scores en fonctions de la longeurs des noms
-            System.out.println("");
+            afficherEspace(espace);
             System.out.print(this.joueurs[0].nomCourant+" |");
             
             for(int i=0;i<nbSet;i++){
@@ -346,6 +364,7 @@ public class Match {
                 System.out.print("V");
             }
             System.out.println("");
+            afficherEspace(espace);
             System.out.print(this.joueurs[1].nomCourant);
             for(int i=0;i<longeurNom0-longeurNom1;i++){//permet d'aligner les scores
                 System.out.print(" ");
@@ -359,7 +378,7 @@ public class Match {
             }
            
         } else{
-            System.out.println("");
+            afficherEspace(espace);
             System.out.print(this.joueurs[0].nomCourant);
             for(int i=0;i<longeurNom1-longeurNom0;i++){//permet d'aligner les scores
                 System.out.print(" ");
@@ -374,6 +393,7 @@ public class Match {
                 System.out.print("V");
             }
             System.out.println("");
+            afficherEspace(espace);
             System.out.print(this.joueurs[1].nomCourant+" |");
             
             for(int i=0;i<nbSet;i++){
@@ -385,4 +405,20 @@ public class Match {
         }
          
     }
+    public void ajouterUnBillet(SpectateurTournoi spectateur) {
+        SpectateurTournoi[] listeSpectateurs = this.spectateurs;
+        int SizeArray = 0, i;
+        try {
+            SizeArray = listeSpectateurs.length;
+        } catch (Exception e) {
+            SizeArray = 0;
+        }
+
+        SpectateurTournoi[] newListeSpectateurs = new SpectateurTournoi[SizeArray + 1];
+        for (i = 0; i < SizeArray; i++) {
+            newListeSpectateurs[i] = listeSpectateurs[i];
+        }
+        newListeSpectateurs[SizeArray] = spectateur;
+        this.spectateurs = newListeSpectateurs;
+    } 
 }

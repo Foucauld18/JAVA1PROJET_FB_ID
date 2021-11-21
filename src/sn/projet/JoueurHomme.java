@@ -32,7 +32,8 @@ public class JoueurHomme extends Joueur implements SpectatorInterface{
 
                 this.vetement = Vetement.Short;
                 this.couleur = couleur;
-                this.nomCourant=nomNaissance;    
+                this.nomCourant=nomNaissance;
+                  
         
     }
 
@@ -50,6 +51,30 @@ public class JoueurHomme extends Joueur implements SpectatorInterface{
 
     @Override
     public void setCouleur(Couleur couleur) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void applaudir(boolean cacher) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void crier(boolean cacher) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void repondreAuCri(boolean cacher) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void ajouterUnBiller(Billet billet) {
         // TODO Auto-generated method stub
         
     }

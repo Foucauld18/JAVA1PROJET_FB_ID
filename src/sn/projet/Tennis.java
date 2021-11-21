@@ -34,6 +34,8 @@ public class Tennis {
         for(int i=0;i<128;i++){
             JoueurHomme joueur1 = new JoueurHomme("Monfils"+String.valueOf(i), "Gael", "gab", LocalDate.of(1995, 1, 5),"Paris", "Français", i, 70, Main.Droite, "Nike", "Amelie", Couleur.Bleu);
             Joueuse joueuse1 = new Joueuse("anjndsi", "Williams","Serena", "sw", LocalDate.of(1994, 1, 5), "New-york","Américaine", i, 69, Main.Gauche, "Adidas", "dad", Couleur.Marron);
+            Classement.ATP.ajouterJoueurClassement(joueur1);
+            Classement.WTA.ajouterJoueurClassement(joueuse1);
             joueur1.ajouterStatJoueur();
             joueuse1.ajouterStatJoueur();
             rolandgarros.ajouterJoueurHomme(joueur1);
@@ -44,9 +46,14 @@ public class Tennis {
             rolandgarros.ajouterArbitre(arbitre1);
         }
 
-        rolandgarros.jouerTournois(false, true);
-        System.out.println("Vainqueur "+rolandgarros.gagnant+" vainqueuse "+rolandgarros.getGagnante());
-
+        rolandgarros.jouerTournois(true, true);
+        rolandgarros.afficherMatchTournoi();
+        System.out.println("Vainqueur "+rolandgarros.gagnant.getNomCourant()+" vainqueuse "+rolandgarros.getGagnante().getNomCourant());
+        Classement.ATP.afficherClassement();
+        System.out.println("Classement Vainqueur ");
+        System.out.println(Classement.ATP.obtenirClassementJoueur(rolandgarros.gagnant));
+        
+        
 
         
 

@@ -39,5 +39,33 @@ public class Joueuse extends Joueur implements SpectatorInterface{
         // TODO Auto-generated method stub
         
     }
+
+
+    @Override
+    public void applaudir(boolean cacher) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public void crier(boolean cacher) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public void repondreAuCri(boolean cacher) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+	@Override
+	public void ajouterUnBiller(Billet billet) {
+		// TODO Auto-generated method stub
+		
+	}
     
 }

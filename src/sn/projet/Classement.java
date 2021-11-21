@@ -49,7 +49,8 @@ public class Classement {
         }
 
         for (i = 0; i < SizeArray; i++) {
-            System.out.println(classement[i].nomCourant + " " + classement[i].nbPointsClassement + " points");
+            
+            System.out.println(i+1+"-  " +classement[i].nomCourant + " " + classement[i].nbPointsClassement + " points");
         }
     }
 
@@ -75,4 +76,20 @@ public class Classement {
         this.joueurs = classement;
     }
 
+
+    protected int obtenirClassementJoueur(Joueur joueur){
+        int classement=0;
+        do{
+            if(this.joueurs[classement]==null){
+                System.out.println("le joueur n'est pas classé");
+                return(-1);
+            }
+            if(this.joueurs[classement]==joueur){
+                return(classement+1);
+            }
+            classement++;
+        }while(classement<1000);
+        return(-1);
+    }
 }
+
