@@ -81,6 +81,14 @@ public class Set {
         newListeJeux[SizeArray] = newJeu;
         this.jeux = newListeJeux;
     }
+    /**
+     * 
+     * @param  numeroSet
+     * @param categorie
+     * @param matchAutomatique
+     * @param afficherDetailSet
+     * @return Joueur Vainqueur du Set
+     */
 
     public Joueur jouerSet(int numeroSet, CategorieMatch categorie, boolean matchAutomatique,boolean afficherDetailSet) {
         boolean setAutomatique = true;

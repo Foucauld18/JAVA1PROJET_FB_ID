@@ -21,7 +21,6 @@ public class Arbitre extends Personne {
 
     public void annoncerScoreMatch(Joueur joueur0, Joueur joueur1, int scoreJoueur0, int scoreJoueur1,
             Joueur vainqueurMatch, boolean parle) {
-             System.out.println("");
         if (parle == true) {// L'arbitre annonce
             if (vainqueurMatch != null) {
                 System.out.println("Vainqueur du Match " + vainqueurMatch.nomCourant);
@@ -40,7 +39,6 @@ public class Arbitre extends Personne {
 
     public void annoncerScoreSet(Joueur joueur0, Joueur joueur1, int scoreJoueur0, int scoreJoueur1,
             Joueur vainqueurSet, boolean parle) {
-            System.out.println("");
         if (parle == true) {// L'arbitre annonce
             if (vainqueurSet != null) {
                 System.out.println("Set " + vainqueurSet.nomCourant);

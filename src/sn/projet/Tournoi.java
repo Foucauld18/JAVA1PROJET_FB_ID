@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package sn.projet;
+
 import java.util.Scanner;
 
 import java.util.concurrent.ArrayBlockingQueue;
@@ -43,81 +44,232 @@ public class Tournoi {
         this.gagnante = null;
     }
 
-    public void jouerTournois(boolean automatiqueHomme, boolean automatiqueFemme) {  
+    public void jouerTournois(boolean automatiqueHomme, boolean automatiqueFemme) {
         iniTableauMatch();
-        int nbMatch=32;
-        int k=1;
-        NiveauMatch tours [] = {NiveauMatch.premierTour,NiveauMatch.deuxiemeTour,NiveauMatch.troisiemeTour,NiveauMatch.huitiemeFinal,NiveauMatch.quartFinal,NiveauMatch.demiFinal,NiveauMatch.Final};
-        while(k<8){
-            boolean modeAChange=false;
-            for(int i=0;i<nbMatch;i++){
+        int k = 1;
+
+        NiveauMatch tours[] = { NiveauMatch.premierTour, NiveauMatch.deuxiemeTour, NiveauMatch.troisiemeTour,
+                NiveauMatch.huitiemeFinal, NiveauMatch.quartFinal, NiveauMatch.demiFinal, NiveauMatch.Final };
+        while (k < 7) {
+            int debut;
+            int fin;
+            switch (tours[k]) {
+            case deuxiemeTour:
+                debut = 0;
+                fin = 32;
+                break;
+            case troisiemeTour:
+                debut = 64;
+                fin = 80;
+
+                break;
+            case huitiemeFinal:
+                debut = 96;
+                fin = 104;
+
+                break;
+            case quartFinal:
+                debut = 112;
+                fin = 116;
+
+                break;
+            case demiFinal:
+                debut = 120;
+                fin = 122;
+
+                break;
+            case Final:
+                debut = 124;
+                fin = 125;
+                break;
+            default :
+                debut = 126;
+                fin = 127;
                 
-                Match match = new Match(matchsHomme[i].jouerMatch(automatiqueHomme),matchsHomme[32+i].jouerMatch(automatiqueHomme),tours[k],arbitres[64%4]);
-                ajouterMatchHomme(match);
-                if(automatiqueHomme=false){
-                    System.out.println("Pour simmuler les autres match de "+tours[k]+"homme taper 'auto' sinon continuer");
+            
+            }
+
+            boolean modeAChangeHomme = false;
+            boolean mondeAchangeFemme = false;
+
+            int compteurbis = 0;
+            for (int i = debut; i < fin; i++) {
+                Joueur joueur1;
+                Joueur joueur2;
+                joueur1=matchsHomme[i].jouerMatch(automatiqueHomme);
+
+                if (automatiqueHomme == false) {
+                    System.out.println(
+                            "Pour simmuler les autres match de " + tours[k] + "homme taper 'auto' sinon continuer");
                     String commande = "";
                     Scanner keyboard = new Scanner(System.in);
                     commande = keyboard.nextLine();
-                    if (commande.equals("auto")) {//Simulation du tour
-                        automatiqueHomme=true;
-                        modeAChange=true;
-                    }//sinon on continue en mode manuelle
+                    if (commande.equals("auto")) {// Simulation du tour
+                        automatiqueHomme = true;
+                        modeAChangeHomme = true;
+                    } // sinon on continue en mode manuelle
                 }
-                Match matchfemme = new Match(matchsFemme[i].jouerMatch(automatiqueFemme),matchsFemme[32+i].jouerMatch(automatiqueFemme),tours[k],arbitres[64%4]);
-                ajouterMatchHomme(matchfemme);
-                if(automatiqueFemme=false){
-                    System.out.println("Pour simmuler les autres match de "+tours[k]+"femme taper 'auto' sinon continuer");
-                    String commandedeux = "";
-                    Scanner keyboarddeux = new Scanner(System.in);
-                    commandedeux = keyboarddeux.nextLine();
-                    if (commandedeux.equals("auto")) {//Simulation du tour
-                        automatiqueFemme=true;
-                        modeAChange=true;
-                    }//sinon on continue en mode manuelle
-                }
-            }
-            if(modeAChange==true){
-                automatiqueFemme=false;
-                automatiqueHomme=false;
-            }
-            if(automatiqueHomme==false){
-                System.out.println("Pour simmuler les autres tours des hommes taper 'auto' sinon continuer");
-                String commande = "";
-                Scanner keyboard = new Scanner(System.in);
-                commande = keyboard.nextLine();
-                if (commande.equals("auto")) {//Simulation du tour
-                    automatiqueHomme=true;
+               
+                joueur2=matchsHomme[fin + compteurbis].jouerMatch(automatiqueHomme);
 
+                if (automatiqueHomme == false) {
+                    System.out.println(
+                            "Pour simmuler les autres match de " + tours[k] + "homme taper 'auto' sinon continuer");
+                    String commande = "";
+                    Scanner keyboard = new Scanner(System.in);
+                    commande = keyboard.nextLine();
+                    if (commande.equals("auto")) {// Simulation du tour
+                        automatiqueHomme = true;
+                        modeAChangeHomme = true;
+                    } // sinon on continue en mode manuelle
                 }
-            }
-            if(automatiqueFemme==false){
-                System.out.println("Pour simmuler les autres tours des femmes taper 'auto' sinon continuer");
+                
+                Match match = new Match(joueur1,joueur2 , tours[k], arbitres[64 % 4]);
+                ajouterMatchHomme(match);
+                
+
+               joueur1 = matchsFemme[i].jouerMatch(automatiqueFemme);
+
+               if (automatiqueFemme == false) {
+                System.out.println(
+                        "Pour simmuler les autres match de " + tours[k] + "femme taper 'auto' sinon continuer");
                 String commandedeux = "";
                 Scanner keyboarddeux = new Scanner(System.in);
                 commandedeux = keyboarddeux.nextLine();
-                if (commandedeux.equals("auto")) {//Simulation du tour
-                    automatiqueFemme=true;
+                if (commandedeux.equals("auto")) {// Simulation du tour
+                    automatiqueFemme = true;
+                    mondeAchangeFemme = true ;
+                } // sinon on continue en mode manuelle
+            }
+               joueur2 = matchsFemme[fin + compteurbis].jouerMatch(automatiqueFemme);
+
+               if (automatiqueFemme == false) {
+                System.out.println(
+                        "Pour simmuler les autres match de " + tours[k] + "femme taper 'auto' sinon continuer");
+                String commandedeux = "";
+                Scanner keyboarddeux = new Scanner(System.in);
+                commandedeux = keyboarddeux.nextLine();
+                if (commandedeux.equals("auto")) {// Simulation du tour
+                    automatiqueFemme = true;
+                    mondeAchangeFemme = true ;
+                } // sinon on continue en mode manuelle
+            }
+                
+            Match matchfemme = new Match(joueur1,joueur2, tours[k], arbitres[64 % 4]);
+                ajouterMatchFemme(matchfemme);
+                
+                compteurbis++;
+                if(k==6){
+                    match.jouerMatch(automatiqueHomme);
+                    matchfemme.jouerMatch(automatiqueFemme);
+                }
+
+            }
+            System.out.println("");
+            System.out.print("--------" + tours[k - 1] + "--------");
+            afficherMatchTour(tours[k - 1]);
+            if(k==6){
+                System.out.println("");
+            System.out.print("--------" + tours[k] + "--------");
+            afficherMatchTour(tours[k]);
+            }
+
+            if (modeAChangeHomme == true) {
+                
+                automatiqueHomme = false;
+            } else if(mondeAchangeFemme == true){
+                automatiqueFemme = false;
+            }
+            if (automatiqueHomme == false) {
+                System.out.println("Pour simmuler la fin du tounois des hommes taper 'auto' sinon continuer");
+                String commande = "";
+                Scanner keyboard = new Scanner(System.in);
+                commande = keyboard.nextLine();
+                if (commande.equals("auto")) {// Simulation du tour
+                    automatiqueHomme = true;
+
+                }
+            }
+            if (automatiqueFemme == false) {
+                System.out.println("Pour simmuler la fin du tournois des femmes taper 'auto' sinon continuer");
+                String commandedeux = "";
+                Scanner keyboarddeux = new Scanner(System.in);
+                commandedeux = keyboarddeux.nextLine();
+                if (commandedeux.equals("auto")) {// Simulation du tour
+                    automatiqueFemme = true;
                 }
             }
 
-
-            nbMatch=nbMatch/2;
             k++;
         }
-        this.gagnant=this.matchsHomme[127].vainqueurMatch;
-        this.gagnante=this.matchsFemme[127].vainqueurMatch; 
+
+        this.gagnant=this.matchsHomme[126].vainqueurMatch;
+        this.gagnante=this.matchsFemme[126].vainqueurMatch;
 
     }
 
-    public void iniTableauMatch(){
-        for(int i=0;i<64;i++){
-            Match match = new Match(this.joueurs[i],this.joueurs[64+i],NiveauMatch.premierTour,arbitres[64%4]);
+    public void iniTableauMatch() {
+        for (int i = 0; i < 64; i++) {
+            Match match = new Match(this.joueurs[i], this.joueurs[64 + i], NiveauMatch.premierTour, arbitres[64 % 4]);
             ajouterMatchHomme(match);
-            Match matchfemme = new Match(this.joueuses[i],this.joueuses[64+i],NiveauMatch.premierTour,arbitres[64%4]);
+            Match matchfemme = new Match(this.joueuses[i], this.joueuses[64 + i], NiveauMatch.premierTour,
+                    arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
         }
-       
+
+    }
+
+    public void afficherMatchTour(NiveauMatch tour) {
+        int debut;
+        int fin;
+        switch (tour) {
+        case premierTour:
+            debut = 0;
+            fin = 64;
+            break;
+        case deuxiemeTour:
+            debut = 64;
+            fin = 96;
+
+            break;
+        case troisiemeTour:
+            debut = 96;
+            fin = 112;
+
+            break;
+        case huitiemeFinal:
+            debut = 112;
+            fin = 120;
+
+            break;
+        case quartFinal:
+            debut = 120;
+            fin = 124;
+
+            break;
+        case demiFinal:
+            debut = 124;
+            fin = 126;
+            break;
+        case Final:
+            debut = 126;
+            fin = 127;
+            break;
+        default:
+            debut = 0;
+            fin = 0;
+            System.out.println("Le Match n'a pas pu etre ajouté");
+        }
+        do {
+            if (this.matchsHomme[debut] == null) {
+                System.out.println("here" + matchsHomme[debut - 1].joueurs[0].nomNaissance);
+                break;
+            }
+            System.out.println("");
+            this.matchsHomme[debut].afficherScoreMatch();
+            debut++;
+        } while (debut < fin);
+        System.out.println("");
     }
 
     public void ajouterMatchHomme(Match match) {
@@ -345,19 +497,19 @@ public class Tournoi {
         this.annee = annee;
     }
 
-    public Joueuse getGagnante() {
+    public Joueur getGagnante() {
         return this.gagnante;
     }
 
-    public void setGagnante(Joueuse gagnante) {
+    public void setGagnante(Joueur gagnante) {
         this.gagnante = gagnante;
     }
 
-    public JoueurHomme getGagnant() {
+    public Joueur getGagnant() {
         return this.gagnant;
     }
 
-    public void setGagnant(JoueurHomme gagnant) {
+    public void setGagnant(Joueur gagnant) {
         this.gagnant = gagnant;
     }
 }

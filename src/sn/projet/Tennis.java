@@ -29,17 +29,26 @@ public class Tennis {
         
         monfils.ajouterStatJoueur();
         tsonga.ajouterStatJoueur();
-
-    
         Tournoi rolandgarros = new Tournoi("Paris","Terre Battue","2021");
-        rolandgarros.ajouterJoueurHomme(monfils);
-        System.out.println(rolandgarros.getJoueurHommes());
-        // for(int i=0;i<12;i++){
-        //     System.out.println(rolandgarros.getJoueurHommes()[i].nomCourant);
-        // }
-        rolandgarros.afficherJoueurs();
-        //System.out.println(rolandgarros.getJoueurHommes());
 
+        for(int i=0;i<128;i++){
+            JoueurHomme joueur1 = new JoueurHomme("Monfils"+String.valueOf(i), "Gael", "gab", LocalDate.of(1995, 1, 5),"Paris", "Français", i, 70, Main.Droite, "Nike", "Amelie", Couleur.Bleu);
+            Joueuse joueuse1 = new Joueuse("anjndsi", "Williams","Serena", "sw", LocalDate.of(1994, 1, 5), "New-york","Américaine", i, 69, Main.Gauche, "Adidas", "dad", Couleur.Marron);
+            joueur1.ajouterStatJoueur();
+            joueuse1.ajouterStatJoueur();
+            rolandgarros.ajouterJoueurHomme(joueur1);
+            rolandgarros.ajouterJoueuse(joueuse1);
+        }
+        for(int i=0;i<16;i++){
+            Arbitre arbitre1 = new Arbitre("Bergerault", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz", "Francaise", i, 70);
+            rolandgarros.ajouterArbitre(arbitre1);
+        }
+
+        rolandgarros.jouerTournois(false, true);
+        System.out.println("Vainqueur "+rolandgarros.gagnant+" vainqueuse "+rolandgarros.getGagnante());
+
+
+        
 
        
 

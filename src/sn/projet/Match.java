@@ -200,13 +200,12 @@ public class Match {
                 }
 
             }
-            if(matchAutomatique==true){//si le match est simulation est-ce que l'on affiche le détait
+            if(matchAutomatique==true && tournoisAutomatique==false){//si le match est simulation est-ce que l'on affiche le détait
                 String commandeDeux = "";
                 System.out.println("Pour afficher le detail du match taper afficher");
                 Scanner keyboardDeux = new Scanner(System.in);
                 commandeDeux = keyboardDeux.nextLine();
                 if (commandeDeux.equals("afficher")){
-                    System.out.println("passage if");
                     afficherDetailMatch=true;//oui on affiche les details
                 }else{
                     afficherDetailMatch=false;//non on n'affiche pas les détails
@@ -343,6 +342,9 @@ public class Match {
                 System.out.print(sets[i].scoreSetJoueur0+"|");
                 
             }
+            if(this.joueurs[0]==this.vainqueurMatch){
+                System.out.print("V");
+            }
             System.out.println("");
             System.out.print(this.joueurs[1].nomCourant);
             for(int i=0;i<longeurNom0-longeurNom1;i++){//permet d'aligner les scores
@@ -352,6 +354,10 @@ public class Match {
             for(int i=0;i<nbSet;i++){
                 System.out.print(sets[i].scoreSetJoueur1+"|");
             }
+            if(this.joueurs[1]==this.vainqueurMatch){
+                System.out.print("V");
+            }
+           
         } else{
             System.out.println("");
             System.out.print(this.joueurs[0].nomCourant);
@@ -364,11 +370,17 @@ public class Match {
                 System.out.print(sets[i].scoreSetJoueur0+"|");
                 
             }
+            if(this.joueurs[0]==this.vainqueurMatch){
+                System.out.print("V");
+            }
             System.out.println("");
             System.out.print(this.joueurs[1].nomCourant+" |");
             
             for(int i=0;i<nbSet;i++){
                 System.out.print(sets[i].scoreSetJoueur1+"|");
+            }
+            if(this.joueurs[1]==this.vainqueurMatch){
+                System.out.print("V");
             }
         }
          
