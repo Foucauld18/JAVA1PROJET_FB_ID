@@ -3,6 +3,8 @@ package sn.projet;
 public interface SpectatorInterface
 {
 
+    public void ajouterUnBillet(Billet billet);
+
     public Vetement getVetement();
 
     public Couleur getCouleur();
@@ -15,13 +17,10 @@ public interface SpectatorInterface
 
     /*public void acheterBillet(int prix, String tribune, int place);*/
 
-    public void applaudir();
+    public void applaudir(boolean cacher);
 
-    public void crier();
-
-    public void huer();
-
-    public void dormir();
+    public void crier(boolean cacher);
+    public void repondreAuCri(boolean cacher);
     
 
 }

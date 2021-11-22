@@ -13,12 +13,12 @@ import java.time.LocalDate;
  */
 public class SpectateurTournoi extends Personne implements SpectatorInterface{
     
-    protected Billet [] billet;
+    protected Billet [] billets;
     protected Vetement vetement;
     protected Couleur couleur;
 
     /*
-    Constructeur Spectateur qui désigne UNE SPECTATRICE
+    Constructeur 
     */
 
     public SpectateurTournoi(String nomNaissance, String prenom,
@@ -31,20 +31,24 @@ public class SpectateurTournoi extends Personne implements SpectatorInterface{
 
     }
 
-    /*
-    Constructeur Spectateur qui désigne UN SPECTATEUR
-    */
-
-    public SpectateurTournoi(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
-            LocalDate dateDeces, String nationalite, int taille, int poids) {
-
-        super(nomNaissance, prenom, surnom, dateNaissance,
-                lieuNaissance, dateDeces, nationalite, taille, poids);
-        
-
-    }
+  
     
-        
+    public void ajouterUnBillet(Billet billet) {
+        Billet[] listeBillets = this.billets;
+        int SizeArray = 0, i;
+        try {
+            SizeArray = listeBillets.length;
+        } catch (Exception e) {
+            SizeArray = 0;
+        }
+
+        Billet [] newListeBillets = new Billet[SizeArray + 1];
+        for (i = 0; i < SizeArray; i++) {
+            newListeBillets[i] = listeBillets[i];
+        }
+        newListeBillets[SizeArray] = billet;
+        this.billets = newListeBillets;
+    }    
     
     public Vetement getVetement() 
     { 
@@ -66,29 +70,33 @@ public class SpectateurTournoi extends Personne implements SpectatorInterface{
     public void setCouleur(Couleur couleur) {
         this.couleur = couleur;
     }
-    /*
-    public void acheterBillet(int prix, String tribune, int place) {
-        this.billet = new Billet(prix, tribune, place);
-    }*/
-
-    public void applaudir() 
+    
+    
+    public void applaudir(boolean cacher) 
     {
-        System.out.println("CLAP CLAP CLAP !!!!!!!!");
+        if(cacher==true){
+            System.out.println("CLAP CLAP CLAP !!!!!!!!");
+        }
+        
     }
 
-    public void crier() 
+    public void crier(boolean cacher) 
     {
-        System.out.println("ALLEZ !!!");
+        if(cacher==false){
+            System.out.println("Po po po po po popopo po lalala");
+        }
+        
+        
+
+    }
+    public void repondreAuCri(boolean cacher){
+        if(cacher==false){
+            System.out.println("Holllezzzz");
+        }
     }
 
-    public void huer() 
-    {
-        System.out.println("ouuuuuuuuuuuuuuuuuuuuhhhhhhhhhhhh !!!!! ");
-    }
 
-    public void dormir() 
-    {
-        System.out.println("Bonne nuit ............");
-    }
+
+    
     
 }

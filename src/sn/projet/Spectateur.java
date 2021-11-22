@@ -19,7 +19,7 @@ public class Spectateur extends SpectateurTournoi {
 
     public Spectateur(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
     String nationalite, int taille, int poids, Couleur couleur){
-        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, dateNaissance, nationalite, taille, poids);
+        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids);
         this.couleur=couleur;
         this.vetement = vetement.Chemise;
         this.nomCourant=nomNaissance;

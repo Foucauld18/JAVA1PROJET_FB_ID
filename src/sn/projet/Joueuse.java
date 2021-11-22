@@ -39,5 +39,40 @@ public class Joueuse extends Joueur implements SpectatorInterface{
         // TODO Auto-generated method stub
         
     }
+
+
+    @Override
+    public void applaudir(boolean cacher) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public void crier(boolean cacher) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public void repondreAuCri(boolean cacher) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+	@Override
+	public void ajouterUnBillet(Billet billet) {
+		// TODO Auto-generated method stub
+		
+	}
+
+    public void afficherInformationsJoueuse(int classement){
+        System.out.println("|Nom courrant: "+getNomCourant());
+        afficherInformationsJoueur(classement);
+        System.out.println("|Couleur du short: "+getVetement());  
+
+    }
     
 }

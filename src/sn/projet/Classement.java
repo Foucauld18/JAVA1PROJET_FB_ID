@@ -49,7 +49,8 @@ public class Classement {
         }
 
         for (i = 0; i < SizeArray; i++) {
-            System.out.println(classement[i].nomCourant + " " + classement[i].nbPointsClassement + " points");
+            
+            System.out.println(i+1+"-  " +classement[i].nomCourant + " " + classement[i].nbPointsClassement + " points");
         }
     }
 
@@ -62,7 +63,6 @@ public class Classement {
         } catch (Exception e) {
             sizeArray = 0;
         }
-        System.out.println(sizeArray);
         for (int i = 1; i < sizeArray; i++) {
             Joueur cle = classement[i];
             int j = i - 1;
@@ -75,4 +75,25 @@ public class Classement {
         this.joueurs = classement;
     }
 
+
+    protected int obtenirClassementJoueur(Joueur joueur){
+        if(joueur.nomNaissance.equals("Inconnu Homme")||joueur.nomNaissance.equals("Inconnu Femme")){
+            System.out.println("Ce joueur n'existe pas!");
+        } else{
+            int classement=0;
+            do{
+                if(this.joueurs[classement]==null){
+                    System.out.println("le joueur n'est pas classé");
+                    return(-1);
+                }
+                if(this.joueurs[classement]==joueur){
+                    return(classement+1);
+                }
+                classement++;
+            }while(classement<1000);
+        }
+        
+        return(-1);
+    }
 }
+
