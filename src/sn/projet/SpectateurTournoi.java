@@ -71,11 +71,7 @@ public class SpectateurTournoi extends Personne implements SpectatorInterface{
         this.couleur = couleur;
     }
     
-    public void acheterBillet(Billet billet) {
-        billet.setTitulaire(this.nomCourant+" "+this.prenom);
-        ajouterUnBiller(billet);
-    }
-
+    
     public void applaudir(boolean cacher) 
     {
         if(cacher==true){

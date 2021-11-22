@@ -407,7 +407,7 @@ public class Match {
         }
          
     }
-    public void ajouterUnBillet(SpectateurTournoi spectateur) {
+    public void ajouterUnSpectateur(SpectateurTournoi spectateur) {
         SpectateurTournoi[] listeSpectateurs = this.spectateurs;
         int SizeArray = 0, i;
         try {
@@ -440,4 +440,20 @@ public class Match {
         this.arbitre=arbitre;
 
     }
+    public void ajouterUnBillet(Billet billet) {
+        Billet[] listeBillets = this.billets;
+        int SizeArray = 0, i;
+        try {
+            SizeArray = listeBillets.length;
+        } catch (Exception e) {
+            SizeArray = 0;
+        }
+
+        Billet [] newListeBillets = new Billet[SizeArray + 1];
+        for (i = 0; i < SizeArray; i++) {
+            newListeBillets[i] = listeBillets[i];
+        }
+        newListeBillets[SizeArray] = billet;
+        this.billets = newListeBillets;
+    }   
 }
