@@ -63,7 +63,6 @@ public class Classement {
         } catch (Exception e) {
             sizeArray = 0;
         }
-        System.out.println(sizeArray);
         for (int i = 1; i < sizeArray; i++) {
             Joueur cle = classement[i];
             int j = i - 1;

@@ -47,9 +47,9 @@ public class Tennis {
         }
 
         rolandgarros.jouerTournois(true, true);
-        rolandgarros.afficherMatchTournoi();
+        //rolandgarros.afficherMatchTournoi();
         System.out.println("Vainqueur "+rolandgarros.gagnant.getNomCourant()+" vainqueuse "+rolandgarros.getGagnante().getNomCourant());
-        Classement.ATP.afficherClassement();
+        
         System.out.println("Classement Vainqueur ");
         System.out.println(Classement.ATP.obtenirClassementJoueur(rolandgarros.gagnant));
         

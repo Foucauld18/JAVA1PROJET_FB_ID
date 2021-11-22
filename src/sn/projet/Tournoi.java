@@ -6,6 +6,7 @@
 package sn.projet;
 
 import java.util.Scanner;
+import java.time.LocalDate;
 
 import java.util.concurrent.ArrayBlockingQueue;
 
@@ -45,9 +46,12 @@ public class Tournoi {
     }
 
     public void jouerTournois(boolean automatiqueHomme, boolean automatiqueFemme) {
+        
         iniTableauMatch();
+       
         int k = 1;
-
+        int compteurMatch=64;
+        
         NiveauMatch tours[] = { NiveauMatch.premierTour, NiveauMatch.deuxiemeTour, NiveauMatch.troisiemeTour,
                 NiveauMatch.huitiemeFinal, NiveauMatch.quartFinal, NiveauMatch.demiFinal, NiveauMatch.Final };
         while (k < 7) {
@@ -90,12 +94,15 @@ public class Tournoi {
 
             boolean modeAChangeHomme = false;
             boolean mondeAchangeFemme = false;
-
             int compteurbis = 0;
             for (int i = debut; i < fin; i++) {
+                
                 Joueur joueur1;
                 Joueur joueur2;
+                
                 joueur1 = matchsHomme[i].jouerMatch(automatiqueHomme);
+                
+                
 
                 if (automatiqueHomme == false) {
                     System.out.println(
@@ -122,9 +129,9 @@ public class Tournoi {
                         modeAChangeHomme = true;
                     } // sinon on continue en mode manuelle
                 }
-
-                Match match = new Match(joueur1, joueur2, tours[k], arbitres[64 % 4]);
-                ajouterMatchHomme(match);
+                this.matchsHomme[compteurMatch].setJoueursMatch(joueur1, joueur2);
+                this.matchsHomme[compteurMatch].setArbitre(arbitres[i%16]);
+                
 
                 joueur1 = matchsFemme[i].jouerMatch(automatiqueFemme);
 
@@ -153,15 +160,16 @@ public class Tournoi {
                     } // sinon on continue en mode manuelle
                 }
 
-                Match matchfemme = new Match(joueur1, joueur2, tours[k], arbitres[64 % 4]);
-                ajouterMatchFemme(matchfemme);
+                this.matchsFemme[compteurMatch].setJoueursMatch(joueur1, joueur2);
+                this.matchsFemme[compteurMatch].setArbitre(arbitres[i%16]);
 
                 compteurbis++;
-                if (k == 6) {
-                    match.jouerMatch(automatiqueHomme);
-                    matchfemme.jouerMatch(automatiqueFemme);
+                if (k == 6) {//Jouer les finales
+                    matchsHomme[126].jouerMatch(automatiqueHomme);
+                    matchsFemme[126].jouerMatch(automatiqueFemme);
                 }
-
+                
+                compteurMatch++;
             }
          
 
@@ -190,8 +198,12 @@ public class Tournoi {
                     automatiqueFemme = true;
                 }
             }
-
+            if(k==1){
+                afficherMatchTour(tours[0],"homme");
+            }
+            afficherMatchTour(tours[k],"homme");
             k++;
+            
         }
 
         this.gagnant = this.matchsHomme[126].vainqueurMatch;
@@ -202,7 +214,7 @@ public class Tournoi {
     public void iniTableauMatch() {
 
         for (int i = 0; i < 64; i++) {
-            Match match = new Match(this.joueurs[i], this.joueurs[64 + i], NiveauMatch.premierTour, arbitres[64 % 4]);
+            Match match = new Match(this.joueurs[i], this.joueurs[64 + i], NiveauMatch.premierTour, arbitres[i % 16]);
             ajouterMatchHomme(match);
             Match matchfemme = new Match(this.joueuses[i], this.joueuses[64 + i], NiveauMatch.premierTour,
                     arbitres[64 % 4]);
@@ -212,45 +224,39 @@ public class Tournoi {
         Joueuse joueuseInconnu = new Joueuse(" ", "Inconnu Femme"," ", " ", LocalDate.of(1994, 1, 5), " "," ", 0, 0, Main.Gauche, " ", " ", Couleur.Marron);
 
         for (int i = 0; i < 32; i++) {
-            Match match = new Match(this.joueurs[i], this.joueurs[64 + i], NiveauMatch.premierTour, arbitres[64 % 4]);
+            Match match = new Match(joueurInconnu, joueurInconnu, NiveauMatch.deuxiemeTour, arbitres[64 % 4]);
             ajouterMatchHomme(match);
-            Match matchfemme = new Match(this.joueuses[i], this.joueuses[64 + i], NiveauMatch.premierTour,
-                    arbitres[64 % 4]);
+            Match matchfemme = new Match(joueuseInconnu,joueuseInconnu, NiveauMatch.deuxiemeTour,arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
         }
         for (int i = 0; i < 16; i++) {
-            Match match = new Match(this.joueurs[i], this.joueurs[64 + i], NiveauMatch.premierTour, arbitres[64 % 4]);
+            Match match = new Match(joueurInconnu, joueurInconnu, NiveauMatch.troisiemeTour, arbitres[64 % 4]);
             ajouterMatchHomme(match);
-            Match matchfemme = new Match(this.joueuses[i], this.joueuses[64 + i], NiveauMatch.premierTour,
-                    arbitres[64 % 4]);
+            Match matchfemme = new Match(joueuseInconnu,joueuseInconnu, NiveauMatch.troisiemeTour,arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
         }
         for (int i = 0; i < 8; i++) {
-            Match match = new Match(this.joueurs[i], this.joueurs[64 + i], NiveauMatch.premierTour, arbitres[64 % 4]);
+            Match match = new Match(joueurInconnu, joueurInconnu, NiveauMatch.huitiemeFinal, arbitres[64 % 4]);
             ajouterMatchHomme(match);
-            Match matchfemme = new Match(this.joueuses[i], this.joueuses[64 + i], NiveauMatch.premierTour,
-                    arbitres[64 % 4]);
+            Match matchfemme = new Match(joueuseInconnu,joueuseInconnu, NiveauMatch.huitiemeFinal,arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
         }
         for (int i = 0; i < 4; i++) {
-            Match match = new Match(this.joueurs[i], this.joueurs[64 + i], NiveauMatch.premierTour, arbitres[64 % 4]);
+            Match match = new Match(joueurInconnu, joueurInconnu, NiveauMatch.quartFinal, arbitres[64 % 4]);
             ajouterMatchHomme(match);
-            Match matchfemme = new Match(this.joueuses[i], this.joueuses[64 + i], NiveauMatch.premierTour,
-                    arbitres[64 % 4]);
+            Match matchfemme = new Match(joueuseInconnu,joueuseInconnu, NiveauMatch.quartFinal,arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
         }
         for (int i = 0; i < 2; i++) {
-            Match match = new Match(this.joueurs[i], this.joueurs[64 + i], NiveauMatch.premierTour, arbitres[64 % 4]);
+            Match match = new Match(joueurInconnu, joueurInconnu, NiveauMatch.demiFinal,arbitres[64 % 4]);
             ajouterMatchHomme(match);
-            Match matchfemme = new Match(this.joueuses[i], this.joueuses[64 + i], NiveauMatch.premierTour,
-                    arbitres[64 % 4]);
+            Match matchfemme = new Match(joueuseInconnu,joueuseInconnu, NiveauMatch.demiFinal,arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
         }
 
-        Match match = new Match(this.joueurs[i], this.joueurs[64 + i], NiveauMatch.premierTour, arbitres[64 % 4]);
+        Match match = new Match(joueurInconnu, joueurInconnu, NiveauMatch.Final, arbitres[64 % 4]);
             ajouterMatchHomme(match);
-        Match matchfemme = new Match(this.joueuses[i], this.joueuses[64 + i], NiveauMatch.premierTour,
-                arbitres[64 % 4]);
+            Match matchfemme = new Match(joueuseInconnu,joueuseInconnu, NiveauMatch.Final,arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
 
     }

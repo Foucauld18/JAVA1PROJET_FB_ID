@@ -65,6 +65,8 @@ public class Match {
             joueur0 = joueurb;
             joueur1 = joueura;
         }
+        joueur0.ajouterStatJoueur();
+        joueur1.ajouterStatJoueur();
         this.joueurs = new Joueur[] { joueur0, joueur1 };
         this.niveauMatch = niveauMatch;
         this.scoreJoueur0 = 0;
@@ -421,4 +423,21 @@ public class Match {
         newListeSpectateurs[SizeArray] = spectateur;
         this.spectateurs = newListeSpectateurs;
     } 
+    protected void setJoueursMatch(Joueur joueur0, Joueur joueur1){
+        joueur0.ajouterStatJoueur();
+        joueur1.ajouterStatJoueur();
+        if(this.vainqueurMatch==null && this.scoreJoueur0==0 && this.scoreJoueur1==0){
+            this.joueurs[0]=joueur0;
+            this.joueurs[1]=joueur1;
+        }else{
+            System.out.println(this.scoreJoueur0);
+            System.out.println(this.scoreJoueur1);
+            System.out.println("Ce n'est pas possible de changer les joueurs d'un match en cours ou terminé ");
+        }
+        
+    }
+    protected void setArbitre(Arbitre arbitre){
+        this.arbitre=arbitre;
+
+    }
 }
