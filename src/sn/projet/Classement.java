@@ -77,17 +77,22 @@ public class Classement {
 
 
     protected int obtenirClassementJoueur(Joueur joueur){
-        int classement=0;
-        do{
-            if(this.joueurs[classement]==null){
-                System.out.println("le joueur n'est pas classé");
-                return(-1);
-            }
-            if(this.joueurs[classement]==joueur){
-                return(classement+1);
-            }
-            classement++;
-        }while(classement<1000);
+        if(joueur.nomNaissance.equals("Inconnu Homme")||joueur.nomNaissance.equals("Inconnu Femme")){
+            System.out.println("Ce joueur n'existe pas!");
+        } else{
+            int classement=0;
+            do{
+                if(this.joueurs[classement]==null){
+                    System.out.println("le joueur n'est pas classé");
+                    return(-1);
+                }
+                if(this.joueurs[classement]==joueur){
+                    return(classement+1);
+                }
+                classement++;
+            }while(classement<1000);
+        }
+        
         return(-1);
     }
 }

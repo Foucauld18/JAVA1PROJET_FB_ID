@@ -78,6 +78,7 @@ public class Match {
         Statistiques statJoueur1Match = new Statistiques();
         Statistiques statMatch = new Statistiques();
         this.statistiques = new Statistiques[] { statJoueur0Match, statJoueur1Match, statMatch };
+        
 
     }
 
@@ -456,4 +457,33 @@ public class Match {
         newListeBillets[SizeArray] = billet;
         this.billets = newListeBillets;
     }   
+    public void afficherInfomationMatch(){
+        if(this.vainqueurMatch!=null){//le match est joué et termine
+            System.out.println("");
+            System.out.println("---Résultat du Match---");
+            afficherScoreMatch(0);
+            System.out.println("");
+            System.out.println("---Stat Match---");
+            this.statistiques[2].afficherStat();
+            System.out.println("");
+            System.out.println("---Stat du match de "+joueurs[0].nomCourant+"---n°1");
+            this.statistiques[0].afficherStat();
+            System.out.println("");
+            System.out.println("---Stat du match de "+joueurs[1].nomCourant+"---n°2");
+            this.statistiques[1].afficherStat();
+            
+
+
+        } else{
+            System.out.println("");
+            System.out.println("---Résultat du Match---");
+            afficherScoreMatch(0);
+            System.out.println("le match n'a pas encore eu lieu");
+            System.out.println("Il se joura entre 1) "+joueurs[0].nomCourant+" et 2) "+joueurs[0].nomCourant);
+
+        }
+        System.out.println("");
+        System.out.println("");
+    }
 }
+

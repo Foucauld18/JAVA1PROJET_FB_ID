@@ -3,8 +3,8 @@ package sn.projet;
 public interface SpectatorInterface
 {
 
-    public void ajouterUnBiller(Billet billet);
-    
+    public void ajouterUnBillet(Billet billet);
+
     public Vetement getVetement();
 
     public Couleur getCouleur();

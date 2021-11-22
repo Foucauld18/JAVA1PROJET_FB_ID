@@ -74,10 +74,19 @@ public class JoueurHomme extends Joueur implements SpectatorInterface{
     }
 
     @Override
-    public void ajouterUnBiller(Billet billet) {
+    public void ajouterUnBillet(Billet billet) {
         // TODO Auto-generated method stub
         
     }
+
+    public void afficherInformationsJoueurHomme(int classement){
+        System.out.println("|Nom courrant: "+getNomCourant());
+        afficherInformationsJoueur(classement);
+        System.out.println("|Couleur du short: "+getVetement());  
+
+    }
+
+    
 
    
     

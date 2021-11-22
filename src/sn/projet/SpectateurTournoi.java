@@ -97,10 +97,6 @@ public class SpectateurTournoi extends Personne implements SpectatorInterface{
 
 
 
-    @Override
-    public void ajouterUnBiller(Billet billet) {
-        // TODO Auto-generated method stub
-        
-    }
+    
     
 }

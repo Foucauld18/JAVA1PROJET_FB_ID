@@ -7,7 +7,7 @@ package sn.projet;
 
 import java.util.Scanner;
 import java.time.LocalDate;
-
+import java.time.LocalDateTime;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
@@ -16,6 +16,7 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public class Tournoi {
     protected Match matchsHomme[];
+    protected String nomTournoi;
     protected Match matchsFemme[];
     protected Joueuse[] joueuses;
     protected JoueurHomme[] joueurs;
@@ -27,9 +28,11 @@ public class Tournoi {
     protected String annee;
     protected Joueur gagnante;
     protected Joueur gagnant;
+    protected Billetterie billetterie;
 
     /* Constructor */
-    public Tournoi(String ville, String surface, String annee) {
+    public Tournoi(String nomTournoi,String ville, String surface, String annee) {
+        this.nomTournoi=nomTournoi;
         this.surface = surface;
         this.ville = ville;
         this.annee = annee;
@@ -59,7 +62,7 @@ public class Tournoi {
             int fin;
             switch (tours[k]) {
             case deuxiemeTour:
-                debut = 0;
+                debut = 0 ;
                 fin = 32;
                 break;
             case troisiemeTour:
@@ -220,8 +223,8 @@ public class Tournoi {
                     arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
         }
-        JoueurHomme joueurInconnu= new JoueurHomme("Inconnu Homme", " ", " ", LocalDate.of(1994, 1, 5)," ",  " ", 0, 0, Main.Droite, " ", " ", Couleur.Vert);
-        Joueuse joueuseInconnu = new Joueuse(" ", "Inconnu Femme"," ", " ", LocalDate.of(1994, 1, 5), " "," ", 0, 0, Main.Gauche, " ", " ", Couleur.Marron);
+        JoueurHomme joueurInconnu= new JoueurHomme("Inconnu Homme", " ", " ", LocalDate.of(1994, 1, 5)," ",  " ", 0 , 0 , Main.Droite, " ", " ", Couleur.Vert);
+        Joueuse joueuseInconnu = new Joueuse(" ", "Inconnu Femme"," ", " ", LocalDate.of(1994, 1, 5), " "," ", 0 , 0 , Main.Gauche, " ", " ", Couleur.Marron);
 
         for (int i = 0; i < 32; i++) {
             Match match = new Match(joueurInconnu, joueurInconnu, NiveauMatch.deuxiemeTour, arbitres[64 % 4]);
@@ -235,19 +238,19 @@ public class Tournoi {
             Match matchfemme = new Match(joueuseInconnu,joueuseInconnu, NiveauMatch.troisiemeTour,arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
         }
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0 ; i < 8; i++) {
             Match match = new Match(joueurInconnu, joueurInconnu, NiveauMatch.huitiemeFinal, arbitres[64 % 4]);
             ajouterMatchHomme(match);
             Match matchfemme = new Match(joueuseInconnu,joueuseInconnu, NiveauMatch.huitiemeFinal,arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
         }
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0 ; i < 4; i++) {
             Match match = new Match(joueurInconnu, joueurInconnu, NiveauMatch.quartFinal, arbitres[64 % 4]);
             ajouterMatchHomme(match);
             Match matchfemme = new Match(joueuseInconnu,joueuseInconnu, NiveauMatch.quartFinal,arbitres[64 % 4]);
             ajouterMatchFemme(matchfemme);
         }
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0 ; i < 2; i++) {
             Match match = new Match(joueurInconnu, joueurInconnu, NiveauMatch.demiFinal,arbitres[64 % 4]);
             ajouterMatchHomme(match);
             Match matchfemme = new Match(joueuseInconnu,joueuseInconnu, NiveauMatch.demiFinal,arbitres[64 % 4]);
@@ -260,23 +263,42 @@ public class Tournoi {
             ajouterMatchFemme(matchfemme);
 
     }
-    public void afficherMatchTournoi(){
+ 
+    public void afficherMatchTournoi(String genre) {
         NiveauMatch tours[] = { NiveauMatch.premierTour, NiveauMatch.deuxiemeTour, NiveauMatch.troisiemeTour,
-            NiveauMatch.huitiemeFinal, NiveauMatch.quartFinal, NiveauMatch.demiFinal, NiveauMatch.Final };
-        
-            for(int i=0;i<7;i++){
-            System.out.println("");
-            System.out.println("--------------"+tours[i]+"--------------");
-            afficherMatchTour(tours[i],"homme");
-            }
-            
-            for(int i=0;i<7;i++){
+                NiveauMatch.huitiemeFinal, NiveauMatch.quartFinal, NiveauMatch.demiFinal, NiveauMatch.Final };
+
+        if (genre.equals("h")) {//afficher hommes
+            for (int i = 0 ; i < 7; i++) {
                 System.out.println("");
-                System.out.println("--------------"+tours[i]+"--------------");
-                afficherMatchTour(tours[i],"femme");
+                System.out.println("-----------------" + tours[i] + "Hommes" + "-----------------");
+                afficherMatchTour(tours[i], "homme");
+            }
+        } else if (genre.equals("f")) {//afficher femmes
+            for (int i = 0 ; i < 7; i++) {
+                System.out.println("");
+                System.out.println("-----------------" + tours[i] + "Femmes" + "-----------------");
+                afficherMatchTour(tours[i], "femme");
+            }
+        } else {
+            for (int i = 0 ; i < 7; i++) {//afficher les deux
+                System.out.println("");
+                System.out.println("-----------------" + tours[i] + "Hommes" + "-----------------");
+                afficherMatchTour(tours[i], "homme");
+            }
+            for (int i = 0 ; i < 7; i++) {
+                System.out.println("");
+                System.out.println("-----------------" + tours[i] + "Femmes" + "-----------------");
+                afficherMatchTour(tours[i], "femme");
+            }
         }
 
     }
+    /**
+     * @param tour
+     * @param categorie homme , femme ou autre
+     * @return affiche les match du tours homme,femme ou les deux
+     */
 
     public void afficherMatchTour(NiveauMatch tour, String categorie ) {
         int debut;
@@ -284,7 +306,7 @@ public class Tournoi {
         switch (tour) {
         case premierTour:
         System.out.println("");
-            debut = 0;
+            debut = 0 ;
             fin = 64;
             break;
         case deuxiemeTour:
@@ -314,8 +336,8 @@ public class Tournoi {
            
             break;
         default:
-            debut = 0;
-            fin = 0;
+            debut = 0 ;
+            fin = 0 ;
             System.out.println("Le Match n'a pas pu etre ajouté");
         }
         int numeroMatch=1;
@@ -394,7 +416,7 @@ public class Tournoi {
         int fin;
         switch (match.niveauMatch) {
         case premierTour:
-            debut = 0;
+            debut = 0 ;
             fin = 64;
             break;
         case deuxiemeTour:
@@ -426,8 +448,8 @@ public class Tournoi {
             fin = 127;
             break;
         default:
-            debut = 0;
-            fin = 0;
+            debut = 0 ;
+            fin = 0 ;
             System.out.println("Le Match n'a pas pu etre ajouté");
         }
 
@@ -446,7 +468,7 @@ public class Tournoi {
         int fin;
         switch (match.niveauMatch) {
         case premierTour:
-            debut = 0;
+            debut = 0 ;
             fin = 64;
             break;
         case deuxiemeTour:
@@ -478,8 +500,8 @@ public class Tournoi {
             fin = 127;
             break;
         default:
-            debut = 0;
-            fin = 0;
+            debut = 0 ;
+            fin = 0 ;
             System.out.println("Le Match n'a pas pu etre ajouté");
         }
 
@@ -494,7 +516,7 @@ public class Tournoi {
     };
 
     public void ajouterArbitre(Arbitre arbitre) {
-        int i = 0;
+        int i = 0 ;
         do {
             if (this.arbitres[i] == null) {
                 this.arbitres[i] = arbitre;
@@ -509,7 +531,7 @@ public class Tournoi {
     };
 
     public void ajouterJoueurHomme(JoueurHomme joueur) {
-        int i = 0;
+        int i = 0 ;
         do {
             if (this.joueurs[i] == null) {
                 this.joueurs[i] = joueur;
@@ -524,7 +546,7 @@ public class Tournoi {
     };
 
     public void ajouterJoueuse(Joueuse joueuse) {
-        int i = 0;
+        int i = 0 ;
         do {
             if (this.joueuses[i] == null) {
                 this.joueuses[i] = joueuse;
@@ -539,9 +561,9 @@ public class Tournoi {
     };
 
     public void afficherJoueurs() {
-        for (int i = 0; i < 128; i++) {
+        for (int i = 0 ; i < 128; i++) {
             try {
-                System.out.println(this.joueurs[i].nomCourant);
+                System.out.println(i+1+"- "+this.joueurs[i].prenom+" "+this.joueurs[i].nomCourant);
             } catch (Exception e) {
                 break;
             }
@@ -549,9 +571,9 @@ public class Tournoi {
     }
 
     public void afficherJoueuses() {
-        for (int i = 0; i < 128; i++) {
+        for (int i = 0 ; i < 128; i++) {
             try {
-                System.out.println(this.joueuses[i].nomCourant);
+                System.out.println(i+1+"- "+this.joueuses[i].prenom+" "+this.joueuses[i].nomCourant);
             } catch (Exception e) {
                 break;
             }
@@ -629,4 +651,395 @@ public class Tournoi {
     public void setGagnant(Joueur gagnant) {
         this.gagnant = gagnant;
     }
+
+    public void setBilletterieTournoi(Billetterie billetterie){
+        this.billetterie=billetterie;
+
+    }
+
+    public Match selectionnerUnMatch(int niveau,int numero,String genre){
+        NiveauMatch tours[] = { NiveauMatch.premierTour, NiveauMatch.deuxiemeTour, NiveauMatch.troisiemeTour,
+            NiveauMatch.huitiemeFinal, NiveauMatch.quartFinal, NiveauMatch.demiFinal, NiveauMatch.Final };
+        int debut;
+        int fin;
+        switch (tours[niveau-1]) {
+        case premierTour:
+            debut = 0 ;
+            fin = 64;
+            break;
+        case deuxiemeTour:
+            debut = 64;
+            fin = 96;
+
+            break;
+        case troisiemeTour:
+            debut = 96;
+            fin = 112;
+
+            break;
+        case huitiemeFinal:
+            debut = 112;
+            fin = 120;
+
+            break;
+        case quartFinal:
+            debut = 120;
+            fin = 124;
+
+            break;
+        case demiFinal:
+            debut = 124;
+            fin = 126;
+            break;
+        case Final:
+            debut = 126;
+            fin = 127;
+            break;
+        default:
+            debut = 0;
+            fin = 0 ;
+            System.out.println("Le Match n'a pas pu etre ajouté");
+        }
+        int index=debut+numero-1;
+        if(genre.equals("h")){
+
+            if(index>=debut && index<fin){
+                return(this.matchsHomme[index]);
+
+            }else{//le numero ne correspond pas un match de se tour la
+                return null;
+            }
+
+        }else {
+            if(index>=debut && index<fin){
+                return(this.matchsFemme[index]);
+
+            }else{//le numero ne correspond pas un match de se tour la
+                return null;
+            }
+        }
+    }
+    public int index(int niveau,String position){
+        NiveauMatch tours[] = { NiveauMatch.premierTour, NiveauMatch.deuxiemeTour, NiveauMatch.troisiemeTour,
+            NiveauMatch.huitiemeFinal, NiveauMatch.quartFinal, NiveauMatch.demiFinal, NiveauMatch.Final };
+        int debut;
+        int fin;
+        switch (tours[niveau]) {
+        case premierTour:
+            debut = 0;
+            fin = 64;
+            break;
+        case deuxiemeTour:
+            debut = 64;
+            fin = 96;
+
+            break;
+        case troisiemeTour:
+            debut = 96;
+            fin = 112;
+
+            break;
+        case huitiemeFinal:
+            debut = 112;
+            fin = 120;
+
+            break;
+        case quartFinal:
+            debut = 120;
+            fin = 124;
+
+            break;
+        case demiFinal:
+            debut = 124;
+            fin = 126;
+            break;
+        case Final:
+            debut = 126;
+            fin = 127;
+            break;
+        default:
+            debut = 0;
+            fin = 0 ;
+            System.out.println("Le Match n'a pas pu etre ajouté");
+        }
+        if(position.equals("fin")){
+            return(fin);
+        }else{
+            return(debut);
+        }
+    }
+
+    public void creerManuellementUnJoueur(){
+        System.out.println("Entrer le nom du joueur");
+        String nom = "";
+        Scanner keyboard = new Scanner(System.in);
+        nom = keyboard.nextLine();
+
+        System.out.println("Entrer le prenom du joueur");
+        String prenom = "";
+        prenom = keyboard.nextLine();
+
+        System.out.println("Entrer le surnom du joueur");
+        String surnom = "";
+        surnom = keyboard.nextLine();
+        int anneeNaissance;
+        int jourNaissance;
+        int moisNaissance;
+        do{
+            System.out.println("Entrer l'annee de naissance du joueur");
+            String anneeNaissancestr = "";
+            anneeNaissancestr= keyboard.nextLine();
+            try{
+                anneeNaissance=Integer.valueOf(anneeNaissancestr);
+            }catch(Exception e) {
+                anneeNaissance=-1;
+            }
+        }while(anneeNaissance<0 );
+
+        do{
+            System.out.println("Entrer le mois de naissance du joueur");
+            String moisNaissancestr = "";
+            moisNaissancestr= keyboard.nextLine();
+            try{
+                moisNaissance=Integer.valueOf(moisNaissancestr);
+            }catch(Exception e) {
+                moisNaissance=-1;
+            }
+        }while(moisNaissance<1 || moisNaissance>12);
+
+        do{
+            System.out.println("Entrer le jour de naissance du joueur");
+            String jourNaissancestr = "";
+            jourNaissancestr= keyboard.nextLine();
+            try{
+                jourNaissance=Integer.valueOf(jourNaissancestr);
+            }catch(Exception e) {
+                jourNaissance=-1;
+            }
+        }while(jourNaissance<1 || jourNaissance>31);
+
+        
+        LocalDate dateNaissance = LocalDate.of(anneeNaissance, moisNaissance, jourNaissance);
+
+        System.out.println("Entrer le lieu de naissance du joueur");
+        String lieuNaissance = "";
+        lieuNaissance = keyboard.nextLine();
+        System.out.println("Entrer la nationalite du joueur");
+        String nationalite= "";
+        nationalite = keyboard.nextLine();
+        System.out.println("Entrer la taille du joueur en cm");
+        int taille;
+        do{
+            String taillestr = "";
+            taillestr = keyboard.nextLine();
+            try{
+                taille = Integer.valueOf(taillestr);
+            }catch(Exception e){
+                System.out.println("Ceci ne correpond pas à une taille en cm");
+                taille=-1;
+            }
+            
+        }while(taille<0  );
+        
+        System.out.println("Entrer la masse du joueur en kg");
+        String poidsstr= "";
+        int poids;
+        do{
+            poidsstr = keyboard.nextLine();
+            try{
+                poids=Integer.valueOf(poidsstr);
+            }catch(Exception e){
+                poids=-1;
+            }
+             
+        }while(poids<0 );
+        
+        System.out.println("Entrer la main du joueur. taper 'gauche' si il est gaucher, 'droite' si il est droitier.");
+        String mainstr= "";
+        mainstr = keyboard.nextLine();
+        Main main;
+        if(mainstr.equals("gauche")){
+            main=Main.Gauche;
+        } else{
+            main=Main.Droite;
+        }
+        System.out.println("Entrer le ou les sponsor(s) du joueur");
+        String sponsor= "";
+        sponsor = keyboard.nextLine();
+
+        System.out.println("Entrer le nom de son entraineur");
+        String entraineur= "";
+         entraineur = keyboard.nextLine();
+
+        System.out.println("Entrer la couleur de son short. Vous avez le choix entre : 'bleu', 'orange' , 'vert','marron','rose' et 'jaune'");
+        String couleurstr= "";
+        couleurstr = keyboard.nextLine();
+        Couleur couleur;
+        switch(couleurstr){
+            case "bleu":
+            couleur=Couleur.Bleu;
+            break;
+            case "marron":
+            couleur=Couleur.Marron;
+            break;
+            case "vert":
+            couleur=Couleur.Vert;
+            break;
+            case "rose":
+            couleur=Couleur.Rose;
+            break;
+            case "jaune":
+            couleur=Couleur.Jaune;
+            break;
+            case "orange":
+            couleur=Couleur.Orange;
+            break;
+            default:
+            couleur=Couleur.Orange;
+            
+        }
+
+        ajouterJoueurHomme(new JoueurHomme(nom, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids, main, sponsor, entraineur, couleur));
+
+
+    } 
+
+public void creerManuellementUneJoueuse(){
+    System.out.println("Entrer le nom de la joueuse");
+    String nom = "";
+    Scanner keyboard = new Scanner(System.in);
+    nom = keyboard.nextLine();
+
+    System.out.println("Entrer le Nom courrant de la joueuse");
+    String nomCourrant = "";
+    nomCourrant = keyboard.nextLine();
+
+    System.out.println("Entrer le prenom de la joueuse");
+    String prenom = "";
+    prenom = keyboard.nextLine();
+
+    System.out.println("Entrer le surnom de la joueuse");
+    String surnom = "";
+    surnom = keyboard.nextLine();
+    int anneeNaissance;
+    int jourNaissance;
+    int moisNaissance;
+    do{
+        System.out.println("Entrer l'annee de naissance de la joueuse");
+        String anneeNaissancestr = "";
+        anneeNaissancestr= keyboard.nextLine();
+        try{
+            anneeNaissance=Integer.valueOf(anneeNaissancestr);
+        }catch(Exception e) {
+            anneeNaissance=-1;
+        }
+    }while(anneeNaissance<0 );
+
+    do{
+        System.out.println("Entrer le mois de naissance de la joueuse");
+        String moisNaissancestr = "";
+        moisNaissancestr= keyboard.nextLine();
+        try{
+            moisNaissance=Integer.valueOf(moisNaissancestr);
+        }catch(Exception e) {
+            moisNaissance=-1;
+        }
+    }while(moisNaissance<1 || moisNaissance>12);
+
+    do{
+        System.out.println("Entrer le jour de naissance de la joueuse");
+        String jourNaissancestr = "";
+        jourNaissancestr= keyboard.nextLine();
+        try{
+            jourNaissance=Integer.valueOf(jourNaissancestr);
+        }catch(Exception e) {
+            jourNaissance=-1;
+        }
+    }while(jourNaissance<1 || jourNaissance>31);
+
+    
+    LocalDate dateNaissance = LocalDate.of(anneeNaissance, moisNaissance, jourNaissance);
+
+    System.out.println("Entrer le lieu de naissance de la joueuse");
+    String lieuNaissance = "";
+    lieuNaissance = keyboard.nextLine();
+    System.out.println("Entrer la nationalite de la joueuse");
+    String nationalite= "";
+    nationalite = keyboard.nextLine();
+    System.out.println("Entrer la taille de la joueuse en cm");
+    int taille;
+    do{
+        String taillestr = "";
+        taillestr = keyboard.nextLine();
+        try{
+            taille = Integer.valueOf(taillestr);
+        }catch(Exception e){
+            System.out.println("Ceci ne correpond pas à une taille en cm");
+            taille=-1;
+        }
+        
+    }while(taille<0  );
+    
+    System.out.println("Entrer la masse de la joueuse en kg");
+    String poidsstr= "";
+    int poids;
+    do{
+        poidsstr = keyboard.nextLine();
+        try{
+            poids=Integer.valueOf(poidsstr);
+        }catch(Exception e){
+            poids=-1;
+        }
+         
+    }while(poids<0 );
+    
+    System.out.println("Entrer la main de la joueuse. taper 'gauche' si elle est gauchere, entrer si elle est droitiere.");
+    String mainstr= "";
+    mainstr = keyboard.nextLine();
+    Main main;
+    if(mainstr.equals("gauche")){
+        main=Main.Gauche;
+    } else{
+        main=Main.Droite;
+    }
+    System.out.println("Entrer le ou les sponsor(s) de la joueuse");
+    String sponsor= "";
+    sponsor = keyboard.nextLine();
+
+    System.out.println("Entrer le nom de son entraineur");
+    String entraineur= "";
+     entraineur = keyboard.nextLine();
+
+    System.out.println("Entrer la couleur de sa Jupe. Vous avez le choix entre : 'bleu', 'orange' , 'vert','marron','rose' et 'jaune'");
+    String couleurstr= "";
+    couleurstr = keyboard.nextLine();
+    Couleur couleur;
+    switch(couleurstr){
+        case "bleu":
+        couleur=Couleur.Bleu;
+        break;
+        case "marron":
+        couleur=Couleur.Marron;
+        break;
+        case "vert":
+        couleur=Couleur.Vert;
+        break;
+        case "rose":
+        couleur=Couleur.Rose;
+        break;
+        case "jaune":
+        couleur=Couleur.Jaune;
+        break;
+        case "orange":
+        couleur=Couleur.Orange;
+        break;
+        default:
+        couleur=Couleur.Orange;
+        
+    }
+
+    ajouterJoueuse(new Joueuse(nom, nomCourrant, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids, main, sponsor, entraineur, couleur));
+
+
+} 
 }

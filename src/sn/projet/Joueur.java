@@ -84,6 +84,28 @@ public class Joueur extends Personne {
         
         return(true);
     }
+    public void afficherInformationsJoueur(int classement){
+        if(this.nomNaissance.equals("Inconnu Homme")||this.nomNaissance.equals("Inconnu Femme")){
+            System.out.println("Ce joueur n'existe pas!");
+        } else{
+            System.out.println("|Nom de Naissance: "+getNomNaissance());
+            System.out.println("|Prénom: "+getPrenom());
+            System.out.println("|Surnom: "+getSurnom());
+            System.out.println("|Age: "+getAge()+" ans");
+            System.out.println("|Entraineur: "+this.entraineur);
+            System.out.println("|Classement: "+classement +" mondiale");
+            System.out.println("|Nombre de points au classement: "+getNbPoints());
+            System.out.println("|Nationalité: "+getNationalite());
+            System.out.println("|Taille: "+getTaille()+" cm");
+            System.out.println("|Poids: "+getPoids()+"kg");
+            System.out.println("|Sponsor(s): "+this.sponsor);
+            System.out.println("|Main: "+getMain());
+            System.out.println("|Date de naissance: "+getDateNaissance());
+            System.out.println("|Lieu de naissance: "+getLieuNaissance());
+        }
+        
+        
+    }
 
     
 }

@@ -21,7 +21,7 @@ public class Billetterie {
             matchs[i]=tournoi.matchsHomme[i];
             matchs[i+127]=tournoi.matchsFemme[i];
         }
-        this.tribune= new String [] {"A,B,C,D"};
+        this.tribune= new String [] {"A","B","C","D"};
         
         this.spectateurs=null;
     }
@@ -146,6 +146,8 @@ public class Billetterie {
         return this.tournoi;
     }
 
+    
+
 
     public void setTournoi(Tournoi tournoi) {
         this.tournoi = tournoi;
@@ -187,6 +189,13 @@ public class Billetterie {
 
     public void setTotalGain(int totalGain) {
         this.totalGain = totalGain;
+    }
+    public void afficherInformationsBilletterie(){
+        System.out.println("");
+        System.out.println("-------- Billetterie "+this.tournoi.nomTournoi+" " + this.tournoi.annee+"--------");
+        System.out.println("Nombre de spéctateur : "+getNbSpectateur());
+        System.out.println("Nombre de billet vendus : "+getNbBilletVendu());
+        System.out.println("Recette vente de billet : "+getTotalGain());
     }
 
 }
