@@ -1,34 +1,15 @@
 package sn.projet;
 
-import java.time.LocalDate;
 
-public class JoueurHomme extends Joueur implements SpectatorInterface{
+
+public class JoueurHomme extends Joueur{
 
     protected Vetement vetement;
     protected Couleur couleur;
-    /**
-     * 
-     * @param nomNaissance
-     * @param prenom
-     * @param surnom
-     * @param dateNaissance
-     * @param lieuNaissance
-     * @param dateDeces
-     * @param nationalite
-     * @param taille
-     * @param poids
-     * @param main
-     * @param sponsor
-     * @param entraineur
-     * @param nbPointsClassement
-     * @param couleur
-     */
+    
 
-    public JoueurHomme(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
-             String nationalite, int taille, int poids, Main main, String sponsor,
-            String entraineur,Couleur couleur) {
-        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids, main, sponsor,
-                entraineur);
+    public JoueurHomme() {
+        
 
                 this.vetement = Vetement.Short;
                 this.couleur = couleur;
@@ -43,17 +24,30 @@ public class JoueurHomme extends Joueur implements SpectatorInterface{
     }
 
     @Override
+    public String getNomNaissance() {
+        return this.nomNaissance;
+    }
+    
+
     public void setVetement(Vetement vetement) {
         // TODO Auto-generated method stub
         
     }
 
-    @Override
     public void setCouleur(Couleur couleur) {
         // TODO Auto-generated method stub
         
     }
 
+    public void setNonNaissance(String nomNaissance) {
+        this.nomNaissance = nomNaissance;
+    }
+
    
+//    String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
+//             String nationalite, int taille, int poids, Main main, String sponsor,
+//            String entraineur,Couleur couleur
     
+//    super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids, main, sponsor,
+//                entraineur);
 }

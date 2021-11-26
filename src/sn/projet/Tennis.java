@@ -5,9 +5,8 @@
  */
 package sn.projet;
 
-import java.time.LocalDate;
-
-import javax.sound.sampled.SourceDataLine;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -15,69 +14,71 @@ import javax.sound.sampled.SourceDataLine;
  */
 public class Tennis {
 
-        
-    public static void main(String[] args) {
-       
-        
-        JoueurHomme monfils = new JoueurHomme("Monfils", "Gael", "gab", LocalDate.of(1995, 1, 5),"Paris", "Français", 180, 70, Main.Droite, "Nike", "Amelie", Couleur.Bleu);
-        JoueurHomme tsonga = new JoueurHomme("Tsonga", "Joe Wilfrid", "Joe", LocalDate.of(1994, 1, 5),"Paris",  "Français", 180, 70, Main.Droite, "Nike", "Amelie", Couleur.Vert);
-        Joueuse serena = new Joueuse("anjndsi", "Williams","Serena", "sw", LocalDate.of(1994, 1, 5), "New-york","Américaine", 170, 69, Main.Gauche, "Adidas", "dad", Couleur.Marron);
-        Joueuse venus = new Joueuse("anjndsi", "Williams","Venus", "sw", LocalDate.of(1994, 1, 5), "New-york","Américaine", 170, 69, Main.Gauche, "Adidas", "dad", Couleur.Rose);
-        Arbitre arbitre = new Arbitre("Bergerault", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz", "Francaise", 180, 70);
+	public static void main(String[] args) {
 
+		Random r = new Random();
+		int valeurMax = 502;
+		int valeurMin = 0;
+		int valeur = valeurMin + r.nextInt(valeurMax - valeurMin);
 
+		personne_aleatoire c = new personne_aleatoire();
+		ArrayList<JoueurHomme> nomJoueur = new ArrayList<JoueurHomme>();
+		nomJoueur = c.save();
+		System.out.println(nomJoueur.get(valeur).getNomNaissance());
+                System.out.println("----------------###-------------");
+                //System.out.println(nomJoueur.get(valeur).getPrenom());
 
-        
-        Classement.ATP.ajouterJoueurClassement(monfils);
-        Classement.ATP.ajouterJoueurClassement(tsonga);
-        Classement.WTA.ajouterJoueurClassement(serena);
-        Classement.WTA.ajouterJoueurClassement(venus);
-        monfils.ajouterStatJoueur();
-        tsonga.ajouterStatJoueur();
+//        JoueurHomme monfils = new JoueurHomme("Monfils", "Gael", "gab", LocalDate.of(1995, 1, 5),"Paris", "Français", 180, 70, Main.Droite, "Nike", "Amelie", Couleur.Bleu);
+//        JoueurHomme tsonga = new JoueurHomme("Tsonga", "Joe Wilfrid", "Joe", LocalDate.of(1994, 1, 5),"Paris",  "Français", 180, 70, Main.Droite, "Nike", "Amelie", Couleur.Vert);
+//        Joueuse serena = new Joueuse("anjndsi", "Williams","Serena", "sw", LocalDate.of(1994, 1, 5), "New-york","Américaine", 170, 69, Main.Gauche, "Adidas", "dad", Couleur.Marron);
+//        Joueuse venus = new Joueuse("anjndsi", "Williams","Venus", "sw", LocalDate.of(1994, 1, 5), "New-york","Américaine", 170, 69, Main.Gauche, "Adidas", "dad", Couleur.Rose);
+//        Arbitre arbitre = new Arbitre("Bergerault", "Foucauld", "The goat", LocalDate.of(1999, 9, 4), "Metz", "Francaise", 180, 70);
+//
+//        
+//
+//        
+//        Classement.ATP.ajouterJoueurClassement(monfils);
+//        Classement.ATP.ajouterJoueurClassement(tsonga);
+//        Classement.WTA.ajouterJoueurClassement(serena);
+//        Classement.WTA.ajouterJoueurClassement(venus);
+//        monfils.ajouterStatJoueur();
+//        tsonga.ajouterStatJoueur();
+//
+//
+//        StatistiquesPersonnellesJoueur test = new StatistiquesPersonnellesJoueur();
+//        System.out.println(monfils.statJoueur.nbDoubleFautes);
+//
+//
+//
+//        Match premierMatch = new Match(monfils, tsonga,NiveauMatch.Final,arbitre);
+//        premierMatch.jouerMatch();
+//
+//        System.out.println("Score vainqueur ");
+//
+//
+//        System.out.println(premierMatch.scoreJoueur0);
+//        System.out.println("Score Perdant ");
+//
+//        System.out.println(premierMatch.scoreJoueur1);
+//        System.out.println("Vainqueur");
+//        System.out.println(premierMatch.vainqueurMatch.nomNaissance);
+//        
+//        Classement.ATP.afficherClassement();
+//        Classement.ATP.updateClassement();
+//        System.out.println("------------------");
+//        Classement.ATP.afficherClassement();
+//        System.out.println("Stat Monfils");
+//        monfils.statJoueur.afficherStat();
+//        System.out.println("Stat tsonga");
+//        tsonga.statJoueur.afficherStat();
+//        System.out.println("Stat Match");
+//        premierMatch.statistiques[2].afficherStat();
+//        System.out.println("Stat Match a");
+//        premierMatch.statistiques[0].afficherStat();
+//        System.out.println("Stat Match c");
+//        premierMatch.statistiques[1].afficherStat();
+//        System.out.println(premierMatch.categorie);
 
-
-        StatistiquesPersonnellesJoueur test = new StatistiquesPersonnellesJoueur();
-        System.out.println(monfils.statJoueur.nbDoubleFautes);
-
-
-
-        Match premierMatch = new Match(monfils, tsonga,NiveauMatch.Final,arbitre);
-        premierMatch.jouerMatch();
-
-        System.out.println("Score vainqueur ");
-
-
-        System.out.println(premierMatch.scoreJoueur0);
-        System.out.println("Score Perdant ");
-
-        System.out.println(premierMatch.scoreJoueur1);
-        System.out.println("Vainqueur");
-        System.out.println(premierMatch.vainqueurMatch.nomNaissance);
-        
-        Classement.ATP.afficherClassement();
-        Classement.ATP.updateClassement();
-        System.out.println("------------------");
-        Classement.ATP.afficherClassement();
-        System.out.println("Stat Monfils");
-        monfils.statJoueur.afficherStat();
-        System.out.println("Stat tsonga");
-        tsonga.statJoueur.afficherStat();
-        System.out.println("Stat Match");
-        premierMatch.statistiques[2].afficherStat();
-        System.out.println("Stat Match a");
-        premierMatch.statistiques[0].afficherStat();
-        System.out.println("Stat Match c");
-        premierMatch.statistiques[1].afficherStat();
-        System.out.println(premierMatch.categorie);
-
-
-
-
-        
-
-        
-
-
-    }
+	}
 
 }

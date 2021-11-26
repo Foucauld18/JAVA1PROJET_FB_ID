@@ -24,12 +24,9 @@ public class Joueur extends Personne {
     /*
     Constructeur Joueur qui désigne un JOUEUR
     */
-    public Joueur   (String nomNaissance, String prenom,
-                    String surnom, LocalDate dateNaissance, String lieuNaissance,
-                    String nationalite, int taille, int poids,
-                    Main main, String sponsor, String entraineur){
+    public Joueur   (){
         
-        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance,nationalite, taille, poids);
+        //super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance,nationalite, taille, poids);
         this.main = main;
         this.sponsor = sponsor;
         this.classement = nbJoueur + 1;
@@ -60,6 +57,8 @@ public class Joueur extends Personne {
     public void setNbPoints(int nbPoints){
         this.nbPointsClassement=nbPoints;
     }
+    
+    
     public void applaudir() {
         System.out.println("CLAP CLAP CLAP !!!!!!!!");
     }

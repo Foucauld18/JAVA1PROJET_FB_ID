@@ -17,7 +17,7 @@ public class Arbitre extends Personne{
     public Arbitre(String nomNaissance, String prenom,
                     String surnom, LocalDate dateNaissance, String lieuNaissance,
                      String nationalite, int taille, int poids){
-        super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids);
+        //super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids);
         
     }
 
