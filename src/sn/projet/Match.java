@@ -479,7 +479,7 @@ public class Match {
             System.out.println("---Résultat du Match---");
             afficherScoreMatch(0);
             System.out.println("le match n'a pas encore eu lieu");
-            System.out.println("Il se joura entre 1) "+joueurs[0].nomCourant+" et 2) "+joueurs[0].nomCourant);
+            System.out.println("Il se joura entre 1) "+joueurs[0].nomCourant+" et 2) "+joueurs[1].nomCourant);
 
         }
         System.out.println("");

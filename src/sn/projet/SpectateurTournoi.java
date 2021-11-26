@@ -95,7 +95,22 @@ public class SpectateurTournoi extends Personne implements SpectatorInterface{
         }
     }
 
+    public void afficherBilletsSpectateur(){
+        int sizeArray=0;
+        try{
+            sizeArray=this.billets.length;
+        }catch(Exception e){
+            sizeArray=0;
+        }
+        if(sizeArray>0){
+            for(Billet billet : this.billets){
+                System.out.print(" | "+billet.match.niveauMatch+" : "+billet.match.joueurs[0].nomCourant+" - "+ billet.match.joueurs[0].nomCourant+ " | ");
+            }
+            
+        }
 
+
+}
 
     
     

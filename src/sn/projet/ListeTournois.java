@@ -25,5 +25,36 @@ public class ListeTournois {
         newListe[SizeArray] = elementAajouter;
         this.listeTournoi = newListe;
     } 
+
+    public int afficherListeTournois(){
+        System.out.println("-----Mes tournois----");
+        int sizeArray;
+        int nbTournoiCree;
+        try{
+            sizeArray=this.listeTournoi.length;
+        }catch(Exception e){
+            sizeArray=0;
+        }
+        int numero=0;
+        if(sizeArray>0){
+            for(int i=0;i<sizeArray;i++){
+                numero++;
+                System.out.println("");
+                System.out.println("        Tournoi n°"+numero);
+                System.out.println("-----"+this.listeTournoi[i].nomTournoi + " "+ this.listeTournoi[i].annee+ "----");
+                System.out.println("Ville : "+this.listeTournoi[i].ville);
+                System.out.println("Surface : "+this.listeTournoi[i].ville);
+            }
+            
+        }
+        else {
+            System.out.println("");
+            System.out.println("vous n'avez pas encore créé de tournoi.");
+        }
+            
+        return(sizeArray);
+        
+
+    }
 }
 
