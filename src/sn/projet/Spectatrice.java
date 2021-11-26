@@ -22,6 +22,7 @@ public class Spectatrice extends SpectateurTournoi {
         this.couleur=couleur;
         this.vetement = vetement.Lunette;
         this.nomNaissance=nomCourant;
+        
     }
 
     public Vetement getVetement() { return this.vetement;}

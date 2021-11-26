@@ -905,7 +905,7 @@ public class Tournoi {
     } 
 
 public void creerManuellementUneJoueuse(){
-    System.out.println("Entrer le nom de la joueuse");
+    System.out.println("Entrer le nom de Naissance de la joueuse");
     String nom = "";
     Scanner keyboard = new Scanner(System.in);
     nom = keyboard.nextLine();
@@ -1042,4 +1042,127 @@ public void creerManuellementUneJoueuse(){
 
 
 } 
+
+
+
+public void creerManuellementUnSpectateur(Match match){
+    System.out.println("Entrer le nom du Spectateur");
+        String nom = "";
+        Scanner keyboard = new Scanner(System.in);
+        nom = keyboard.nextLine();
+
+        System.out.println("Entrer le prenom du Spectateur");
+        String prenom = "";
+        prenom = keyboard.nextLine();
+
+        System.out.println("Entrer le surnom du Spectateurr");
+        String surnom = "";
+        surnom = keyboard.nextLine();
+        int anneeNaissance;
+        int jourNaissance;
+        int moisNaissance;
+        do{
+            System.out.println("Entrer l'annee de naissance du Spectateur");
+            String anneeNaissancestr = "";
+            anneeNaissancestr= keyboard.nextLine();
+            try{
+                anneeNaissance=Integer.valueOf(anneeNaissancestr);
+            }catch(Exception e) {
+                anneeNaissance=-1;
+            }
+        }while(anneeNaissance<0 );
+
+        do{
+            System.out.println("Entrer le mois de naissance du Spectateur");
+            String moisNaissancestr = "";
+            moisNaissancestr= keyboard.nextLine();
+            try{
+                moisNaissance=Integer.valueOf(moisNaissancestr);
+            }catch(Exception e) {
+                moisNaissance=-1;
+            }
+        }while(moisNaissance<1 || moisNaissance>12);
+
+        do{
+            System.out.println("Entrer le jour de naissance du Spectateur");
+            String jourNaissancestr = "";
+            jourNaissancestr= keyboard.nextLine();
+            try{
+                jourNaissance=Integer.valueOf(jourNaissancestr);
+            }catch(Exception e) {
+                jourNaissance=-1;
+            }
+        }while(jourNaissance<1 || jourNaissance>31);
+
+        
+        LocalDate dateNaissance = LocalDate.of(anneeNaissance, moisNaissance, jourNaissance);
+
+        System.out.println("Entrer le lieu de naissance du Spectateur");
+        String lieuNaissance = "";
+        lieuNaissance = keyboard.nextLine();
+        System.out.println("Entrer la nationalite du Spectateur");
+        String nationalite= "";
+        nationalite = keyboard.nextLine();
+        System.out.println("Entrer la taille du Spectateur en cm");
+        int taille;
+        do{
+            String taillestr = "";
+            taillestr = keyboard.nextLine();
+            try{
+                taille = Integer.valueOf(taillestr);
+            }catch(Exception e){
+                System.out.println("Ceci ne correpond pas à une taille en cm");
+                taille=-1;
+            }
+            
+        }while(taille<0  );
+        
+        System.out.println("Entrer la masse du Spectateur en kg");
+        String poidsstr= "";
+        int poids;
+        do{
+            poidsstr = keyboard.nextLine();
+            try{
+                poids=Integer.valueOf(poidsstr);
+            }catch(Exception e){
+                poids=-1;
+            }
+             
+        }while(poids<0 );
+        
+       
+
+        System.out.println("Entrer la couleur de sa chemise. Vous avez le choix entre : 'bleu', 'orange' , 'verte','marron','rose' et 'jaune'");
+        String couleurstr= "";
+        couleurstr = keyboard.nextLine();
+        Couleur couleur;
+        switch(couleurstr){
+            case "bleu":
+            couleur=Couleur.Bleu;
+            break;
+            case "marron":
+            couleur=Couleur.Marron;
+            break;
+            case "verte":
+            couleur=Couleur.Vert;
+            break;
+            case "rose":
+            couleur=Couleur.Rose;
+            break;
+            case "jaune":
+            couleur=Couleur.Jaune;
+            break;
+            case "orange":
+            couleur=Couleur.Orange;
+            break;
+            default:
+            couleur=Couleur.Orange;
+            
+        }
+
+        this.billetterie.acheterBillet(new SpectateurTournoi(nom, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids), match);
+        
+
+
+    } 
 }

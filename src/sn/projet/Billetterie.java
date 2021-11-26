@@ -69,6 +69,7 @@ public class Billetterie {
             for(int k=1;k<31;k++){
                 Billet billet = new Billet(getPrixBilletMatch(match), this.tribune[i],k, match);
                 match.ajouterUnBillet(billet);
+                
             }
         }
     }
@@ -95,14 +96,17 @@ public class Billetterie {
     public void acheterBillet(SpectateurTournoi spectateur,Match match) {
         boolean matchIsInBilletterie=false;
         for(Match matchBilletterie : this.matchs){
+            
             if(matchBilletterie==match){
+                
                 matchIsInBilletterie=true;
                 break;
             }
-            if(matchIsInBilletterie==false){
-                System.out.println("Ce match n'est pas en vente sur cette billetterie");
-                return;
-            }
+            
+        }
+        if(matchIsInBilletterie==false){
+            System.out.println("Ce match n'est pas en vente sur cette billetterie");
+            return;
         }
         
         boolean billetAchete=false;
@@ -195,7 +199,33 @@ public class Billetterie {
         System.out.println("-------- Billetterie "+this.tournoi.nomTournoi+" " + this.tournoi.annee+"--------");
         System.out.println("Nombre de spéctateur : "+getNbSpectateur());
         System.out.println("Nombre de billet vendus : "+getNbBilletVendu());
-        System.out.println("Recette vente de billet : "+getTotalGain());
+        System.out.println("Recette vente de billet : "+getTotalGain()+"€");
     }
+
+public void afficherSpectateursEtBillets(){
+    int sizeArray=0;
+    try{
+        sizeArray=this.spectateurs.length;
+    }catch(Exception e){
+        sizeArray=0;
+    }
+    if(sizeArray>0){
+        System.out.println("");
+        System.out.println("---Liste des spectateurs---");
+        for(int i=0;i<sizeArray;i++){
+            System.out.print(i+1+"- "+this.spectateurs[i].prenom +" "+this.spectateurs[i].nomCourant);
+            this.spectateurs[i].afficherBilletsSpectateur();
+            System.out.println("");
+        }
+    }else{
+        System.out.println("");
+        System.out.println("Il n'y aucun spéctateur sur ce tounoi");
+    }
+}
+
+
+public SpectateurTournoi selectSpectateur(int index){
+    return(this.spectateurs[index-1]);
+}
 
 }
