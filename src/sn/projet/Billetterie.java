@@ -1,5 +1,7 @@
 package sn.projet;
 
+import java.util.ArrayList;
+
 public class Billetterie {
     protected Tournoi tournoi;
     protected int nbBilletVendu;
@@ -202,7 +204,7 @@ public class Billetterie {
         System.out.println("Recette vente de billet : "+getTotalGain()+"€");
     }
 
-public void afficherSpectateursEtBillets(){
+public void afficherSpectateurs(){
     int sizeArray=0;
     try{
         sizeArray=this.spectateurs.length;
@@ -213,9 +215,8 @@ public void afficherSpectateursEtBillets(){
         System.out.println("");
         System.out.println("---Liste des spectateurs---");
         for(int i=0;i<sizeArray;i++){
-            System.out.print(i+1+"- "+this.spectateurs[i].prenom +" "+this.spectateurs[i].nomCourant);
-            this.spectateurs[i].afficherBilletsSpectateur();
-            System.out.println("");
+            System.out.println(i+1+"- "+this.spectateurs[i].prenom +" "+this.spectateurs[i].nomCourant);
+            
         }
     }else{
         System.out.println("");
@@ -226,6 +227,31 @@ public void afficherSpectateursEtBillets(){
 
 public SpectateurTournoi selectSpectateur(int index){
     return(this.spectateurs[index-1]);
+}
+
+public void genererDesSpectateurs(){
+    PersonneAleatoire generateur = new PersonneAleatoire();
+    Spectateur [] spectateursTournois = new Spectateur[100];
+    for(int i=0;i<300;i++){
+        try{
+            spectateursTournois[i]=generateur.genererSpectateur();
+        }catch(Exception e){
+            
+        }
+        
+    } 
+    for(Match match : this.matchs){
+        for(int i=0;i<100;i++){
+            try{
+                acheterBillet(spectateursTournois[generateur.nbAleatoireBorne(0, 299)], match); 
+            }catch (Exception e){
+                
+            }
+             
+        }
+    }
+    System.out.println("Les spéctateurs ont été généré avec succès.");
+
 }
 
 }

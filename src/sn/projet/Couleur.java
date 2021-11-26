@@ -8,4 +8,5 @@ public enum Couleur {
     Bleu, Marron, Vert,
     Rose, Jaune, Orange;
     
+    
 }

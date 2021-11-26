@@ -43,6 +43,10 @@ public class Tournoi {
         this.arbitres = new Arbitre[16];
         this.matchsHomme = new Match[127];
         this.matchsFemme = new Match[127];
+        for(int i=0;i<128;i++){
+            this.joueurs[i]=null;
+            this.joueuses[i]=null;
+        }
 
         this.gagnant = null;
         this.gagnante = null;
@@ -1162,7 +1166,67 @@ public void creerManuellementUnSpectateur(Match match){
 
         this.billetterie.acheterBillet(new SpectateurTournoi(nom, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids), match);
         
+       
 
 
     } 
+
+    public void genererLeResteDesJoueurs(String genre){
+        int nbJoueurDejaPresent=0;
+        int nbJoueurs=0;
+        JoueurHomme joueur =null;
+        Joueuse joueuse=null;
+        PersonneAleatoire generateur = new PersonneAleatoire();
+        if(genre.equals("homme")){
+            
+            for(Joueur joueurTournois : this.joueurs){
+                if(joueurTournois==null){
+                    break;
+                }else{
+                    nbJoueurDejaPresent++;
+                }
+            }
+            nbJoueurs=128-nbJoueurDejaPresent;
+            
+        
+            for(int i = nbJoueurDejaPresent;i<nbJoueurDejaPresent+nbJoueurs;i++){
+                try{
+                    joueur=generateur.genererJoueurHomme();
+                    joueur.ajouterStatJoueur();
+                    Classement.ATP.ajouterJoueurClassement(joueur);
+                    ajouterJoueurHomme(joueur);
+                }catch(Exception e){
+                    i--;
+                }
+                
+                
+
+            }
+        } else{
+            for(Joueur joueurTournois : this.joueuses){
+                if(joueurTournois==null){
+                    break;
+                }else{
+                    nbJoueurDejaPresent++;
+                }
+            }
+            nbJoueurs=128-nbJoueurDejaPresent;
+            
+        
+            for(int i = nbJoueurDejaPresent;i<nbJoueurDejaPresent+nbJoueurs;i++){
+                try{
+                    joueuse=generateur.genererJoueuse();
+                    joueuse.ajouterStatJoueur();
+                    Classement.WTA.ajouterJoueurClassement(joueuse);
+                    ajouterJoueuse(joueuse);
+                    
+                }catch(Exception e){
+                    i--;
+                }
+             
+                
+            }
+        }
+
+    }
 }
