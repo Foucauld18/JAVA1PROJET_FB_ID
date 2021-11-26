@@ -21,9 +21,21 @@ public class Joueur extends Personne {
     protected int nbLitigesTotal;
     protected StatistiquesPersonnellesJoueur statJoueur;
     public static int nbJoueur = 0; // Compte le nombre de joueur
-    /*
-    Constructeur Joueur qui désigne un JOUEUR
-    */
+    
+    /**
+     * 
+     * @param nomNaissance
+     * @param prenom
+     * @param surnom
+     * @param dateNaissance
+     * @param lieuNaissance
+     * @param nationalite
+     * @param taille
+     * @param poids
+     * @param main
+     * @param sponsor
+     * @param entraineur
+     */
     public Joueur   (String nomNaissance, String prenom,
                     String surnom, LocalDate dateNaissance, String lieuNaissance,
                     String nationalite, int taille, int poids,
@@ -36,6 +48,9 @@ public class Joueur extends Personne {
         this.entraineur = entraineur;
         this.statJoueur=null;
     }
+    /**
+     * Permet d'initialiser les stats d'un joueur
+     */
 
     public void ajouterStatJoueur(){
         if(this.statJoueur==null){
@@ -46,14 +61,7 @@ public class Joueur extends Personne {
        
     }
     
-    /*
-    Constructeur joueur qui désigne une JOUEUSE 
-
-    }
-    
-    /*
-    Creation des getters et des setters
-    */
+   
     
     
     public Main getMain(){return this.main;}
@@ -84,6 +92,10 @@ public class Joueur extends Personne {
         
         return(true);
     }
+    /**
+     * Affiche toutes les informations du joueurs
+     * @param classement atp ou WTA
+     */
     public void afficherInformationsJoueur(int classement){
         if(this.nomNaissance.equals("Inconnu Homme")||this.nomNaissance.equals("Inconnu Femme")){
             System.out.println("Ce joueur n'existe pas!");

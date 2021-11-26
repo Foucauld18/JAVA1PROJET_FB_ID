@@ -7,11 +7,10 @@ package sn.projet;
 
 import java.util.Scanner;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.concurrent.ArrayBlockingQueue;
+
 
 /**
- *
+ *Gère le tournois et l'ensemble de ces matchs
  * @author Foucauld
  */
 public class Tournoi {
@@ -31,6 +30,13 @@ public class Tournoi {
     protected Billetterie billetterie;
 
     /* Constructor */
+    /**
+     * 
+     * @param nomTournoi
+     * @param ville
+     * @param surface
+     * @param annee
+     */
     public Tournoi(String nomTournoi,String ville, String surface, String annee) {
         this.nomTournoi=nomTournoi;
         this.surface = surface;
@@ -51,6 +57,11 @@ public class Tournoi {
         this.gagnant = null;
         this.gagnante = null;
     }
+    /**
+     * Permet de jouer un tournois
+     * @param automatiqueHomme true simule le tournois des hommes false manuel
+     * @param automatiqueFemmetrue simule le tournois des femmes false manuel
+     */
 
     public void jouerTournois(boolean automatiqueHomme, boolean automatiqueFemme) {
         
@@ -217,6 +228,9 @@ public class Tournoi {
         this.gagnante = this.matchsFemme[126].vainqueurMatch;
 
     }
+    /**
+     * Créer l'ensemble des match d'un tournois
+     */
 
     public void iniTableauMatch() {
 
@@ -267,6 +281,10 @@ public class Tournoi {
             ajouterMatchFemme(matchfemme);
 
     }
+    /**
+     * Affiche les resultats des match d'un tounois
+     * @param genre "homme" ou "femme" autre affiche les deux
+     */
  
     public void afficherMatchTournoi(String genre) {
         NiveauMatch tours[] = { NiveauMatch.premierTour, NiveauMatch.deuxiemeTour, NiveauMatch.troisiemeTour,
@@ -414,6 +432,10 @@ public class Tournoi {
         
 
    }
+   /**
+    * Ajout un match dans la liste des matchs du tounois
+    * @param match
+    */
 
     public void ajouterMatchHomme(Match match) {
         int debut;
@@ -466,6 +488,10 @@ public class Tournoi {
         } while (debut < fin);
 
     };
+    /**
+     * Ajoute un match dans la liste des matchs femmes du tounois
+     * @param match
+     */
 
     public void ajouterMatchFemme(Match match) {
         int debut;
@@ -518,7 +544,10 @@ public class Tournoi {
         } while (debut < fin);
 
     };
-
+/**
+ * Ajoute un arbitre dans la liste des arbitres du tounois
+ * @param arbitre
+ */
     public void ajouterArbitre(Arbitre arbitre) {
         int i = 0 ;
         do {
@@ -533,6 +562,10 @@ public class Tournoi {
         }
 
     };
+    /**
+     * Ajoute un joueur dans les participants du tounois
+     * @param joueur
+     */
 
     public void ajouterJoueurHomme(JoueurHomme joueur) {
         int i = 0 ;
@@ -548,6 +581,9 @@ public class Tournoi {
         }
 
     };
+    /**
+     * Ajoute une joueuse dans les participants du tounois
+     */
 
     public void ajouterJoueuse(Joueuse joueuse) {
         int i = 0 ;
@@ -563,7 +599,9 @@ public class Tournoi {
         }
 
     };
-
+/**
+ * Affiche la liste des joueurs participants au tournois
+ */
     public void afficherJoueurs() {
         for (int i = 0 ; i < 128; i++) {
             try {
@@ -573,7 +611,9 @@ public class Tournoi {
             }
         }
     }
-
+/**
+ * Affiche la liste des joueuses participantes au tounoi
+ */
     public void afficherJoueuses() {
         for (int i = 0 ; i < 128; i++) {
             try {
@@ -655,11 +695,20 @@ public class Tournoi {
     public void setGagnant(Joueur gagnant) {
         this.gagnant = gagnant;
     }
-
+/**
+ * Modifie la billetterie attribuer au tounoi
+ */
     public void setBilletterieTournoi(Billetterie billetterie){
         this.billetterie=billetterie;
 
     }
+    /**
+     * Sélectionne un match dans le tournois
+     * @param niveau "1 er tour=1, 2ème tour =2..."
+     * @param numero "dépend du tour ex final juste 1 seul mat"
+     * @param genre "homme" ou "femme"
+     * @return
+     */
 
     public Match selectionnerUnMatch(int niveau,int numero,String genre){
         NiveauMatch tours[] = { NiveauMatch.premierTour, NiveauMatch.deuxiemeTour, NiveauMatch.troisiemeTour,
@@ -723,6 +772,12 @@ public class Tournoi {
             }
         }
     }
+    /**
+     * Retourne l'index de début ou de fin correpondant à la postion des matchs d'un tour dans la liste des matchs
+     * @param niveau
+     * @param position
+     * @return
+     */
     public int index(int niveau,String position){
         NiveauMatch tours[] = { NiveauMatch.premierTour, NiveauMatch.deuxiemeTour, NiveauMatch.troisiemeTour,
             NiveauMatch.huitiemeFinal, NiveauMatch.quartFinal, NiveauMatch.demiFinal, NiveauMatch.Final };
@@ -772,8 +827,11 @@ public class Tournoi {
             return(debut);
         }
     }
-
+/**
+ * Permet de créer un joueur avec le terminal et de l'ajouter au tournoi
+ */
     public void creerManuellementUnJoueur(){
+        JoueurHomme joueur =null;
         System.out.println("Entrer le nom du joueur");
         String nom = "";
         Scanner keyboard = new Scanner(System.in);
@@ -902,13 +960,19 @@ public class Tournoi {
             couleur=Couleur.Orange;
             
         }
+        joueur = new JoueurHomme(nom, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids, main, sponsor, entraineur, couleur);
+       joueur.ajouterStatJoueur();
+       Classement.ATP.ajouterJoueurClassement(joueur);
+       ajouterJoueurHomme(joueur);
 
-        ajouterJoueurHomme(new JoueurHomme(nom, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids, main, sponsor, entraineur, couleur));
 
 
     } 
-
+/**
+ * Permet de creer une joueuse avec le terminal et de l'ajouter au tournoi
+ */
 public void creerManuellementUneJoueuse(){
+    Joueuse joueuse = null;
     System.out.println("Entrer le nom de Naissance de la joueuse");
     String nom = "";
     Scanner keyboard = new Scanner(System.in);
@@ -1041,14 +1105,21 @@ public void creerManuellementUneJoueuse(){
         couleur=Couleur.Orange;
         
     }
+    joueuse = new Joueuse(nom, nomCourrant, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids, main, sponsor, entraineur, couleur);
+    joueuse.ajouterStatJoueur();
+    Classement.WTA.ajouterJoueurClassement(joueuse);
+    
 
-    ajouterJoueuse(new Joueuse(nom, nomCourrant, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids, main, sponsor, entraineur, couleur));
-
+    ajouterJoueuse(joueuse);
+    
 
 } 
 
 
-
+/**
+ * Permet de créer un spéctateur avec le terminal et de l'ajouter à un match du tounoi
+ * @param match
+ */
 public void creerManuellementUnSpectateur(Match match){
     System.out.println("Entrer le nom du Spectateur");
         String nom = "";
@@ -1170,7 +1241,10 @@ public void creerManuellementUnSpectateur(Match match){
 
 
     } 
-
+/**
+ * Permet de générer le nb de joeurs nécessaire au déroulement du tounoi
+ * @param genre "homme" ou "femme"
+ */
     public void genererLeResteDesJoueurs(String genre){
         int nbJoueurDejaPresent=0;
         int nbJoueurs=0;

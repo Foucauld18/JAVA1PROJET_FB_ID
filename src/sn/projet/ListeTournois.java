@@ -1,5 +1,7 @@
 package sn.projet;
-
+/**
+ * Liste les tournois créé
+ */
 public class ListeTournois {
     public Tournoi [] listeTournoi;
 
@@ -7,7 +9,10 @@ public class ListeTournois {
     public ListeTournois(){
         this.listeTournoi=null;
     }
-
+    /**
+     * Ajouter un tournoi dans la liste
+     * @param elementAajouter
+     */
     
     public void ajouterUnTournoi (Tournoi elementAajouter) {
         Tournoi[] listeExistente = this.listeTournoi;
@@ -25,6 +30,10 @@ public class ListeTournois {
         newListe[SizeArray] = elementAajouter;
         this.listeTournoi = newListe;
     } 
+    /**
+     * Affiche les tournois de la liste
+     * @return le nombre de tounois dans la liste
+     */
 
     public int afficherListeTournois(){
         System.out.println("-----Mes tournois----");

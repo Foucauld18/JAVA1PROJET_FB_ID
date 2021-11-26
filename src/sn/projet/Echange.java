@@ -18,6 +18,13 @@ public class Echange {
     protected Arbitre arbitre;
 
     /* builder */
+    /**
+     * 
+     * @param serveur
+     * @param joueur1
+     * @param arbitre
+     * 
+     */
     public Echange(Joueur serveur, Joueur joueur1, Arbitre arbitre) {
 
         this.joueurs = new Joueur[] { serveur, joueur1 };
@@ -25,6 +32,12 @@ public class Echange {
     }
 
     /* Method */
+    /**
+     * 
+     * @param echangeAutomatique true l'echange sera automatique, false il sera manuel
+     * @return Vainqueur de l'échange
+     * 
+     */
 
     public Joueur jouerEchange(boolean echangeAutomatique) {
         if (echangeAutomatique == true) {

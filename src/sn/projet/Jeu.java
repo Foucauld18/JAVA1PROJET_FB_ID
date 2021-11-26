@@ -9,6 +9,12 @@ public class Jeu {
     protected Arbitre arbitre;
 
     /* Builder */
+    /**
+     * 
+     * @param serveur
+     * @param joueur1
+     * @param arbitre
+     */
 
     public Jeu(Joueur serveur, Joueur joueur1, Arbitre arbitre) {
         this.joueurs = new Joueur[] { serveur, joueur1 };
@@ -17,6 +23,11 @@ public class Jeu {
         this.arbitre = arbitre;
         this.vainqueurJeu = null;
     }
+    /**
+     * 
+     * @param joueur
+     * @return Met a jour le classement du jeu suite à un échange
+     */
 
     public void SetScore(Joueur joueur) {
         String newScore = "0";
@@ -83,6 +94,10 @@ public class Jeu {
         }
 
     }
+    /**
+     * Ajoute un Echange à la liste des echange d'un jeu
+     * @param newEchange
+     */
 
     public void ajouterUnEchange(Echange newEchange) {
         Echange[] listeEchanges = this.echanges;
@@ -100,7 +115,12 @@ public class Jeu {
         newListeEchange[SizeArray] = newEchange;
         this.echanges = newListeEchange;
     }
-
+/**
+ * 
+ * @param jeuAutomatique true le jeu se joura automatiquement, false manuellement
+ * @param afficherDetailJeu true tout les echange seront afficher ainsi que les scores après chaque échange
+ * @return Vainqueur du jeu
+ */
     public Joueur jouerJeu(boolean jeuAutomatique,boolean afficherDetailJeu) {
         boolean hasVainqueurJeu = false;
         Joueur vainqueurDernierEchange = null;

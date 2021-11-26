@@ -1,5 +1,7 @@
 package sn.projet;
-
+/**
+ * Gère les stats d'un match et une partie de celle d'un joueur
+ */
 public class Statistiques implements Cloneable {
 
     
@@ -16,7 +18,9 @@ public class Statistiques implements Cloneable {
     protected int nbBalleDeBreak;
     
 
-    /*constructor*/
+   /**
+    * 
+    */
     public  Statistiques(){
         
         this.nbSetGagne=0;
@@ -41,7 +45,9 @@ public class Statistiques implements Cloneable {
     
 
     /*Methods*/
-
+/**
+ * Affiche les stats contenue dans l'objet
+ */
     public void afficherStat(){
         
         System.out.println("Set gagné : " + this.nbSetGagne);
@@ -145,7 +151,9 @@ public class Statistiques implements Cloneable {
     public void setNbBalleDeBreak(int nbBalleDeBreak) {
         this.nbBalleDeBreak = nbBalleDeBreak;
     }
-
+/**
+ * Permet de faire une copie d'un objet statistique
+ */
     public Object clone() {
         Statistiques stat = null;
         try {

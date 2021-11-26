@@ -12,10 +12,11 @@ import java.security.DrbgParameters.NextBytes;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
 
 /**
- *
+ * Permet de créer et jouer un match
  * @author Foucauld18
  * 
  */
+
 public class Match {
     protected CategorieMatch categorie;
     protected Joueur[] joueurs;
@@ -89,9 +90,9 @@ public class Match {
      */
 
     /**
-     * tgtgbtbt
+     * Modidie le score du match
      * 
-     * @param vainqueurDernierSet frfr
+     * @param vainqueurDernierSet
      */
     public void SetMatchResultat(Joueur vainqueurDernierSet) {
 
@@ -181,7 +182,8 @@ public class Match {
     }
 
     /**
-     * 
+     * Permet de jouer le match
+     * @param tournoisAutomatique // si le tournois ce joue automatiquement mettre true
      * @return Vainqueur du match
      */
     public Joueur jouerMatch(boolean tournoisAutomatique) {
@@ -294,11 +296,16 @@ public class Match {
         }
         return (vainqueurDernierSet);
     }
-
+/**
+ * Enregistre les stats des joueurs avant le début d'un match
+ */
     public void getInitStatJoueur() {
         this.statistiques[0] = (Statistiques) this.joueurs[0].statJoueur.clone();
         this.statistiques[1] = (Statistiques) this.joueurs[1].statJoueur.clone();
     }
+    /**
+     * Met a jour les sats du match
+     */
 
     public void updateStatMatch() {
 
@@ -335,14 +342,19 @@ public class Match {
                 this.statistiques[1].getNbTotalPointRemporte() + this.statistiques[0].getNbTotalPointRemporte());
 
     }
-
+    /**
+     * Perment d'afficher nbEspace dans la console
+     * @param nbEspace
+     */
     private void afficherEspace(int nbEspace){
         for(int i=0;i<nbEspace;i++){
             System.out.print(" ");
         }
     }
    
-
+    /**
+     * Affiche le score du match dans la console à espace du précendent affichage
+     */
     public void afficherScoreMatch(int espace){
 
         int nbSet;
@@ -408,6 +420,10 @@ public class Match {
         }
          
     }
+    /**
+     * Ajouter un spéctateur à la liste des spéctateurs du match
+     * @param spectateur
+     */
     public void ajouterUnSpectateur(SpectateurTournoi spectateur) {
         SpectateurTournoi[] listeSpectateurs = this.spectateurs;
         int SizeArray = 0, i;
@@ -437,10 +453,15 @@ public class Match {
         }
         
     }
+
     protected void setArbitre(Arbitre arbitre){
         this.arbitre=arbitre;
 
     }
+    /**
+     * Ajoute un billet a vendre au match
+     * @param billet
+     */
     public void ajouterUnBillet(Billet billet) {
         Billet[] listeBillets = this.billets;
         int SizeArray = 0, i;
@@ -457,6 +478,9 @@ public class Match {
         newListeBillets[SizeArray] = billet;
         this.billets = newListeBillets;
     }   
+    /**
+     * Affiche le résultat du match, les stats du matchs et les stats des joueurs pdt le match
+     */
     public void afficherInfomationMatch(){
         if(this.vainqueurMatch!=null){//le match est joué et termine
             System.out.println("");

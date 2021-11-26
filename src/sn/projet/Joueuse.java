@@ -6,6 +6,22 @@ public class Joueuse extends Joueur implements SpectatorInterface{
 
     protected Vetement vetement;
     protected Couleur couleur;
+    /**
+     * 
+     * @param nomNaissance
+     * @param nomCourrant
+     * @param prenom
+     * @param surnom
+     * @param dateNaissance
+     * @param lieuNaissance
+     * @param nationalite
+     * @param taille
+     * @param poids
+     * @param main
+     * @param sponsor
+     * @param entraineur
+     * @param couleur
+     */
 
     public Joueuse(String nomNaissance, String nomCourrant, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance, String nationalite, int taille, int poids, Main main, String sponsor,
             String entraineur,Couleur couleur) {
@@ -67,6 +83,10 @@ public class Joueuse extends Joueur implements SpectatorInterface{
 		// TODO Auto-generated method stub
 		
 	}
+    /**
+     * Affiche toutes les informations de la joueuse
+     * @param classement
+     */
 
     public void afficherInformationsJoueuse(int classement){
         System.out.println("|Nom courrant: "+getNomCourant());

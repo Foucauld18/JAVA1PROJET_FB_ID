@@ -2,6 +2,9 @@ package sn.projet;
 
 import java.util.ArrayList;
 
+/**
+ * Gere toute la billetterie du tounois. Ainsi que les spéctateur présent.
+ */
 public class Billetterie {
     protected Tournoi tournoi;
     protected int nbBilletVendu;
@@ -13,6 +16,10 @@ public class Billetterie {
     
 
     /**Constructeur */
+    /**
+     * 
+     * @param tournoi
+     */
     public Billetterie(Tournoi tournoi){
         this.tournoi=tournoi;
         this.nbBilletVendu=0;
@@ -35,6 +42,11 @@ public class Billetterie {
      * @return integer Prix du billet de ce match
      */
 
+    /**
+     * 
+     * @param match
+     * @return attribut un prix a un billet en fonction du niveau du match
+     */
     public int getPrixBilletMatch(Match match){
         int valeurMatch = 0;
         switch (match.niveauMatch) {
@@ -66,6 +78,12 @@ public class Billetterie {
         return(valeurMatch);
     }
 
+    /**
+     * 
+     * @param match
+     * @return creer les billets pour un match. (=billet mise en vente)
+     */
+
     public void creerBilletsMatch(Match match){
         for(int i=0;i<4;i++){
             for(int k=1;k<31;k++){
@@ -75,6 +93,11 @@ public class Billetterie {
             }
         }
     }
+    /**
+     * 
+     * @param spectateur
+     * @return ajoute un spéctateur à la liste des spéctateurs
+     */
     public void ajouterUnSpectateur(SpectateurTournoi spectateur) {
         SpectateurTournoi[] listeSpectateurs = this.spectateurs;
         int SizeArray = 0, i;
@@ -95,6 +118,12 @@ public class Billetterie {
         this.spectateurs = newListeSpectateurs;
     } 
 
+    /**
+     * 
+     * @param spectateur
+     * @param match
+     * @return // Ajoute un spectateur à un match
+     */
     public void acheterBillet(SpectateurTournoi spectateur,Match match) {
         boolean matchIsInBilletterie=false;
         for(Match matchBilletterie : this.matchs){
@@ -132,6 +161,9 @@ public class Billetterie {
         }
       
     }
+    /**
+     * Met à jour le nombre de spectateur
+     */
 
     public void updateNbSpectateur(){
         int nbSpectateur;
@@ -142,6 +174,9 @@ public class Billetterie {
         }
         this.nbSpectateur=nbSpectateur;
     }
+    /**
+     * Met en vente tous les billets d'un tournois
+     */
 
     public void genererBilletsTournois(){
         for(int i=0;i<254;i++){
@@ -203,7 +238,9 @@ public class Billetterie {
         System.out.println("Nombre de billet vendus : "+getNbBilletVendu());
         System.out.println("Recette vente de billet : "+getTotalGain()+"€");
     }
-
+/**
+ * Affiche les spéctateurs d'un tounois
+ */
 public void afficherSpectateurs(){
     int sizeArray=0;
     try{
@@ -224,7 +261,11 @@ public void afficherSpectateurs(){
     }
 }
 
-
+/**
+ * 
+ * @param index numero du spéctateur dans la liste
+ * @return Permet de séléctionner un spectateur dans la liste des spéctateurs du tounois
+ */
 public SpectateurTournoi selectSpectateur(int index){
     return(this.spectateurs[index-1]);
 }

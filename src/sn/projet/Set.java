@@ -3,7 +3,7 @@ package sn.projet;
 import java.util.Scanner;
 
 /**
- *
+ *Set d'un match
  * @author Foucauld
  */
 
@@ -16,12 +16,24 @@ public class Set {
     protected Arbitre arbitre;
 
     /* Builder */
+    /**
+     * 
+     * @param joueur0
+     * @param joueur1
+     * @param arbitre
+     */
 
     public Set(Joueur joueur0, Joueur joueur1, Arbitre arbitre) {
         this.joueurs = new Joueur[] { joueur0, joueur1 };
         this.vainqueurSet = null;
         this.arbitre = arbitre;
     }
+    /**
+     * Met à jour le score du set
+     * @param VainqueurDernierJeu
+     * @param numeroSet
+     * @param categorie
+     */
 
     public void SetScore(Joueur VainqueurDernierJeu, int numeroSet, CategorieMatch categorie) {
 
@@ -64,6 +76,10 @@ public class Set {
         }
 
     }
+    /**
+     * Ajoute un jeu dans la liste des jeux du set
+     * @param newJeu
+     */
 
     public void ajouterUnJeu(Jeu newJeu) {
         Jeu[] listeJeux = this.jeux;
@@ -82,11 +98,11 @@ public class Set {
         this.jeux = newListeJeux;
     }
     /**
-     * 
+     * Jouer le seer
      * @param  numeroSet
      * @param categorie
-     * @param matchAutomatique
-     * @param afficherDetailSet
+     * @param matchAutomatique true automatique,false manuel
+     * @param afficherDetailSet true afficher, false ne pas afficher
      * @return Joueur Vainqueur du Set
      */
 

@@ -12,12 +12,32 @@ import java.time.LocalDate;
  * @author Ibrahima
  */
 public class Arbitre extends Personne {
+    /**
+     * 
+     * @param nomNaissance
+     * @param prenom
+     * @param surnom
+     * @param dateNaissance
+     * @param lieuNaissance
+     * @param nationalite
+     * @param taille
+     * @param poids
+     */
 
     public Arbitre(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
             String nationalite, int taille, int poids) {
         super(nomNaissance, prenom, surnom, dateNaissance, lieuNaissance, nationalite, taille, poids);
 
     }
+    /**
+     * 
+     * @param joueur0
+     * @param joueur1
+     * @param scoreJoueur0
+     * @param scoreJoueur1
+     * @param vainqueurMatch
+     * @param parle
+     */
 
     public void annoncerScoreMatch(Joueur joueur0, Joueur joueur1, int scoreJoueur0, int scoreJoueur1,
             Joueur vainqueurMatch, boolean parle) {
@@ -36,6 +56,15 @@ public class Arbitre extends Personne {
         }
 
     }
+    /**
+     * 
+     * @param joueur0
+     * @param joueur1
+     * @param scoreJoueur0
+     * @param scoreJoueur1
+     * @param vainqueurSet
+     * @param parle
+     */
 
     public void annoncerScoreSet(Joueur joueur0, Joueur joueur1, int scoreJoueur0, int scoreJoueur1,
             Joueur vainqueurSet, boolean parle) {
@@ -54,6 +83,15 @@ public class Arbitre extends Personne {
         }
 
     }
+    /**
+     * 
+     * @param scoreServeur
+     * @param scoreJoueur1
+     * @param serveur
+     * @param joueur1
+     * @param vainqueurJeu
+     * @param parle
+     */
 
     public void annoncerScoreJeu(String scoreServeur, String scoreJoueur1, String serveur, String joueur1,
             String vainqueurJeu, boolean parle) {

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Ibrahima
+ * @Foucauld18
  */
 public class Tennis {
 
@@ -18,9 +18,7 @@ public class Tennis {
       
         UiTennis console=new UiTennis();
         console.lancerUi();
-        //PersonneAleatoire test= new PersonneAleatoire();
-        //System.out.println(test.genererJoueurHomme().nomCourant);
-        //System.out.println(test.nbAleatoireBorne(1, 31));
+        
     
 }
 }

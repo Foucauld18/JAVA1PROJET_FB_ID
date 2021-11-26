@@ -15,6 +15,19 @@ public class Spectatrice extends SpectateurTournoi {
 
     protected Vetement vetement;
     protected Couleur couleur;
+    /**
+     * 
+     * @param nomNaissance
+     * @param nomCourant
+     * @param prenom
+     * @param surnom
+     * @param dateNaissance
+     * @param lieuNaissance
+     * @param nationalite
+     * @param taille
+     * @param poids
+     * @param couleur
+     */
 
     public Spectatrice (String nomNaissance, String nomCourant, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
      String nationalite, int taille, int poids, Couleur couleur){

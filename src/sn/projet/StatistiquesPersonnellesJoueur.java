@@ -1,5 +1,7 @@
 package sn.projet;
-
+/**
+ * Sous classe de la class Statistiques, elle a des stats en plus dédié aux joeurs
+ */
 public class StatistiquesPersonnellesJoueur extends Statistiques{
 
     Match [] matchsJoue;

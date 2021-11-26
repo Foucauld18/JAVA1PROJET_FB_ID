@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UiTennis {
-
+    /**
+     * Permet l'affichage du projet
+     */
     public UiTennis() {
     };
 

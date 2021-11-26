@@ -24,6 +24,21 @@ public class JoueurHomme extends Joueur implements SpectatorInterface{
      * @param couleur
      */
 
+     /**
+      * 
+      * @param nomNaissance
+      * @param prenom
+      * @param surnom
+      * @param dateNaissance
+      * @param lieuNaissance
+      * @param nationalite
+      * @param taille
+      * @param poids
+      * @param main
+      * @param sponsor
+      * @param entraineur
+      * @param couleur
+      */
     public JoueurHomme(String nomNaissance, String prenom, String surnom, LocalDate dateNaissance, String lieuNaissance,
              String nationalite, int taille, int poids, Main main, String sponsor,
             String entraineur,Couleur couleur) {
@@ -78,6 +93,10 @@ public class JoueurHomme extends Joueur implements SpectatorInterface{
         // TODO Auto-generated method stub
         
     }
+    /**
+     * Affiche toutes les informations du joueur
+     * @param classement
+     */
 
     public void afficherInformationsJoueurHomme(int classement){
         System.out.println("|Nom courrant: "+getNomCourant());

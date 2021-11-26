@@ -20,6 +20,17 @@ public class SpectateurTournoi extends Personne implements SpectatorInterface{
     /*
     Constructeur 
     */
+    /**
+     * 
+     * @param nomNaissance
+     * @param prenom
+     * @param surnom
+     * @param dateNaissance
+     * @param lieuNaissance
+     * @param nationalite
+     * @param taille
+     * @param poids
+     */
 
     public SpectateurTournoi(String nomNaissance, String prenom,
             String surnom, LocalDate dateNaissance, String lieuNaissance,
@@ -32,7 +43,9 @@ public class SpectateurTournoi extends Personne implements SpectatorInterface{
     }
 
   
-    
+    /**
+     * Ajoute un billet dans la liste de billets du spéctateur
+     */
     public void ajouterUnBillet(Billet billet) {
         Billet[] listeBillets = this.billets;
         int SizeArray = 0, i;
@@ -94,7 +107,9 @@ public class SpectateurTournoi extends Personne implements SpectatorInterface{
             System.out.println("Holllezzzz");
         }
     }
-
+/**
+ * Affiche les billets qu'a le spéctateur
+ */
     public void afficherBilletsSpectateur(){
         int sizeArray=0;
         try{

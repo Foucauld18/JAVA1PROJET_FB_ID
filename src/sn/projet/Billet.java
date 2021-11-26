@@ -16,6 +16,13 @@ class Billet {
     protected String titulaire;
     protected Match match;
      // Compte le nombre de billet vendu
+     /**
+      * 
+      * @param prix
+      * @param tribune
+      * @param place
+      * @param match
+      */
     
     public Billet(int prix, String tribune, int place,Match match){
         this.prix = prix;

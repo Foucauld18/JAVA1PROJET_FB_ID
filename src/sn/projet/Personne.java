@@ -6,10 +6,10 @@
 package sn.projet;
 import java.time.LocalDate;
 
-/**
- *
- * @author Ibrahima
- */
+
+ /**
+  * abstract
+  */
 public abstract class Personne {
     protected String nomNaissance;
     protected String nomCourant;
@@ -51,32 +51,7 @@ public abstract class Personne {
         this.poids = poids;  
     }
     
-    /**
-    Création d'un constructeur Personne 
-    *ne contenant pas la variable nomCourant
-     * @param nomNaissance
-     * @param prenom
-     * @param surnom
-     * @param dateNaissance
-     * @param lieuNaissance
-     * @param dateDeces
-     * @param nationalite
-     * @param taille
-     * @param poids
-    */
-    public Personne(String nomNaissance, String prenom,
-                    String surnom, LocalDate dateNaissance, String lieuNaissance,
-                    LocalDate dateDeces, String nationalite, int taille, int poids){
-        this.nomNaissance = nomNaissance;
-        this.prenom = prenom;
-        this.surnom = surnom;
-        this.dateNaissance = dateNaissance;
-        this.lieuNaissance = lieuNaissance;
-        this.dateDeces = dateDeces;
-        this.nationalite = nationalite;
-        this.taille = taille;
-        this.poids = poids;  
-    }
+   
     
 
     

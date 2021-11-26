@@ -1,4 +1,7 @@
 package sn.projet;
+/**
+ * Vetement des personnes
+ */
 
 public enum Vetement {
     /*

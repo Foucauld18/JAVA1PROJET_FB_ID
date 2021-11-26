@@ -6,11 +6,15 @@ import java.io.FileWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-
+/**
+ * Permet de générer des personnes picocher aléatoirement dans un fichier csv
+ */
 public class PersonneAleatoire {
     private static String pathCSV="/Users/foucauldbglt/listePersonne.csv";
 
-    
+    /**
+     * Génère une joueuse à partir d'un CSV
+     */
     public Joueuse genererJoueuse(){
         Joueuse joueuse = null;
         int ligneAleatoire = nbAleatoireBorne(0, 500);
@@ -68,7 +72,9 @@ public class PersonneAleatoire {
         return(joueuse);
     }
 
-  
+  /**
+   * Génère un joueur à partir d'un csv
+   */
     
     public JoueurHomme genererJoueurHomme(){
         
@@ -129,11 +135,17 @@ public class PersonneAleatoire {
         }
         return(newJoueurHomme);
     }
-
+    /** 
+     * @param min 
+     * @param max
+     * @return un nombre entier aleatoire dans l'intervalle [min;max]
+    */
     public int nbAleatoireBorne(int min,int max){
         return(min + (int)(Math.random() * (max - min))+1);
     }
-
+    /**
+     * Génère un spéctateur à partir d'un csv
+     */
     public Spectateur genererSpectateur(){
         Spectateur spectateur=null;
         int ligneAleatoire = nbAleatoireBorne(0, 500);

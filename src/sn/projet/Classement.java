@@ -14,6 +14,11 @@ public class Classement {
     }
 
     /* Method */
+    /**
+     * 
+     * @param joueur
+     * Permet de faire figuerer le joueur au classement ATP ou WTA
+     */
 
     protected void ajouterJoueurClassement(Joueur joueur) {
         Joueur[] classementActuel = this.joueurs;
@@ -37,7 +42,9 @@ public class Classement {
         this.joueurs = newClassement;
 
     }
-
+/**
+ * Affiche le classement mondial
+ */
     protected void afficherClassement() {
         Joueur[] classement = this.joueurs;
         int SizeArray = 0, i;
@@ -53,7 +60,9 @@ public class Classement {
             System.out.println(i+1+"-  " +classement[i].nomCourant + " " + classement[i].nbPointsClassement + " points");
         }
     }
-
+/**
+ * met a jour le classement en fonction des points de chaque joueur
+ */
     protected void updateClassement() {
         Joueur[] classement = this.joueurs;
         int sizeArray = 0;
@@ -75,6 +84,11 @@ public class Classement {
         this.joueurs = classement;
     }
 
+    /**
+     * 
+     * @param joueur
+     * @return Classement du joueur
+     */
 
     protected int obtenirClassementJoueur(Joueur joueur){
         if(joueur.nomNaissance.equals("Inconnu Homme")||joueur.nomNaissance.equals("Inconnu Femme")){
